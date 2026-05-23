@@ -15,11 +15,11 @@ Single source of truth for the Tier-1 Orchestrator. Unchecked items block sessio
 
 ## Active — Client architecture + SMS → Monday
 
-- [ ] OpenClaw `concepts/workflow_architecture.md` (after Turo PM loop validated)
+- [~] OpenClaw `concepts/workflow_architecture.md` — paused: gated on Turo PM loop validation (Monday reconciliation sweep below)
 - [x] Turo `concepts/workflow_architecture.md` — per-workflow done vs needed
 - [x] `scripts/suggest_monday_from_messages.py` — SMS/MMS → Monday suggestions
-- [ ] Monday reconciliation sweep for Marc (board `18408242353` vs wiki) — human APPROVE before post
-- [ ] Commit/push pending `llmwiki` archive changes (52 files)
+- [~] Monday reconciliation sweep for Marc (board `18408242353` vs wiki) — paused: awaiting Nick APPROVE before any Monday write (HITL gate per `Turo/playbooks/sms_to_monday_review.md`)
+- [x] Commit/push pending `llmwiki` archive changes — 56 files, commit `2d43b0a`, pushed to `NickHeight/llmwiki` master
 
 ## Periodic maintenance
 
