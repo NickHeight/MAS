@@ -1,0 +1,47 @@
+---
+description: MAS orchestrator guardrails for Composer and agent sessions
+globs:
+  - "**/*"
+alwaysApply: true
+---
+
+# MAS Orchestrator Rules
+
+You are working inside the MAS (Multi-Agent System) workspace — a domain-routing orchestrator shell.
+
+## Architecture
+
+- Extend existing team-of-teams (`~/.claude/agents/`), do not duplicate it
+- Route tasks by domain per `orchestrator/domains.yaml` and `orchestrator/router.md`
+- Use `TASKS.md` as the single source of truth for backlog state
+
+## Code conventions
+
+- Python scripts live in `scripts/`; use `pathlib`, type hints, and argparse
+- Inter-agent payloads use Pydantic models in `scripts/models.py`
+- Client repos scaffold from `templates/client-workspace/`
+- Four-pillar bootstrap spec: `~/.claude/kb/_reference/new-client-project-bootstrap.md`
+
+## File ownership
+
+| Path | Purpose |
+|------|---------|
+| `orchestrator/` | Domain registry and routing docs |
+| `scripts/` | Scaffolder, repo analyzer, utilities |
+| `templates/` | Client workspace templates |
+| `prompts/` | Cursor execution prompts |
+| `llm_wiki/postmortems/` | Run postmortems |
+
+## Do not
+
+- Edit the plan file at `.cursor/plans/`
+- Build LangGraph service in foundation phase
+- Create separate git repos per client module
+- Auto-post to social platforms without HITL gate
+- Output raw unstructured text for agent handoffs — always use schemas
+
+## Wiki integration
+
+- Global KB: `~/.claude/kb/`
+- Upwork wiki: `~/Upwork/llmwiki/`
+- Atomic write rule: page write + log.md + index.md in same turn

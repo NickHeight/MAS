@@ -1,0 +1,187 @@
+{
+  "audited_at": "2026-05-22T21:05:37.592888+00:00",
+  "upwork_root": "C:\\Users\\Nicol\\Upwork",
+  "readme_rows": [
+    {
+      "local_path": "llmwiki/",
+      "purpose": "Multi-project wiki (Turo, OpenClaw, PremiumWebDesign)",
+      "github_repo": "NickHeight/llmwiki"
+    },
+    {
+      "local_path": "height-consulting-site/",
+      "purpose": "Agency marketing site (heightconsultingfirm.com)",
+      "github_repo": "NickHeight/height-consulting-site"
+    },
+    {
+      "local_path": "projects/turo-fleet-automation-system/",
+      "purpose": "Turo fleet automation (Marc Walden / Coastal Lux)",
+      "github_repo": "NickHeight/turo-fleet-automation-system"
+    },
+    {
+      "local_path": "projects/Elijah B - OpenClaw AI Agent 3 Businesses/",
+      "purpose": "OpenClaw workspace wrapper (docs, archive, content)",
+      "github_repo": "NickHeight/openclaw-elijah-workspace"
+    },
+    {
+      "local_path": "projects/Elijah B .../openclaw-elijah-paragon/",
+      "purpose": "OpenClaw agent code (Paragon Tax, HH Insurance, HH Consulting)",
+      "github_repo": "NickHeight/openclaw-hiro-paragon"
+    },
+    {
+      "local_path": "projects/Elijah B .../openclaw-agent-backup/",
+      "purpose": "OpenClaw agent mirror backup",
+      "github_repo": "NickHeight/openclaw-hiro-paragon"
+    },
+    {
+      "local_path": "projects/Elijah B .../hirobooker-site/",
+      "purpose": "HIRO Booker website (hirobooker.com)",
+      "github_repo": "NickHeight/hirobooker-site"
+    },
+    {
+      "local_path": "proposal-system/",
+      "purpose": "Upwork proposal drafting system",
+      "github_repo": "NickHeight/upwork-proposal-system"
+    },
+    {
+      "local_path": "websites/",
+      "purpose": "Website demo portfolio (4 Netlify sites)",
+      "github_repo": "NickHeight/upwork-websites-demos"
+    }
+  ],
+  "client_bundles": [
+    {
+      "slug": "turo",
+      "display_name": "Coastal Lux / Turo (Marc Walden)",
+      "paths": {
+        "reference": [
+          "clients/coastal-lux",
+          "clients/turo"
+        ],
+        "projects": [
+          "projects/turo-fleet-automation-system"
+        ],
+        "wiki": "llmwiki/Turo",
+        "global_kb_entity": "C:\\Users\\Nicol\\.claude\\kb\\wiki\\entities\\marc-walden-turo-fleet.md",
+        "message_backups": "C:\\Users\\Nicol\\OneDrive - Height Consulting\\Apps\\SMS Backup and Restore\\UpworkMsgs"
+      },
+      "git_repos": [],
+      "four_pillar_status": {
+        "project_filesystem": true,
+        "upwork_wiki": true,
+        "global_kb_entity": true,
+        "monday_workspace": false,
+        "claude_md_in_primary_project": true
+      },
+      "modules": [
+        "web",
+        "automation",
+        "ai_agents"
+      ],
+      "gaps": [],
+      "sms_contacts": [
+        "Marc Walden"
+      ]
+    },
+    {
+      "slug": "openclaw",
+      "display_name": "OpenClaw / HIRO (Elijah Booker)",
+      "paths": {
+        "reference": [],
+        "projects": [
+          "projects/Elijah B - OpenClaw AI Agent 3 Businesses"
+        ],
+        "wiki": "llmwiki/OpenClaw",
+        "global_kb_entity": "C:\\Users\\Nicol\\.claude\\kb\\wiki\\entities\\elijah-booker-hiro-openclaw.md",
+        "message_backups": "C:\\Users\\Nicol\\OneDrive - Height Consulting\\Apps\\SMS Backup and Restore\\UpworkMsgs"
+      },
+      "git_repos": [],
+      "four_pillar_status": {
+        "project_filesystem": true,
+        "upwork_wiki": true,
+        "global_kb_entity": true,
+        "monday_workspace": false,
+        "claude_md_in_primary_project": true
+      },
+      "modules": [
+        "ai_agents",
+        "automation",
+        "web"
+      ],
+      "gaps": [],
+      "sms_contacts": [
+        "HIRO",
+        "Elijah Booker"
+      ]
+    }
+  ],
+  "systems": [
+    {
+      "name": "proposal-system",
+      "zone_class": "internal_pipeline",
+      "local_path": "proposal-system",
+      "purpose": "Upwork client acquisition pipeline",
+      "git_repos": [],
+      "immutable": true
+    },
+    {
+      "name": "websites",
+      "zone_class": "portfolio",
+      "local_path": "websites",
+      "purpose": "Website demo portfolio for proposals",
+      "git_repos": [],
+      "immutable": true
+    },
+    {
+      "name": "llmwiki",
+      "zone_class": "wiki_repo",
+      "local_path": "llmwiki",
+      "purpose": "Cross-client LLM wiki",
+      "git_repos": [],
+      "immutable": true
+    },
+    {
+      "name": "height-consulting-site",
+      "zone_class": "agency",
+      "local_path": "height-consulting-site",
+      "purpose": "Agency marketing site",
+      "git_repos": [],
+      "immutable": true
+    },
+    {
+      "name": "_archive",
+      "zone_class": "archive",
+      "local_path": "_archive",
+      "purpose": "Historical material",
+      "git_repos": [],
+      "immutable": true
+    },
+    {
+      "name": "Messages",
+      "zone_class": "messages",
+      "local_path": "Messages",
+      "purpose": "Legacy per-device Upwork DM exports (see external message_backups in upwork_paths.yaml)",
+      "git_repos": [],
+      "immutable": true
+    }
+  ],
+  "reference_folders": [
+    "clients/coastal-lux",
+    "clients/turo"
+  ],
+  "orphans": [],
+  "unmapped_wiki_clients": [],
+  "message_backup_zone": {
+    "local_path": "C:\\Users\\Nicol\\OneDrive - Height Consulting\\Apps\\SMS Backup and Restore\\UpworkMsgs",
+    "format": "sms-backup-restore-xml",
+    "sync": "onedrive",
+    "file_count": 286,
+    "contacts": {
+      "Marc Walden": 136,
+      "HIRO": 47
+    },
+    "linked_slugs": [
+      "openclaw",
+      "turo"
+    ]
+  }
+}

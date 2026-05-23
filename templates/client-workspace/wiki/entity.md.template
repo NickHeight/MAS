@@ -1,0 +1,28 @@
+---
+type: entity
+entity_type: client
+status: active
+slug: {{CLIENT_SLUG}}
+related: []
+last_updated: {{SCAFFOLD_DATE}}
+---
+
+# {{CLIENT_NAME}}
+
+{{DESCRIPTION}}
+
+## Pointers
+
+- **Project directory:** `~/Upwork/projects/{{CLIENT_SLUG}}/`
+- **Upwork wiki:** `~/Upwork/llmwiki/{{CLIENT_WIKI_NAME}}/`
+- **Monday workspace:** _TBD_
+
+## Modules
+
+{{MODULES}}
+
+## Summary
+
+Client entity created by MAS scaffolder on {{SCAFFOLD_DATE}}.
+
+Do not duplicate wiki content here — this page routes Global KB visitors to the live wiki.

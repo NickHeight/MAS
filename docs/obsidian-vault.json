@@ -1,0 +1,7 @@
+{
+  "primaryVault": "C:\\Users\\Nicol\\Upwork\\llmwiki",
+  "optionalVault": "C:\\Users\\Nicol\\.claude\\kb",
+  "masPostmortems": "C:\\Users\\Nicol\\MAS\\llm_wiki\\postmortems",
+  "setupGuide": "docs/OBSIDIAN_SETUP.md",
+  "note": "Open primaryVault as Obsidian vault. Read-only dashboard — agents write, you browse."
+}

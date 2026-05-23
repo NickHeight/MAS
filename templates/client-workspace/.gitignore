@@ -1,0 +1,36 @@
+# Environment
+.env
+.env.local
+*.pem
+credentials.json
+
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets and exports
+**/briefs/*.json
+**/monday_logs/*.raw
+data/**/*.csv
+
+# Build
+dist/
+build/
+.next/
+out/
+
+# Large binaries
+docs/assets/**/*.mp4
+docs/assets/**/*.zip

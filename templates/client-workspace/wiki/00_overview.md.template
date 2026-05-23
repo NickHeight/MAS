@@ -1,0 +1,40 @@
+---
+type: overview
+client: {{CLIENT_NAME}}
+slug: {{CLIENT_SLUG}}
+status: active
+modules: {{MODULES}}
+created: {{SCAFFOLD_DATE}}
+---
+
+# {{CLIENT_NAME}} — Project Overview
+
+{{DESCRIPTION}}
+
+## Four pillars
+
+| Pillar | Location |
+|--------|----------|
+| Project filesystem | `~/Upwork/projects/{{CLIENT_SLUG}}/` |
+| This wiki | `~/Upwork/llmwiki/{{CLIENT_WIKI_NAME}}/` |
+| Global KB entity | `~/.claude/kb/wiki/entities/{{CLIENT_SLUG}}.md` |
+| Monday workspace | _Pending — see Monday IDs section_ |
+
+## Monday IDs
+
+- Workspace: _TBD_
+- Internal board: _TBD_
+- Client board: _TBD_
+
+## Modules enabled
+
+{{MODULES}}
+
+## Blockers
+
+None at bootstrap.
+
+## Contract
+
+- Client: {{CLIENT_NAME}}
+- Scaffolded: {{SCAFFOLD_DATE}}

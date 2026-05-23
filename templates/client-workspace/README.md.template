@@ -1,0 +1,21 @@
+# {{CLIENT_NAME}}
+
+{{DESCRIPTION}}
+
+## Quick links
+
+- Wiki: `~/Upwork/llmwiki/{{CLIENT_WIKI_NAME}}/`
+- Global KB: `~/.claude/kb/wiki/entities/{{CLIENT_SLUG}}.md`
+- Modules: {{MODULES}}
+
+## Setup
+
+1. Copy `config/env.example` to `.env` and fill in values
+2. Run `docker compose up -d` if local services needed
+3. Open in Cursor — `.cursorrules` scopes context by module
+
+## Structure
+
+See `CLAUDE.md` for full directory map and session startup instructions.
+
+Scaffolded by MAS on {{SCAFFOLD_DATE}}.

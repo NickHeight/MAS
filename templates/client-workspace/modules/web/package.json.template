@@ -1,0 +1,9 @@
+{
+  "name": "{{CLIENT_SLUG}}-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "echo 'Configure dev script for your stack'",
+    "build": "echo 'Configure build script for your stack'"
+  }
+}

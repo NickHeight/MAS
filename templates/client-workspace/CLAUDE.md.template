@@ -1,0 +1,63 @@
+# {{CLIENT_NAME}}
+
+## SESSION STARTUP
+
+At the start of EVERY session in this project, read these in order:
+
+1. `~/Upwork/llmwiki/{{CLIENT_WIKI_NAME}}/00_overview.md` — project overview
+2. `~/Upwork/llmwiki/{{CLIENT_WIKI_NAME}}/log.md` — last 10 entries
+3. Latest handoff in `~/Upwork/llmwiki/{{CLIENT_WIKI_NAME}}/00_handoff_*.md` if exists
+
+## Project
+
+{{DESCRIPTION}}
+
+## Contract
+
+- Client: {{CLIENT_NAME}}
+- Slug: {{CLIENT_SLUG}}
+- Modules: {{MODULES}}
+
+## Tech Stack
+
+| Layer | Tool |
+|-------|------|
+| Orchestration | MAS team-of-teams |
+| Wiki | Upwork LLM Wiki |
+| PM | Monday.com |
+
+## Directory Structure
+
+| Path | Purpose |
+|------|---------|
+| `docs/` | Architecture, plans, client docs |
+| `web_development/` | Frontend/backend (if enabled) |
+| `automation_workflows/` | n8n/Make.com exports (if enabled) |
+| `ai_agents/` | Custom agent frameworks (if enabled) |
+| `communications_history/` | Briefs and Monday sync logs |
+| `config/` | Environment and settings |
+
+## Conventions
+
+- One git repo per client — sync between PC and laptop via pull/push
+- Blueprint exports go to `automation_workflows/` as JSON
+- Never commit `.env` — use `.env.example` as template
+- Post-mortems go to MAS `llm_wiki/postmortems/` or client wiki `decisions/`
+
+## Reference Documentation
+
+- Wiki: `~/Upwork/llmwiki/{{CLIENT_WIKI_NAME}}/`
+- Global KB: `~/.claude/kb/wiki/entities/{{CLIENT_SLUG}}.md`
+- Bootstrap spec: `~/.claude/kb/_reference/new-client-project-bootstrap.md`
+
+## Tool Routing
+
+| Task | Tool |
+|------|------|
+| Code generation | Cursor Composer 2.5 |
+| Workflow deploy | make-scenario-builder skill |
+| Client updates | Upwork LLM Wiki + Monday.com |
+
+## Blockers
+
+None at bootstrap.

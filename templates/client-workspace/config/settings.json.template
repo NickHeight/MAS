@@ -1,0 +1,5 @@
+{
+  "client_slug": "{{CLIENT_SLUG}}",
+  "modules": {{MODULES_JSON}},
+  "created": "{{SCAFFOLD_DATE}}"
+}

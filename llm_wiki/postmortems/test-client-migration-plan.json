@@ -1,0 +1,156 @@
+{
+  "source_path": "C:\\Users\\Nicol\\MAS",
+  "analyzed_at": "2026-05-22T12:23:36.954270+00:00",
+  "proposed_moves": [
+    {
+      "source": "TASKS.md",
+      "destination": "communications_history/monday_logs/TASKS.md",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "docs/CURSOR_SETUP.md",
+      "destination": "docs/CURSOR_SETUP.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/obsidian-vault.json",
+      "destination": "docs/obsidian-vault.json",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/OBSIDIAN_SETUP.md",
+      "destination": "docs/OBSIDIAN_SETUP.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "orchestrator/install_agents.ps1",
+      "destination": "ai_agents/install_agents.ps1",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "orchestrator/install_agents.sh",
+      "destination": "ai_agents/install_agents.sh",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "prompts/1-core-orchestrator-engine.md",
+      "destination": "ai_agents/1-core-orchestrator-engine.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "prompts/2-client-template-explorer.md",
+      "destination": "ai_agents/2-client-template-explorer.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "prompts/3-upwork-delivery-pipeline.md",
+      "destination": "ai_agents/3-upwork-delivery-pipeline.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "prompts/4-video-clipping-captions.md",
+      "destination": "ai_agents/4-video-clipping-captions.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "scripts/models.py",
+      "destination": "scripts/models.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/repo_analyzer.py",
+      "destination": "scripts/repo_analyzer.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/scaffold_client.py",
+      "destination": "scripts/scaffold_client.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "templates/client-workspace/docker-compose.yml",
+      "destination": "docs/docker-compose.yml",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "templates/client-workspace/modules/ai_agents/README.md",
+      "destination": "ai_agents/README.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "templates/client-workspace/modules/ai_agents/requirements.txt",
+      "destination": "ai_agents/requirements.txt",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "templates/client-workspace/modules/automation/README.md",
+      "destination": "automation_workflows/README.md",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "templates/client-workspace/modules/web/package.json.template",
+      "destination": "web_development/package.json.template",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "templates/client-workspace/modules/web/README.md",
+      "destination": "web_development/README.md",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "orchestrator/agents/client-lead.md",
+      "destination": "ai_agents/client-lead.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "orchestrator/agents/content-lead.md",
+      "destination": "ai_agents/content-lead.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    }
+  ],
+  "risks": [
+    "Heuristic analysis may miss edge cases \u2014 review before apply"
+  ],
+  "unmapped_files": [
+    "CLAUDE.md",
+    "README.md",
+    "requirements.txt",
+    "orchestrator/domains.yaml",
+    "orchestrator/router.md",
+    "templates/client-workspace/.cursorrules.template",
+    "templates/client-workspace/.gitignore",
+    "templates/client-workspace/CLAUDE.md.template",
+    "templates/client-workspace/README.md.template",
+    "templates/client-workspace/config/env.example",
+    "templates/client-workspace/config/settings.json.template",
+    "templates/client-workspace/wiki/00_overview.md.template",
+    "templates/client-workspace/wiki/entity.md.template",
+    "templates/client-workspace/wiki/index.md.template",
+    "templates/client-workspace/wiki/log.md.template",
+    "llm_wiki/postmortems/2026-05-22_mas-foundation-verification.md",
+    "llm_wiki/postmortems/README.md"
+  ],
+  "approval_required": true,
+  "analysis_method": "heuristic"
+}

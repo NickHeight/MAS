@@ -1,0 +1,26 @@
+{
+  "backup_root": "C:\\Users\\Nicol\\OneDrive - Height Consulting\\Apps\\SMS Backup and Restore\\UpworkMsgs",
+  "file_count": 286,
+  "latest_backup_mtime": "2026-05-21T17:00:07+00:00",
+  "contacts": {
+    "Marc Walden": 56522,
+    "HIRO": 52606
+  },
+  "addresses": {
+    "+12282171176": 144131,
+    "+16194154004": 119585,
+    "+17038178569": 97255,
+    "7038178569": 724,
+    "2282171176": 631,
+    "6194154004": 369
+  },
+  "messages_by_client_slug": {
+    "openclaw": 52606,
+    "turo": 56522
+  },
+  "contact_to_slug": {
+    "Marc Walden": "turo",
+    "HIRO": "openclaw",
+    "Elijah Booker": "openclaw"
+  }
+}

@@ -1,0 +1,19 @@
+# External paths outside ~/Upwork/ that MAS audit tracks.
+# Edit here when backup locations change.
+
+message_backups:
+  local_path: "C:/Users/Nicol/OneDrive - Height Consulting/Apps/SMS Backup and Restore/UpworkMsgs"
+  format: sms-backup-restore-xml
+  sync: onedrive
+  description: >
+    SMS Backup & Restore XML exports for Upwork client text threads.
+    Flat directory of incremental sms-YYYYMMDDHHMMSS.xml files.
+    Primary cross-device sync via OneDrive.
+
+  contact_to_client_slug:
+    "Marc Walden": turo
+    HIRO: openclaw
+    "Elijah Booker": openclaw
+
+  # Legacy/alternate location (gitignored, per-device only)
+  legacy_upwork_messages: "~/Upwork/Messages"

@@ -1,0 +1,20 @@
+You are working inside a standardized MAS client workspace for {{CLIENT_NAME}}.
+
+Enabled modules: {{MODULES}}
+
+## Module isolation
+
+{{MODULE_RULES}}
+
+## Rules
+
+- Output workflow JSON to `automation_workflows/` (n8n_nodes/ or make_scenarios/)
+- Output web assets only inside `web_development/`
+- Output agent code only inside `ai_agents/`
+- Document webhook structures in `docs/reference/`
+- Use Pydantic schemas for structured agent handoffs
+- Never cross-pollinate logic between modules unless explicitly commanded
+
+## Wiki
+
+After significant changes, append to `~/Upwork/llmwiki/{{CLIENT_WIKI_NAME}}/log.md`.

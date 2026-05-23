@@ -1,0 +1,1883 @@
+{
+  "source_path": "C:\\Users\\Nicol\\Upwork\\projects\\turo-fleet-automation-system",
+  "analyzed_at": "2026-05-22T21:05:55.722592+00:00",
+  "proposed_moves": [
+    {
+      "source": "chat",
+      "destination": "communications_history/briefs/chat",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "COMPLETION_PLAN.md",
+      "destination": "docs/COMPLETION_PLAN.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "user-interface-guidelines.pdf",
+      "destination": "docs/user-interface-guidelines.pdf",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": ".claude/scheduled_tasks.lock",
+      "destination": "communications_history/monday_logs/scheduled_tasks.lock",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "archive/AGENTS.md",
+      "destination": "ai_agents/AGENTS.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "archive/AGENT_KB.md",
+      "destination": "ai_agents/AGENT_KB.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "blueprints/s2-pricing-approval-sms-backup.blueprint.json",
+      "destination": "web_development/s2-pricing-approval-sms-backup.blueprint.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "blueprints/s2-pricing-approval.blueprint.json",
+      "destination": "web_development/s2-pricing-approval.blueprint.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "blueprints/S7b_stripe_webhook.blueprint.json",
+      "destination": "web_development/S7b_stripe_webhook.blueprint.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "coastal-lux-site/script.js",
+      "destination": "scripts/script.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "screenshot/transcript-yt",
+      "destination": "scripts/transcript-yt",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/build_meta_ad_setup_guide_pdf.py",
+      "destination": "docs/build_meta_ad_setup_guide_pdf.py",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "scripts/build_owner_ab_reels.py",
+      "destination": "scripts/build_owner_ab_reels.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/build_social_post_tahoe.py",
+      "destination": "scripts/build_social_post_tahoe.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/build_stripe_payout_report_pdf.py",
+      "destination": "scripts/build_stripe_payout_report_pdf.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/build_tahoe_hero.py",
+      "destination": "scripts/build_tahoe_hero.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/download-marc-photos.py",
+      "destination": "scripts/download-marc-photos.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/fetch-kie-results.py",
+      "destination": "scripts/fetch-kie-results.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/fetch-seedance-videos.py",
+      "destination": "scripts/fetch-seedance-videos.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/generate-seedance-videos.py",
+      "destination": "scripts/generate-seedance-videos.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/gen_bmw_jetski_hero.py",
+      "destination": "scripts/gen_bmw_jetski_hero.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/gen_bmw_jetski_seedance.py",
+      "destination": "scripts/gen_bmw_jetski_seedance.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/gen_bmw_mobile_9x16.py",
+      "destination": "scripts/gen_bmw_mobile_9x16.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/gen_tahoe_hero_seedance.py",
+      "destination": "scripts/gen_tahoe_hero_seedance.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/gen_tahoe_hero_seedance_v2.py",
+      "destination": "scripts/gen_tahoe_hero_seedance_v2.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/gen_tahoe_hero_v3_cabana.py",
+      "destination": "scripts/gen_tahoe_hero_v3_cabana.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/gen_tahoe_real_pan.py",
+      "destination": "scripts/gen_tahoe_real_pan.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/import-blueprint.js",
+      "destination": "scripts/import-blueprint.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/sms-to-email-transform.js",
+      "destination": "scripts/sms-to-email-transform.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/sms_ingest_marc.py",
+      "destination": "scripts/sms_ingest_marc.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/test-s2-pricing.sh",
+      "destination": "tests/test-s2-pricing.sh",
+      "module": "tests",
+      "reason": "Heuristic match for module 'tests'"
+    },
+    {
+      "source": "scripts/update-pricing-prompts.js",
+      "destination": "ai_agents/update-pricing-prompts.js",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "scripts/verify-stripe-customers.py",
+      "destination": "scripts/verify-stripe-customers.py",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "tests/seed-data-test-vehicles.json",
+      "destination": "tests/seed-data-test-vehicles.json",
+      "module": "tests",
+      "reason": "Heuristic match for module 'tests'"
+    },
+    {
+      "source": "tests/test-flow.js",
+      "destination": "tests/test-flow.js",
+      "module": "tests",
+      "reason": "Heuristic match for module 'tests'"
+    },
+    {
+      "source": "tests/test-payloads.json",
+      "destination": "tests/test-payloads.json",
+      "module": "tests",
+      "reason": "Heuristic match for module 'tests'"
+    },
+    {
+      "source": "scrapers/turo-competitor/src/main.js",
+      "destination": "web_development/main.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "scrapers/allegiant-flights/src/main.js",
+      "destination": "web_development/main.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "docs/architecture/Airtable_Schema.md",
+      "destination": "docs/Airtable_Schema.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/architecture/CONTEXT.md",
+      "destination": "docs/CONTEXT.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/architecture/DataStore_Binding_Map.md",
+      "destination": "docs/DataStore_Binding_Map.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/architecture/E2E_TASK_LIST.md",
+      "destination": "communications_history/monday_logs/E2E_TASK_LIST.md",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "docs/architecture/E2E_TESTING_PLAN.md",
+      "destination": "docs/E2E_TESTING_PLAN.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/architecture/QuickBooks_Chart_of_Accounts.md",
+      "destination": "docs/QuickBooks_Chart_of_Accounts.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/architecture/QuickBooks_Chart_of_Accounts_v2.md",
+      "destination": "docs/QuickBooks_Chart_of_Accounts_v2.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/architecture/Social_Schema.md",
+      "destination": "docs/Social_Schema.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/Project_ToDo_List.md",
+      "destination": "docs/Project_ToDo_List.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/SCENARIO_FAILURES.md",
+      "destination": "docs/SCENARIO_FAILURES.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/TECH_DEBT.md",
+      "destination": "docs/TECH_DEBT.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/Ariel, Downtown Night.jpg",
+      "destination": "docs/Ariel, Downtown Night.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/Beach Cabana.jpg",
+      "destination": "docs/Beach Cabana.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/beach-hotel-bg.jpg",
+      "destination": "docs/beach-hotel-bg.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/coastal-lux-card-final-2026-04-25.pdf",
+      "destination": "docs/coastal-lux-card-final-2026-04-25.pdf",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-monday-m1.jpg",
+      "destination": "communications_history/monday_logs/marc-monday-m1.jpg",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "docs/assets/marc-monday-m7.jpg",
+      "destination": "communications_history/monday_logs/marc-monday-m7.jpg",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "docs/assets/parking spot.jpg",
+      "destination": "docs/parking spot.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/client/MS2_DELIVERY_REPORT.md",
+      "destination": "docs/MS2_DELIVERY_REPORT.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/client/Scope_vs_Deliverables_Report.md",
+      "destination": "communications_history/briefs/Scope_vs_Deliverables_Report.md",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "docs/client/Session_Report_March_29-30.md",
+      "destination": "docs/Session_Report_March_29-30.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/communications/marc_sms_asks_2026-04-23.md",
+      "destination": "docs/marc_sms_asks_2026-04-23.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/communications/Meta_and_Drive_Access_Setup_Steps.md",
+      "destination": "docs/Meta_and_Drive_Access_Setup_Steps.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/communications/Organic_Social_Content_Engine_2026-05-03.md",
+      "destination": "docs/Organic_Social_Content_Engine_2026-05-03.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/communications/Owner_Acquisition_AB_Campaign_2026-05-02.md",
+      "destination": "docs/Owner_Acquisition_AB_Campaign_2026-05-02.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/communications/QBO_Intuit_Compliance_Attestations_2026-05-16.md",
+      "destination": "docs/QBO_Intuit_Compliance_Attestations_2026-05-16.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/guides/airtable-dashboard-setup.md",
+      "destination": "docs/airtable-dashboard-setup.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/guides/airtable-interface-completion.md",
+      "destination": "docs/airtable-interface-completion.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/guides/Brand_Kit.md",
+      "destination": "docs/Brand_Kit.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/guides/e2e-live-testing-plan.md",
+      "destination": "docs/e2e-live-testing-plan.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/guides/Handle_Claim_Quickstart.md",
+      "destination": "docs/Handle_Claim_Quickstart.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/guides/QBO_Invoice_Branding_Setup.md",
+      "destination": "docs/QBO_Invoice_Branding_Setup.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/operations/bookkeeping_sop.md",
+      "destination": "docs/bookkeeping_sop.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/operations/live_invoice_runbook.md",
+      "destination": "docs/live_invoice_runbook.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/plans/financial_system_live_invoice_2026-04-23.md",
+      "destination": "docs/financial_system_live_invoice_2026-04-23.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/plans/MEO_Marketing_Discoverability_Plan.md",
+      "destination": "docs/MEO_Marketing_Discoverability_Plan.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/proposal/client-requirements.md",
+      "destination": "docs/client-requirements.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/proposal/cover-letter.md",
+      "destination": "docs/cover-letter.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/proposal/knowledge-base.md",
+      "destination": "docs/knowledge-base.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/proposal/original-job-posting.md",
+      "destination": "docs/original-job-posting.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/proposal/proposal-notes.md",
+      "destination": "docs/proposal-notes.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/proposal/turo-system-architecture.excalidraw",
+      "destination": "docs/turo-system-architecture.excalidraw",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/proposal/turo-system-architecture.png",
+      "destination": "docs/turo-system-architecture.png",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/reference/Apify_Actor_Specs.md",
+      "destination": "docs/Apify_Actor_Specs.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/reference/Bouncie_API_Research.md",
+      "destination": "docs/Bouncie_API_Research.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/reference/dashboard-prototype.md",
+      "destination": "docs/dashboard-prototype.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/reference/Make_Integration_Reference.md",
+      "destination": "automation_workflows/Make_Integration_Reference.md",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "docs/reference/s2-email-templates.html",
+      "destination": "docs/s2-email-templates.html",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/reference/Twilio_A2P_TFV_Compliance_Research_2026-05-20.md",
+      "destination": "docs/Twilio_A2P_TFV_Compliance_Research_2026-05-20.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/00-Overview.md",
+      "destination": "docs/00-Overview.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/01-Make.md",
+      "destination": "automation_workflows/01-Make.md",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "docs/tech-stack/02-Airtable.md",
+      "destination": "docs/02-Airtable.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/03-Firecrawl.md",
+      "destination": "docs/03-Firecrawl.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/04-OpenAI.md",
+      "destination": "docs/04-OpenAI.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/05-Nodejs.md",
+      "destination": "docs/05-Nodejs.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/06-Netlify.md",
+      "destination": "docs/06-Netlify.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/07-Twilio.md",
+      "destination": "docs/07-Twilio.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/08-Bouncie.md",
+      "destination": "docs/08-Bouncie.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/templates/owner_management_agreement.md",
+      "destination": "docs/owner_management_agreement.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/templates/w9_collection_email.md",
+      "destination": "docs/w9_collection_email.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/reference/airtable-api-reference.md",
+      "destination": "docs/airtable-api-reference.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/reference/airtable-interfaces-guide.md",
+      "destination": "docs/airtable-interfaces-guide.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/reference/crawlee-reference.md",
+      "destination": "docs/crawlee-reference.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/tech-stack/reference/make-api-reference.md",
+      "destination": "automation_workflows/make-api-reference.md",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "docs/tech-stack/reference/openai-api-reference.md",
+      "destination": "docs/openai-api-reference.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/superpowers/plans/2026-04-14-maintenance-schedule.md",
+      "destination": "docs/2026-04-14-maintenance-schedule.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/superpowers/specs/2026-04-14-maintenance-schedule-design.md",
+      "destination": "docs/2026-04-14-maintenance-schedule-design.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m1-370EAF1C.jpg",
+      "destination": "docs/m1-370EAF1C.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m1-8D094171.jpg",
+      "destination": "docs/m1-8D094171.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m10-71CB1290.jpg",
+      "destination": "docs/m10-71CB1290.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m11-F8907637.jpg",
+      "destination": "docs/m11-F8907637.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m12-A432137E.jpg",
+      "destination": "docs/m12-A432137E.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m13-BCAB77BF.jpg",
+      "destination": "docs/m13-BCAB77BF.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m14-810C711E.jpg",
+      "destination": "docs/m14-810C711E.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m15-A0317FCC.jpg",
+      "destination": "docs/m15-A0317FCC.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m16-CF53783A.jpg",
+      "destination": "docs/m16-CF53783A.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m17-9E1A0954.jpg",
+      "destination": "docs/m17-9E1A0954.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m18-3A1658E9.jpg",
+      "destination": "docs/m18-3A1658E9.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m19-A5C1C427.jpg",
+      "destination": "docs/m19-A5C1C427.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m2-1784394B.jpg",
+      "destination": "docs/m2-1784394B.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m2-AB12CCC2.jpg",
+      "destination": "docs/m2-AB12CCC2.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m20-1CE0CDB0.jpg",
+      "destination": "docs/m20-1CE0CDB0.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m21-DC473EC3.jpg",
+      "destination": "docs/m21-DC473EC3.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m22-08AB3E1E.jpg",
+      "destination": "docs/m22-08AB3E1E.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m23-D2173E79.jpg",
+      "destination": "docs/m23-D2173E79.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m24-711D3CFF.jpg",
+      "destination": "docs/m24-711D3CFF.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m25-63927CA6.jpg",
+      "destination": "docs/m25-63927CA6.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m26-58CE8FC2.jpg",
+      "destination": "docs/m26-58CE8FC2.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m27-98ED5610.jpg",
+      "destination": "docs/m27-98ED5610.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m28-D7AD5304.jpg",
+      "destination": "docs/m28-D7AD5304.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m29-A1142B59.jpg",
+      "destination": "docs/m29-A1142B59.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m3-1350D14E.jpg",
+      "destination": "docs/m3-1350D14E.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m30-7772F67D.jpg",
+      "destination": "docs/m30-7772F67D.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m31-DA639CA6.jpg",
+      "destination": "docs/m31-DA639CA6.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m4-75B711A4.jpg",
+      "destination": "docs/m4-75B711A4.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m5-B54CB6B4.jpg",
+      "destination": "docs/m5-B54CB6B4.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m6-13A6EDD6.jpg",
+      "destination": "docs/m6-13A6EDD6.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m7-04A4EAC0.jpg",
+      "destination": "docs/m7-04A4EAC0.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m8-F80EA883.jpg",
+      "destination": "docs/m8-F80EA883.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/marc-photos/m9-38E2DDC0.jpg",
+      "destination": "docs/m9-38E2DDC0.jpg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/qr/coastalluxauto-ask-v2.png",
+      "destination": "docs/coastalluxauto-ask-v2.png",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/qr/coastalluxauto-ask-v2.svg",
+      "destination": "docs/coastalluxauto-ask-v2.svg",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/assets/video-prompts/seedance-prompts.md",
+      "destination": "ai_agents/seedance-prompts.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "docs/archive/airtable-interface/Airtable_Dashboard_Spec.md",
+      "destination": "docs/Airtable_Dashboard_Spec.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/airtable-interface/Airtable_Interface_Links.md",
+      "destination": "docs/Airtable_Interface_Links.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/completed-items/Marc_Action_Items_Complete.html",
+      "destination": "docs/Marc_Action_Items_Complete.html",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/old-blueprints/Turo S1 - Guest Messaging Automation.blueprint (3).json",
+      "destination": "automation_workflows/Turo S1 - Guest Messaging Automation.blueprint (3).json",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "docs/archive/old-blueprints/Turo S2 - Dynamic Pricing Engine.blueprint (1).json",
+      "destination": "docs/Turo S2 - Dynamic Pricing Engine.blueprint (1).json",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/old-blueprints/Turo S2 - Pricing Approval Handler-SMS-BACKUP.blueprint.json",
+      "destination": "web_development/Turo S2 - Pricing Approval Handler-SMS-BACKUP.blueprint.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "docs/archive/old-blueprints/Turo S2 - Pricing Approval Handler.blueprint.json",
+      "destination": "web_development/Turo S2 - Pricing Approval Handler.blueprint.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "docs/archive/setup-guides/A2P_Instructions_Marc.html",
+      "destination": "docs/A2P_Instructions_Marc.html",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/setup-guides/A2P_Instructions_Marc.pdf",
+      "destination": "docs/A2P_Instructions_Marc.pdf",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/setup-guides/Airtable_Setup_Guide_Marc.html",
+      "destination": "docs/Airtable_Setup_Guide_Marc.html",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/setup-guides/Airtable_Setup_Guide_Marc.pdf",
+      "destination": "docs/Airtable_Setup_Guide_Marc.pdf",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/setup-guides/Twilio_A2P_Setup_Guide_Marc.html",
+      "destination": "docs/Twilio_A2P_Setup_Guide_Marc.html",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/archive/setup-guides/Twilio_A2P_Setup_Guide_Marc.pdf",
+      "destination": "docs/Twilio_A2P_Setup_Guide_Marc.pdf",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "coastal-lux-site/netlify/functions/setup-stripe-webhook.js",
+      "destination": "web_development/setup-stripe-webhook.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "coastal-lux-site/netlify/functions/stripe-addon-webhook.js",
+      "destination": "web_development/stripe-addon-webhook.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "coastal-lux-site/netlify/functions/test-fire-addon-email.js",
+      "destination": "tests/test-fire-addon-email.js",
+      "module": "tests",
+      "reason": "Heuristic match for module 'tests'"
+    },
+    {
+      "source": "coastal-lux-site/.netlify/functions/setup-stripe-webhook.zip",
+      "destination": "web_development/setup-stripe-webhook.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "coastal-lux-site/.netlify/functions/stripe-addon-webhook.zip",
+      "destination": "web_development/stripe-addon-webhook.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "coastal-lux-site/.netlify/functions/test-fire-addon-email.zip",
+      "destination": "tests/test-fire-addon-email.zip",
+      "module": "tests",
+      "reason": "Heuristic match for module 'tests'"
+    },
+    {
+      "source": "apps/dashboard/.env.local",
+      "destination": "web_development/.env.local",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/index.html",
+      "destination": "web_development/index.html",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify.toml",
+      "destination": "web_development/netlify.toml",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/package-lock.json",
+      "destination": "web_development/package-lock.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/package.json",
+      "destination": "web_development/package.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/vite.config.js",
+      "destination": "web_development/vite.config.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/index.html",
+      "destination": "web_development/index.html",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/netlify.toml",
+      "destination": "web_development/netlify.toml",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/package-lock.json",
+      "destination": "web_development/package-lock.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/package.json",
+      "destination": "web_development/package.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/vite.config.js",
+      "destination": "web_development/vite.config.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/shared/config.js",
+      "destination": "web_development/config.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/shared/maintenance-schedules.js",
+      "destination": "web_development/maintenance-schedules.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/shared/maintenance-utils.js",
+      "destination": "web_development/maintenance-utils.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/shared/package.json",
+      "destination": "web_development/package.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/.netlify/netlify.toml",
+      "destination": "web_development/netlify.toml",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/.netlify/state.json",
+      "destination": "web_development/state.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/src/App.jsx",
+      "destination": "web_development/App.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/src/main.jsx",
+      "destination": "web_development/main.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/src/components/InvoicesSection.jsx",
+      "destination": "web_development/InvoicesSection.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/src/components/MaintenanceAndCare.jsx",
+      "destination": "web_development/MaintenanceAndCare.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/src/components/PortfolioSummary.jsx",
+      "destination": "web_development/PortfolioSummary.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/src/components/ui.jsx",
+      "destination": "web_development/ui.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/src/lib/api.js",
+      "destination": "web_development/api.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/src/views/OwnerDashboard.jsx",
+      "destination": "web_development/OwnerDashboard.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/.netlify/plugins/package-lock.json",
+      "destination": "web_development/package-lock.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/portal/.netlify/plugins/package.json",
+      "destination": "web_development/package.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/netlify.toml",
+      "destination": "web_development/netlify.toml",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/state.json",
+      "destination": "web_development/state.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/AdminGate.jsx",
+      "destination": "web_development/AdminGate.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/App.jsx",
+      "destination": "web_development/App.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/main.jsx",
+      "destination": "web_development/main.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/components/InvoiceApprovalQueue.jsx",
+      "destination": "web_development/InvoiceApprovalQueue.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/components/RevenueChart.jsx",
+      "destination": "web_development/RevenueChart.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/components/ui.jsx",
+      "destination": "web_development/ui.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/components/UtilizationChart.jsx",
+      "destination": "web_development/UtilizationChart.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/lib/api.js",
+      "destination": "web_development/api.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/tabs/ConciergeTab.jsx",
+      "destination": "web_development/ConciergeTab.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/tabs/FleetTab.jsx",
+      "destination": "web_development/FleetTab.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/tabs/FlightsTab.jsx",
+      "destination": "web_development/FlightsTab.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/tabs/InvoicesTab.jsx",
+      "destination": "web_development/InvoicesTab.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/tabs/MaintenanceTab.jsx",
+      "destination": "web_development/MaintenanceTab.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/tabs/MessagesTab.jsx",
+      "destination": "web_development/MessagesTab.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/tabs/PricingTab.jsx",
+      "destination": "web_development/PricingTab.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/tabs/components/LogServiceCard.jsx",
+      "destination": "web_development/LogServiceCard.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/src/tabs/components/RecentServiceRecords.jsx",
+      "destination": "web_development/RecentServiceRecords.jsx",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/bouncie-oauth.js",
+      "destination": "web_development/bouncie-oauth.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/cleanup-pending-invoiceitems.js",
+      "destination": "web_development/cleanup-pending-invoiceitems.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/email-preview.js",
+      "destination": "web_development/email-preview.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/fleet-metrics.js",
+      "destination": "web_development/fleet-metrics.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/import-turo-csv.js",
+      "destination": "web_development/import-turo-csv.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/invoice-approve.js",
+      "destination": "web_development/invoice-approve.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/invoices.js",
+      "destination": "web_development/invoices.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/manual-booking.js",
+      "destination": "web_development/manual-booking.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/monday-auto-responder.js",
+      "destination": "web_development/monday-auto-responder.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/preflight-invoice-readiness.js",
+      "destination": "web_development/preflight-invoice-readiness.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/qbo-bootstrap.js",
+      "destination": "web_development/qbo-bootstrap.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/qbo-get-account-ids.js",
+      "destination": "web_development/qbo-get-account-ids.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/qbo-oauth-diag.js",
+      "destination": "web_development/qbo-oauth-diag.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/qbo-oauth.js",
+      "destination": "web_development/qbo-oauth.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/qbo-post-paid-invoice.js",
+      "destination": "web_development/qbo-post-paid-invoice.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/resolve-token.js",
+      "destination": "web_development/resolve-token.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/s7-aggregate.js",
+      "destination": "web_development/s7-aggregate.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/s7-cron.js",
+      "destination": "web_development/s7-cron.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/s7b-stripe-poller.js",
+      "destination": "web_development/s7b-stripe-poller.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/s7b-stripe-webhook.js",
+      "destination": "web_development/s7b-stripe-webhook.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/s7c-send.js",
+      "destination": "web_development/s7c-send.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/send-addon-receipt.js",
+      "destination": "web_development/send-addon-receipt.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/send-invoice-email-gmail.js",
+      "destination": "web_development/send-invoice-email-gmail.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/send-invoice-email.js",
+      "destination": "web_development/send-invoice-email.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/service-record.js",
+      "destination": "web_development/service-record.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/service-records.js",
+      "destination": "web_development/service-records.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/stripe-bank-diag.js",
+      "destination": "web_development/stripe-bank-diag.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/stripe-email-diag.js",
+      "destination": "web_development/stripe-email-diag.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/stripe-events-diag.js",
+      "destination": "web_development/stripe-events-diag.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/stripe-invoice-lines.js",
+      "destination": "web_development/stripe-invoice-lines.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/stripe-invoice-status.js",
+      "destination": "web_development/stripe-invoice-status.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/stripe-key-perms.js",
+      "destination": "web_development/stripe-key-perms.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/stripe-list-bank-accounts.js",
+      "destination": "web_development/stripe-list-bank-accounts.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/stripe-recent-activity.js",
+      "destination": "web_development/stripe-recent-activity.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/stripe-send-receipt.js",
+      "destination": "web_development/stripe-send-receipt.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/test-invoice.js",
+      "destination": "web_development/test-invoice.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/netlify/functions/void-invoice.js",
+      "destination": "web_development/void-invoice.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/bouncie-oauth.zip",
+      "destination": "web_development/bouncie-oauth.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/cleanup-pending-invoiceitems.zip",
+      "destination": "web_development/cleanup-pending-invoiceitems.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/email-preview.zip",
+      "destination": "web_development/email-preview.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/fleet-metrics.zip",
+      "destination": "web_development/fleet-metrics.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/import-turo-csv.zip",
+      "destination": "web_development/import-turo-csv.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/invoice-approve.zip",
+      "destination": "web_development/invoice-approve.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/invoices-list.zip",
+      "destination": "web_development/invoices-list.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/invoices.zip",
+      "destination": "web_development/invoices.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/manifest.json",
+      "destination": "web_development/manifest.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/manual-booking.zip",
+      "destination": "web_development/manual-booking.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/monday-auto-responder.zip",
+      "destination": "web_development/monday-auto-responder.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/preflight-invoice-readiness.zip",
+      "destination": "web_development/preflight-invoice-readiness.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/qbo-bootstrap.zip",
+      "destination": "web_development/qbo-bootstrap.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/qbo-get-account-ids.zip",
+      "destination": "web_development/qbo-get-account-ids.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/qbo-oauth-diag.zip",
+      "destination": "web_development/qbo-oauth-diag.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/qbo-oauth.zip",
+      "destination": "web_development/qbo-oauth.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/qbo-post-paid-invoice.zip",
+      "destination": "web_development/qbo-post-paid-invoice.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/resolve-token.zip",
+      "destination": "web_development/resolve-token.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/s7-aggregate.zip",
+      "destination": "web_development/s7-aggregate.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/s7-cron.zip",
+      "destination": "web_development/s7-cron.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/s7b-stripe-poller.zip",
+      "destination": "web_development/s7b-stripe-poller.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/s7b-stripe-webhook.zip",
+      "destination": "web_development/s7b-stripe-webhook.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/s7c-send.zip",
+      "destination": "web_development/s7c-send.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/send-invoice-email-gmail.zip",
+      "destination": "web_development/send-invoice-email-gmail.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/send-invoice-email.zip",
+      "destination": "web_development/send-invoice-email.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/service-record.zip",
+      "destination": "web_development/service-record.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/service-records.zip",
+      "destination": "web_development/service-records.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/stripe-email-diag.zip",
+      "destination": "web_development/stripe-email-diag.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/stripe-invoice-lines.zip",
+      "destination": "web_development/stripe-invoice-lines.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/stripe-invoice-status.zip",
+      "destination": "web_development/stripe-invoice-status.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/stripe-list-bank-accounts.zip",
+      "destination": "web_development/stripe-list-bank-accounts.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/test-invoice.zip",
+      "destination": "web_development/test-invoice.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/functions/void-invoice.zip",
+      "destination": "web_development/void-invoice.zip",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/plugins/package-lock.json",
+      "destination": "web_development/package-lock.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "apps/dashboard/.netlify/plugins/package.json",
+      "destination": "web_development/package.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "agents/lib/airtable-client.js",
+      "destination": "ai_agents/airtable-client.js",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "agents/lib/apify-client.js",
+      "destination": "ai_agents/apify-client.js",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "agents/lib/config.js",
+      "destination": "ai_agents/config.js",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "agents/lib/firecrawl-client.js",
+      "destination": "ai_agents/firecrawl-client.js",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "agents/lib/make-client.js",
+      "destination": "automation_workflows/make-client.js",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "agents/lib/reporter.js",
+      "destination": "ai_agents/reporter.js",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "agents/lib/utils.js",
+      "destination": "ai_agents/utils.js",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": ".pi/agents/agent-chain.yaml",
+      "destination": "ai_agents/agent-chain.yaml",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": ".pi/agents/airtable-ops.md",
+      "destination": "ai_agents/airtable-ops.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": ".pi/agents/documenter.md",
+      "destination": "ai_agents/documenter.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": ".pi/agents/make-ops.md",
+      "destination": "automation_workflows/make-ops.md",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": ".pi/agents/reviewer.md",
+      "destination": "ai_agents/reviewer.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": ".pi/agents/scout.md",
+      "destination": "ai_agents/scout.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": ".pi/agents/scraper-ops.md",
+      "destination": "ai_agents/scraper-ops.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": ".pi/agents/site-builder.md",
+      "destination": "ai_agents/site-builder.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": ".pi/agents/teams.yaml",
+      "destination": "ai_agents/teams.yaml",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": ".pi/agents/tester.md",
+      "destination": "ai_agents/tester.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    }
+  ],
+  "risks": [
+    "130 files could not be auto-mapped \u2014 manual review required"
+  ],
+  "unmapped_files": [
+    ".env",
+    ".gitignore",
+    ".mcp.json",
+    "CLAUDE.md",
+    "Gmail - Fwd_ Cory\u2019s trip with your Jeep Wrangler is booked!.pdf",
+    "Gmail - Fwd_ Jay\u2019s trip with your Jeep Wrangler is booked!.pdf",
+    "IMG_0766.png",
+    "Info for Nick .txt",
+    "kb",
+    "messages-marc-walden.json",
+    "package.json",
+    ".claude/CONTEXT.md",
+    ".claude/settings.local.json",
+    ".netlify/state.json",
+    ".pi/damage-control-rules.yaml",
+    ".vscode/settings.json",
+    "archive/cursorrules.md",
+    "archive/TODO.md",
+    "archive/WORKLIST.md",
+    "blueprints/s1-guest-messaging-sms-backup.blueprint.json",
+    "blueprints/s1-guest-messaging.blueprint.json",
+    "blueprints/s2-dynamic-pricing-sms-backup.blueprint.json",
+    "blueprints/s2-dynamic-pricing.blueprint.json",
+    "blueprints/s3-flight-demand-sms-backup.blueprint.json",
+    "blueprints/s3-flight-demand.blueprint.json",
+    "blueprints/s4-market-intelligence-sms-backup.blueprint.json",
+    "blueprints/s4-market-intelligence.blueprint.json",
+    "blueprints/S7_setup_COA.blueprint.json",
+    "blueprints/S7_setup_customers_classes.blueprint.json",
+    "coastal-lux-site/.gitignore",
+    "coastal-lux-site/BOOKING_FORM_SETUP.md",
+    "coastal-lux-site/hero-gulf-shores.jpeg",
+    "coastal-lux-site/IMG_0746.jpeg",
+    "coastal-lux-site/index.html",
+    "coastal-lux-site/links.html",
+    "coastal-lux-site/llms.txt",
+    "coastal-lux-site/logo.png",
+    "coastal-lux-site/package-lock.json",
+    "coastal-lux-site/package.json",
+    "coastal-lux-site/privacy-policy.html",
+    "coastal-lux-site/robots.txt",
+    "coastal-lux-site/sitemap.xml",
+    "coastal-lux-site/sms-opt-in.html",
+    "coastal-lux-site/styles.css",
+    "coastal-lux-site/terms.html",
+    "coastal-lux-site/_redirects",
+    "data/create-base.json",
+    "data/sms-email-swap-manifest.json",
+    "email/[Coastal Lux] Competitor Undercut Economy - 2025 Kia K4.eml",
+    "email/[Coastal Lux] Competitor Undercut Luxury - 2022 Corvette C8 Stingray.eml",
+    "screenshot/IMG_7148 1.png",
+    "screenshot/Screenshot 2026-03-10 062158.png",
+    "screenshot/Screenshot 2026-03-10 063116.png",
+    "screenshot/Screenshot 2026-03-10 063959.png",
+    "screenshot/Screenshot 2026-03-10 064019.png",
+    "screenshot/Screenshot 2026-03-10 140230.png",
+    "screenshot/Screenshot 2026-03-10 172621.png",
+    "screenshot/Screenshot 2026-03-11 060011.png",
+    "screenshot/Screenshot 2026-03-11 060107.png",
+    "screenshot/Screenshot 2026-03-11 060150.png",
+    "screenshot/Screenshot 2026-03-11 073918.png",
+    "screenshot/Screenshot 2026-03-18 101651.png",
+    "screenshot/Screenshot 2026-03-30 112031.png",
+    "screenshot/Screenshot 2026-03-30 121904.png",
+    "screenshot/Screenshot 2026-04-09 110913.png",
+    "scrapers/allegiant-flights/input_schema.json",
+    "scrapers/allegiant-flights/package.json",
+    "scrapers/turo-competitor/input_schema.json",
+    "scrapers/turo-competitor/package.json",
+    "scrapers/turo-competitor/.actor/actor.json",
+    "scrapers/allegiant-flights/.actor/actor.json",
+    "data/scrape-results/2026-03-14_turo_gulf_shores.json",
+    "coastal-lux-site/.netlify/netlify.toml",
+    "coastal-lux-site/.netlify/state.json",
+    "coastal-lux-site/from/cincinnati.html",
+    "coastal-lux-site/from/index.html",
+    "coastal-lux-site/from/indianapolis.html",
+    "coastal-lux-site/from/knoxville.html",
+    "coastal-lux-site/from/nashville.html",
+    "coastal-lux-site/from/pittsburgh.html",
+    "coastal-lux-site/Screenshots/logo.png",
+    "coastal-lux-site/Screenshots/Screenshot 2026-03-10 062158.png",
+    "coastal-lux-site/Screenshots/Screenshot 2026-03-11 082926.png",
+    "coastal-lux-site/vehc-mds/Chevrolet_Corvette_2022_rental_in_Gulf_Shores,_AL_by_Coastal_LUX_(_Marc)_Turo.md",
+    "coastal-lux-site/vehc-mds/Jeep_Wrangler_2024_rental_in_Gulf_Shores,_AL_by_Coastal_LUX_(_Marc)_Turo.md",
+    "coastal-lux-site/vehicles/jeep-wrangler.html",
+    "coastal-lux-site/videos/airport-arrival.mp4",
+    "coastal-lux-site/videos/beach-gear.mp4",
+    "coastal-lux-site/videos/bmw-interior.mp4",
+    "coastal-lux-site/videos/bmw-jetski-hero-mobile.mp4",
+    "coastal-lux-site/videos/bmw-jetski-hero.mp4",
+    "coastal-lux-site/videos/bmw-m3-hero.mp4",
+    "coastal-lux-site/videos/chef-scallop.mp4",
+    "coastal-lux-site/videos/fleet-aerial.mp4",
+    "coastal-lux-site/videos/hero-bmw-m3.mp4",
+    "coastal-lux-site/videos/README.md",
+    "coastal-lux-site/videos/tahoe-z71-mobile.mp4",
+    "coastal-lux-site/videos/tahoe-z71.mp4",
+    "coastal-lux-site/videos/wrangler-summit.mp4",
+    "coastal-lux-site/Screenshots/twilio-tfv/01-optin-page-full.png"
+  ],
+  "approval_required": true,
+  "analysis_method": "heuristic"
+}

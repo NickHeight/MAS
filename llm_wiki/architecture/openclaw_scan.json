@@ -1,0 +1,974 @@
+{
+  "source_path": "C:\\Users\\Nicol\\Upwork\\projects\\Elijah B - OpenClaw AI Agent 3 Businesses\\openclaw-elijah-paragon",
+  "analyzed_at": "2026-05-22T21:05:56.921048+00:00",
+  "proposed_moves": [
+    {
+      "source": "ARCHITECTURE.md",
+      "destination": "docs/ARCHITECTURE.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "data/latest-briefing.json",
+      "destination": "communications_history/briefs/latest-briefing.json",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "docs/CLIENT-INSTRUCTIONS.md",
+      "destination": "docs/CLIENT-INSTRUCTIONS.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/COORDINATION.md",
+      "destination": "docs/COORDINATION.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/dns-hhconsultinggroup-m365.md",
+      "destination": "docs/dns-hhconsultinggroup-m365.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/GUARDRAILS.md",
+      "destination": "docs/GUARDRAILS.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "destination": "docs/HANDOFF.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/hermes-startup-runbook.md",
+      "destination": "ai_agents/hermes-startup-runbook.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "docs/model-routing.md",
+      "destination": "docs/model-routing.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/ROADMAP.md",
+      "destination": "docs/ROADMAP.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "hermes/README.md",
+      "destination": "ai_agents/README.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/SETUP.md",
+      "destination": "ai_agents/SETUP.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "scripts/auto-update-openclaw.sh",
+      "destination": "scripts/auto-update-openclaw.sh",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/crawl-setup-docs.js",
+      "destination": "docs/crawl-setup-docs.js",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "scripts/deploy.sh",
+      "destination": "scripts/deploy.sh",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/generate-capabilities-proposal.js",
+      "destination": "scripts/generate-capabilities-proposal.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/generate-pdf.js",
+      "destination": "scripts/generate-pdf.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/install-daemon-watchdog.sh",
+      "destination": "scripts/install-daemon-watchdog.sh",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/README.md",
+      "destination": "scripts/README.md",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "scripts/validate-env.js",
+      "destination": "scripts/validate-env.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "tests/README.md",
+      "destination": "tests/README.md",
+      "module": "tests",
+      "reason": "Heuristic match for module 'tests'"
+    },
+    {
+      "source": "tests/run-all.js",
+      "destination": "tests/run-all.js",
+      "module": "tests",
+      "reason": "Heuristic match for module 'tests'"
+    },
+    {
+      "source": "workflow-kb/openclaw-install-plan-2026-04-07.json",
+      "destination": "automation_workflows/openclaw-install-plan-2026-04-07.json",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "workflow-kb/openclaw-platform-docs-2026-04-07.json",
+      "destination": "automation_workflows/openclaw-platform-docs-2026-04-07.json",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "workflow-kb/README.md",
+      "destination": "automation_workflows/README.md",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "skills/guardrails/scope-rules.md",
+      "destination": "communications_history/briefs/scope-rules.md",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "skills/guided-setup/SKILL.md",
+      "destination": "docs/SKILL.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "skills/morning-briefing/SKILL.md",
+      "destination": "communications_history/briefs/SKILL.md",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "skills/paragon-social-content/telegram-approval.md",
+      "destination": "web_development/telegram-approval.md",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "skills/paragon-tax-season/pre-call-brief.md",
+      "destination": "communications_history/briefs/pre-call-brief.md",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "skills/self-improvement/scripts/nightly-review.js",
+      "destination": "scripts/nightly-review.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-social-monitor/scripts/facebook-monitor.js",
+      "destination": "scripts/facebook-monitor.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-social-monitor/scripts/instagram-monitor.js",
+      "destination": "scripts/instagram-monitor.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-social-monitor/scripts/lead-creator.js",
+      "destination": "scripts/lead-creator.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-social-monitor/scripts/linkedin-monitor.js",
+      "destination": "scripts/linkedin-monitor.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-social-monitor/scripts/social-monitor.js",
+      "destination": "scripts/social-monitor.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-social-content/scripts/generate-batch.js",
+      "destination": "scripts/generate-batch.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-social-content/scripts/generate-image.js",
+      "destination": "scripts/generate-image.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-social-content/scripts/image-budget-tracker.js",
+      "destination": "scripts/image-budget-tracker.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-social-content/scripts/image-prompt-builder.js",
+      "destination": "ai_agents/image-prompt-builder.js",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "skills/paragon-social-content/scripts/send-for-approval.js",
+      "destination": "web_development/send-for-approval.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "skills/paragon-sms/scripts/inbound-handler.js",
+      "destination": "scripts/inbound-handler.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-sms/scripts/opt-out.js",
+      "destination": "scripts/opt-out.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-sms/scripts/send-sms.js",
+      "destination": "scripts/send-sms.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-sms/scripts/send-telegram.js",
+      "destination": "scripts/send-telegram.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-sms/scripts/sequence-engine.js",
+      "destination": "scripts/sequence-engine.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-email/scripts/email-sequence-engine.js",
+      "destination": "scripts/email-sequence-engine.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-email/scripts/send-email.js",
+      "destination": "scripts/send-email.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-crm-sync/scripts/create-contact.js",
+      "destination": "scripts/create-contact.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-crm-sync/scripts/crm-client.js",
+      "destination": "scripts/crm-client.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-crm-sync/scripts/setup-pipeline.js",
+      "destination": "scripts/setup-pipeline.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-crm-sync/scripts/setup-properties.js",
+      "destination": "scripts/setup-properties.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-crm-sync/scripts/update-pipeline.js",
+      "destination": "scripts/update-pipeline.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-calendly/scripts/calendly-api.js",
+      "destination": "scripts/calendly-api.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "skills/paragon-calendly/scripts/calendly-webhook-server.js",
+      "destination": "web_development/calendly-webhook-server.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "skills/paragon-calendly/scripts/register-webhook.js",
+      "destination": "web_development/register-webhook.js",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "skills/morning-briefing/scripts/deliver-briefing.js",
+      "destination": "communications_history/briefs/deliver-briefing.js",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "skills/morning-briefing/scripts/generate-briefing.js",
+      "destination": "communications_history/briefs/generate-briefing.js",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "skills/guided-setup/scripts/browser-controller.js",
+      "destination": "docs/browser-controller.js",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "skills/guided-setup/scripts/setup-orchestrator.js",
+      "destination": "docs/setup-orchestrator.js",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "skills/guided-setup/scripts/validate-credential.js",
+      "destination": "docs/validate-credential.js",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "skills/asana-project-sync/scripts/asana-client.js",
+      "destination": "scripts/asana-client.js",
+      "module": "scripts",
+      "reason": "Heuristic match for module 'scripts'"
+    },
+    {
+      "source": "sequences/paragon/appointment-booking.json",
+      "destination": "web_development/appointment-booking.json",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "sequences/paragon/document-chasing.json",
+      "destination": "docs/document-chasing.json",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "hermes/config/.env.template",
+      "destination": "ai_agents/.env.template",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/config/hermes-agent.yaml",
+      "destination": "ai_agents/hermes-agent.yaml",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/config/hermes-config.template.yaml",
+      "destination": "ai_agents/hermes-config.template.yaml",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/docs/playbook-to-skill-mapping.md",
+      "destination": "web_development/playbook-to-skill-mapping.md",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "hermes/docs/rollback.md",
+      "destination": "ai_agents/rollback.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/docs/SECURITY.md",
+      "destination": "ai_agents/SECURITY.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/docs/UPWORK-DELIVERABLES-MAP.md",
+      "destination": "ai_agents/UPWORK-DELIVERABLES-MAP.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/scripts/com.hirobooker.hermes.auto-update.plist",
+      "destination": "ai_agents/com.hirobooker.hermes.auto-update.plist",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/scripts/com.hirobooker.hermes.plist",
+      "destination": "ai_agents/com.hirobooker.hermes.plist",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/scripts/com.hirobooker.hermes.watchdog.plist",
+      "destination": "ai_agents/com.hirobooker.hermes.watchdog.plist",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/scripts/hermes-watchdog.sh",
+      "destination": "ai_agents/hermes-watchdog.sh",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/scripts/install-hermes-auto-update.sh",
+      "destination": "ai_agents/install-hermes-auto-update.sh",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/scripts/install-hermes-watchdog.sh",
+      "destination": "ai_agents/install-hermes-watchdog.sh",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/scripts/update-hermes.sh",
+      "destination": "ai_agents/update-hermes.sh",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/autonomous-setup/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/autonomous-setup/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/crm-adapter/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/crm-adapter/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/document-collector/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/document-collector/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/first-boot-briefing/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/first-boot-briefing/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/git-channel/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/git-channel/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/hh-consulting/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/hh-consulting/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/hh-insurance/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/hh-insurance/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/hh-insurance-icp/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/hh-insurance-icp/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/hubspot-onboarding/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/hubspot-onboarding/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/morning-briefing/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/morning-briefing/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/paragon-brand/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/paragon-brand/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/paragon-tax/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/paragon-tax/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/permit-scraper-crm/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/permit-scraper-crm/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-adapter/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-adapter/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-engine/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-engine/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-monitor/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-monitor/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/update-self/SKILL.md",
+      "destination": "ai_agents/SKILL.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/update-self/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-adapter/adapters/buffer.py",
+      "destination": "ai_agents/buffer.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-adapter/adapters/manual.py",
+      "destination": "ai_agents/manual.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-adapter/adapters/postiz.py",
+      "destination": "ai_agents/postiz.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-adapter/adapters/publer.py",
+      "destination": "ai_agents/publer.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-adapter/adapters/socialapi.py",
+      "destination": "ai_agents/socialapi.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/social-adapter/adapters/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/crm-adapter/adapters/attio.py",
+      "destination": "ai_agents/attio.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/crm-adapter/adapters/ghl.py",
+      "destination": "ai_agents/ghl.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/crm-adapter/adapters/hubspot.py",
+      "destination": "ai_agents/hubspot.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/crm-adapter/adapters/zoho.py",
+      "destination": "ai_agents/zoho.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "hermes/skills/crm-adapter/adapters/__init__.py",
+      "destination": "ai_agents/__init__.py",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "docs/binary/AI-Agent-Capabilities-Proposal.pdf",
+      "destination": "ai_agents/AI-Agent-Capabilities-Proposal.pdf",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "docs/binary/Call recording CONSULTINGGRP_260323_201636_original.txt",
+      "destination": "docs/Call recording CONSULTINGGRP_260323_201636_original.txt",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/binary/CLIENT-INSTRUCTIONS.pdf",
+      "destination": "docs/CLIENT-INSTRUCTIONS.pdf",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/binary/HIRO_Booker_Agent_Workflow.docx",
+      "destination": "automation_workflows/HIRO_Booker_Agent_Workflow.docx",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "docs/setup-flows/calendly-token.md",
+      "destination": "docs/calendly-token.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/setup-flows/fal-ai-signup.md",
+      "destination": "docs/fal-ai-signup.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/setup-flows/ghl-api-key.md",
+      "destination": "docs/ghl-api-key.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/setup-flows/ghl-social-planner.md",
+      "destination": "docs/ghl-social-planner.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/setup-flows/gmail-app-password.md",
+      "destination": "web_development/gmail-app-password.md",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "docs/setup-flows/twilio-a2p-check.md",
+      "destination": "docs/twilio-a2p-check.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/user-guide/01-system-overview.md",
+      "destination": "docs/01-system-overview.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/user-guide/02-adding-leads.md",
+      "destination": "docs/02-adding-leads.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/user-guide/03-managing-sequences.md",
+      "destination": "docs/03-managing-sequences.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/user-guide/04-edge-cases.md",
+      "destination": "docs/04-edge-cases.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/user-guide/05-troubleshooting.md",
+      "destination": "docs/05-troubleshooting.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/user-guide/06-checking-logs.md",
+      "destination": "docs/06-checking-logs.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/user-guide/07-restarting-services.md",
+      "destination": "docs/07-restarting-services.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "docs/user-guide/08-morning-briefing.md",
+      "destination": "communications_history/briefs/08-morning-briefing.md",
+      "module": "communications",
+      "reason": "Heuristic match for module 'communications'"
+    },
+    {
+      "source": "docs/user-guide/09-when-to-call-nick.md",
+      "destination": "docs/09-when-to-call-nick.md",
+      "module": "docs",
+      "reason": "Heuristic match for module 'docs'"
+    },
+    {
+      "source": "content/approved/.gitkeep",
+      "destination": "web_development/.gitkeep",
+      "module": "web",
+      "reason": "Heuristic match for module 'web'"
+    },
+    {
+      "source": "archive/delivery-packages/openclaw-delivery-package/playbooks-extracted/HH_Consulting_AI_Automation_Playbook.md",
+      "destination": "automation_workflows/HH_Consulting_AI_Automation_Playbook.md",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "archive/delivery-packages/openclaw-delivery-package/playbooks-extracted/HIRO_Booker_AI_Prompt_Library_1.md",
+      "destination": "ai_agents/HIRO_Booker_AI_Prompt_Library_1.md",
+      "module": "ai_agents",
+      "reason": "Heuristic match for module 'ai_agents'"
+    },
+    {
+      "source": "archive/delivery-packages/openclaw-delivery-package/playbooks-extracted/Insurance_AI_Automation_Playbook.md",
+      "destination": "automation_workflows/Insurance_AI_Automation_Playbook.md",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    },
+    {
+      "source": "archive/delivery-packages/openclaw-delivery-package/playbooks-extracted/Paragon_AI_Automation_Playbook.md",
+      "destination": "automation_workflows/Paragon_AI_Automation_Playbook.md",
+      "module": "automation",
+      "reason": "Heuristic match for module 'automation'"
+    }
+  ],
+  "risks": [
+    "79 files could not be auto-mapped \u2014 manual review required"
+  ],
+  "unmapped_files": [
+    ".gitattributes",
+    ".gitignore",
+    "BENTLEY-TO-NICK.md",
+    "BOBBOE-TO-NICK.md",
+    "HEARTBEAT.md",
+    "NICK-TO-BENTLEY.md",
+    "NICK-TO-BOBBOE.md",
+    "package-lock.json",
+    "package.json",
+    "README.md",
+    "soul.md",
+    "STACK.md",
+    "config/.env.template",
+    "config/cron-setup.sh",
+    "config/openclaw.json.template",
+    "config/README.md",
+    "content/README.md",
+    "data/.gitkeep",
+    "data/README.md",
+    "data/sequence-state.json",
+    "data/setup-state.json",
+    "sequences/README.md",
+    "skills/README.md",
+    "skills/asana-project-sync/SKILL.md",
+    "skills/guardrails/content-safety.md",
+    "skills/guardrails/escalation.md",
+    "skills/guardrails/first-run.md",
+    "skills/guardrails/injection-defense.md",
+    "skills/guardrails/sandbox-protection.md",
+    "skills/guardrails/self-update.md",
+    "skills/guardrails/SKILL.md",
+    "skills/paragon-calendly/SKILL.md",
+    "skills/paragon-crm-sync/SKILL.md",
+    "skills/paragon-email/SKILL.md",
+    "skills/paragon-newsletter-funnel/SKILL.md",
+    "skills/paragon-sms/SKILL.md",
+    "skills/paragon-social-content/analytics-to-ads.md",
+    "skills/paragon-social-content/content-batch-generator.md",
+    "skills/paragon-social-content/SKILL.md",
+    "skills/paragon-social-content/trend-engine.md",
+    "skills/paragon-social-content/weekly-calendar.md",
+    "skills/paragon-social-monitor/SKILL.md",
+    "skills/paragon-tax-season/post-call-admin.md",
+    "skills/paragon-tax-season/SKILL.md",
+    "skills/self-improvement/SKILL.md",
+    "skills/shared/logger.js",
+    "sequences/hhconsulting/contractor-referral.json",
+    "sequences/hhconsulting/deal-flow-update.json",
+    "sequences/hhconsulting/developer-outreach.json",
+    "sequences/hhconsulting/investor-outreach.json",
+    "sequences/hhconsulting/post-close-retention.json",
+    "sequences/hhconsulting/README.md",
+    "sequences/hhconsulting/referral-request.json",
+    "sequences/insurance/business-owner.json",
+    "sequences/insurance/qualification.json",
+    "sequences/insurance/re-engage.json",
+    "sequences/insurance/README.md",
+    "sequences/insurance/term-to-iul.json",
+    "sequences/insurance/urgent-need.json",
+    "sequences/insurance/wealth-building.json",
+    "sequences/insurance/young-parent.json",
+    "sequences/paragon/new-lead-outreach.json",
+    "sequences/paragon/nurture-campaign.json",
+    "sequences/paragon/post-close-retention.json",
+    "sequences/paragon/README.md",
+    "sequences/paragon/referral-request.json",
+    "content/calendar/.gitkeep",
+    "content/drafts/.gitkeep",
+    "content/posted/.gitkeep",
+    "content/drafts/2026-03-26/post-1-strategy-tip.md",
+    "content/drafts/2026-03-26/post-2-engagement.md",
+    "content/drafts/2026-03-26/post-3-cta.md",
+    "content/analytics/daily/.gitkeep",
+    "content/analytics/monthly/.gitkeep",
+    "content/analytics/weekly/.gitkeep",
+    "archive/delivery-packages/openclaw-delivery-package/playbooks-extracted/Insurance_Demographic_Playbook.md",
+    "archive/delivery-packages/openclaw-delivery-package/playbooks-extracted/Master_Setup_List_1by1_Business_Setup.md",
+    "archive/delivery-packages/openclaw-delivery-package/playbooks-extracted/Paragon_Personal_Brand_Playbook.md",
+    "archive/delivery-packages/openclaw-delivery-package/playbooks-extracted/Social_Media_Addendum.md"
+  ],
+  "approval_required": true,
+  "analysis_method": "heuristic"
+}

@@ -1,0 +1,155 @@
+{
+  "generated_at": "2026-05-22T21:30:36.375006+00:00",
+  "backup_root": "C:\\Users\\Nicol\\OneDrive - Height Consulting\\Apps\\SMS Backup and Restore\\UpworkMsgs",
+  "days": 30,
+  "by_client": {
+    "turo": {
+      "contact": "Marc Walden",
+      "messages_total": 12,
+      "messages_with_body": 12,
+      "recent_with_body": [
+        {
+          "date_ms": 1778165293377,
+          "date_iso": "2026-05-07T14:48:13.377000+00:00",
+          "direction": "sent",
+          "body": "We're going to have to do this for all of the ads with Gemini pictures on them",
+          "has_body": true,
+          "source_file": "sms-20260507090045.xml"
+        },
+        {
+          "date_ms": 1777906151866,
+          "date_iso": "2026-05-04T14:49:11.866000+00:00",
+          "direction": "sent",
+          "body": "https://drive.google.com/file/d/1pz87nQFZmlG636xGRG1JZawVxMO9j7i4/view?usp=drive_link",
+          "has_body": true,
+          "source_file": "sms-20260504090012.xml"
+        },
+        {
+          "date_ms": 1777839984023,
+          "date_iso": "2026-05-03T20:26:24.023000+00:00",
+          "direction": "sent",
+          "body": "Granted, having 10 leads doesn't mean you have 10 clients. It could mean 2 clients, it could mean 1 client, or it could mean 5 clients. We all know that after you start talking to them, there could be a litany of things that you may have to disqualify them for, or they just may not accept the offer",
+          "has_body": true,
+          "source_file": "sms-20260503150049.xml"
+        },
+        {
+          "date_ms": 1777840063594,
+          "date_iso": "2026-05-03T20:27:43.594000+00:00",
+          "direction": "sent",
+          "body": "I just wanted to make sure we're managing expectations in that aspect and give you my personal experience as well. I just had an upwork client turn me down because he wanted to pay $10 for something when it should have been $50",
+          "has_body": true,
+          "source_file": "sms-20260503150049.xml"
+        },
+        {
+          "date_ms": 1777843176163,
+          "date_iso": "2026-05-03T21:19:36.163000+00:00",
+          "direction": "sent",
+          "body": "sounds good",
+          "has_body": true,
+          "source_file": "sms-20260503160049.xml"
+        },
+        {
+          "date_ms": 1777843196061,
+          "date_iso": "2026-05-03T21:19:56.061000+00:00",
+          "direction": "sent",
+          "body": "have you got that code by chance?",
+          "has_body": true,
+          "source_file": "sms-20260503160049.xml"
+        },
+        {
+          "date_ms": 1777836983628,
+          "date_iso": "2026-05-03T19:36:23.628000+00:00",
+          "direction": "sent",
+          "body": "https://www.facebook.com/profile.php?id=61589105999277#",
+          "has_body": true,
+          "source_file": "sms-20260503140049.xml"
+        },
+        {
+          "date_ms": 1777837005110,
+          "date_iso": "2026-05-03T19:36:45.110000+00:00",
+          "direction": "sent",
+          "body": "https://www.instagram.com/coastalluxauto/?fbclid=IwY2xjawRkgxJleHRuA2FlbQIxMQBicmlkETFNQ0h5Rnd4WHhIR2RheVpIc3J0YwZhcHBfaWQBMAABHuSPULOmd6eNiy0wXCEvLHEmPndb0v69d6mU-Uv9Hkg9EV02VhQ1YcTJlGWM_aem_nBhz80eFXktFHSw_RI7UkA",
+          "has_body": true,
+          "source_file": "sms-20260503140049.xml"
+        },
+        {
+          "date_ms": 1777659131139,
+          "date_iso": "2026-05-01T18:12:11.139000+00:00",
+          "direction": "received",
+          "body": "There\u2019s a video it shows you everything that I see\u2026. I\u2019m not getting paid. That\u2019s the issue man and I should be and I\u2019m losing money and things are not being done on time.",
+          "has_body": true,
+          "source_file": "sms-20260501130032.xml"
+        },
+        {
+          "date_ms": 1777659146178,
+          "date_iso": "2026-05-01T18:12:26.178000+00:00",
+          "direction": "received",
+          "body": "And not being routed or connected properly, I mean",
+          "has_body": true,
+          "source_file": "sms-20260501130032.xml"
+        },
+        {
+          "date_ms": 1777659579830,
+          "date_iso": "2026-05-01T18:19:39.830000+00:00",
+          "direction": "received",
+          "body": "I just hope everything that I requested you to do is done in two weeks man that's all I hope and I hope you don't screw me over and deliver everything that you said you would. I know things have changed makes it easier. Blakely is not an issue. \n\nSo please give me an update about my money or I will cancel Stripe and I'm gonna call them and I'll have them find out where I went.\n\nI don't need that shit that bad....\n\nIf it's gonna cost me problems",
+          "has_body": true,
+          "source_file": "sms-20260501130032.xml"
+        },
+        {
+          "date_ms": 1777659624569,
+          "date_iso": "2026-05-01T18:20:24.569000+00:00",
+          "direction": "received",
+          "body": "stripe, I'm referring to I don't need as much.... if it's not resolved and useful",
+          "has_body": true,
+          "source_file": "sms-20260501130032.xml"
+        }
+      ],
+      "suggestions": [
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] S7 / Stripe / QBO \u2014 review Marc message",
+          "category": "Financials",
+          "workflow_area": "S7 / Stripe / QBO",
+          "suggested_status": "Pending Nick",
+          "latest_message_date": "2026-05-01T18:20:24.569000+00:00",
+          "message_preview": "stripe, I'm referring to I don't need as much.... if it's not resolved and useful",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        },
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] General client ask \u2014 review Marc message",
+          "category": "Question",
+          "workflow_area": "General client ask",
+          "suggested_status": "Pending Marc",
+          "latest_message_date": "2026-05-01T18:12:26.178000+00:00",
+          "message_preview": "And not being routed or connected properly, I mean",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        },
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] Trust / payout loop \u2014 review Marc message",
+          "category": "Blocker",
+          "workflow_area": "Trust / payout loop",
+          "suggested_status": "Pending Marc",
+          "latest_message_date": "2026-05-01T18:12:11.139000+00:00",
+          "message_preview": "There\u2019s a video it shows you everything that I see\u2026. I\u2019m not getting paid. That\u2019s the issue man and I should be and I\u2019m losing money and things are not being done on time.",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        }
+      ],
+      "client_board_id": "18408242353",
+      "client_board_name": "Coastal Lux \u2014 Development Portal",
+      "cover_item_id": "11805693950"
+    },
+    "openclaw": {
+      "contact": "Elijah Booker",
+      "messages_total": 0,
+      "messages_with_body": 0,
+      "recent_with_body": [],
+      "suggestions": []
+    }
+  }
+}

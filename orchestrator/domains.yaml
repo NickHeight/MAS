@@ -1,0 +1,95 @@
+# MAS Domain Registry
+# Maps user intent domains to Team Leads, wiki sync paths, and implementation status.
+
+domains:
+  coding:
+    team_lead: architect-lead
+    status: active
+    wiki_sync:
+      - ~/.claude/kb/index.md
+    description: >
+      Project structure, shared types, config files, multi-file refactors.
+      Delegates to existing architect-lead subagent.
+
+  client-bootstrap:
+    team_lead: client-lead
+    status: active
+    inventory: c:/Users/Nicol/MAS/llm_wiki/audits/upwork_inventory.json
+    external_paths: c:/Users/Nicol/MAS/orchestrator/upwork_paths.yaml
+    wiki_sync:
+      - ~/.claude/kb/_reference/new-client-project-bootstrap.md
+      - ~/.claude/kb/_reference/monday-board-template.md
+      - ~/Upwork/README.md
+      - ~/Upwork/llmwiki/index.md
+    scripts:
+      - scripts/upwork_audit.py
+      - scripts/scan_message_backups.py
+      - scripts/suggest_monday_from_messages.py
+      - scripts/scaffold_client.py
+      - scripts/repo_analyzer.py
+    description: >
+      Upwork root audit and reconciliation, four-pillar provisioning, template scaffold.
+      Run upwork_audit.py before scaffolding or migrating. Uses upwork_inventory.json for routing.
+
+  upwork-ops:
+    team_lead: client-lead
+    status: stub
+    wiki_sync:
+      - ~/Upwork/llmwiki/_shared/playbooks/
+      - ~/Upwork/llmwiki/index.md
+    skills:
+      - process-upwork-queue
+      - upwork-proposal
+      - upwork-monitor
+    description: >
+      Upwork delivery, scope parsing, Monday.com PM sync, client communications.
+      Phase 2 — delegates to existing Upwork skills.
+
+  automation:
+    team_lead: backend-lead
+    status: stub
+    wiki_sync:
+      - ~/Upwork/llmwiki/Turo/entities/scenarios/
+    skills:
+      - make-scenario-builder
+    description: >
+      Make.com/n8n workflow engineering and blueprint management.
+      Phase 2 — reuses Turo blueprint patterns.
+
+  content:
+    team_lead: content-lead
+    status: stub
+    wiki_sync:
+      - ~/Upwork/llmwiki/CRM/entities/
+    description: >
+      Social media clipping, compliance filtering, animated captions, HITL publishing.
+      Phase 2 — net-new build.
+
+  proposal-websites:
+    team_lead: client-lead
+    status: active
+    wiki_sync:
+      - ~/Upwork/llmwiki/PremiumWebDesign/
+      - ~/Upwork/llmwiki/_shared/patterns/premium-website-build-checklist.md
+      - ~/Upwork/llmwiki/_shared/playbooks/website-portfolio.md
+    linked_systems:
+      - ~/Upwork/websites
+    skills:
+      - upwork-proposal
+    description: >
+      High-value proposal website demos using the PremiumWebDesign framework.
+      Not a client bundle — internal IP for Upwork acquisition.
+
+team_leads:
+  architect-lead:
+    path: ~/.claude/agents/architect-lead.md
+    model: sonnet
+  backend-lead:
+    path: ~/.claude/agents/backend-lead.md
+    model: sonnet
+  client-lead:
+    path: ~/.claude/agents/client-lead.md
+    model: sonnet
+  content-lead:
+    path: ~/.claude/agents/content-lead.md
+    model: sonnet
