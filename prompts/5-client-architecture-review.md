@@ -3,8 +3,6 @@
 **Workspace:** `c:/Users/Nicol/MAS/`  
 **Scope:** Active client bundles from `llm_wiki/audits/upwork_inventory.json`
 
----
-
 ## Objective
 
 Produce one **`concepts/workflow_architecture.md`** per active client with:
@@ -15,7 +13,7 @@ operational dependencies, gaps/drift, and MAS routing hints.
 
 | Phase | Domain | Lead | Action |
 |-------|--------|------|--------|
-| 0 | client-bootstrap | client-lead | Audit, clone missing repos, repo_analyzer |
+| 0 | client-bootstrap | client-lead | GitHub pre-flight, audit, repo_analyzer |
 | 1 | automation + coding | backend-lead + architect-lead | Parallel per-client review (read-only) |
 | 2 | coding | architect-lead | Merge rollup + Global KB + post-mortem |
 
@@ -30,6 +28,4 @@ operational dependencies, gaps/drift, and MAS routing hints.
 
 - `~/Upwork/llmwiki/{Client}/concepts/workflow_architecture.md`
 - `c:/Users/Nicol/MAS/llm_wiki/architecture/client_workflows_summary.md`
-- `c:/Users/Nicol/MAS/llm_wiki/postmortems/YYYY-MM-DD_client-architecture-review.md`
-
-Template: `templates/client-workspace/wiki/workflow_architecture.md.template`
+- Template: `templates/client-workspace/wiki/workflow_architecture.md.template`

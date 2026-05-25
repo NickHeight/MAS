@@ -15,7 +15,7 @@ Single source of truth for the Tier-1 Orchestrator. Unchecked items block sessio
 
 ## Active — Client architecture + SMS → Monday
 
-- [~] OpenClaw `concepts/workflow_architecture.md` — paused: gated on Turo PM loop validation (Monday reconciliation sweep below)
+- [x] Hermes / HIRO wiki rename — Hiro agent → Hermes production runtime (2026-05-25)
 - [x] Turo `concepts/workflow_architecture.md` — per-workflow done vs needed
 - [x] `scripts/suggest_monday_from_messages.py` — SMS/MMS → Monday suggestions
 - [~] Monday reconciliation sweep for Marc (board `18408242353` vs wiki) — paused: awaiting Nick APPROVE before any Monday write (HITL gate per `Turo/playbooks/sms_to_monday_review.md`)
@@ -28,6 +28,15 @@ python scripts/upwork_audit.py --root ~/Upwork --dry-run
 ```
 
 Run monthly or after onboarding a new client.
+
+## Client architecture review (2026-05-22)
+
+- [x] GitHub pre-flight + repo_analyzer for Turo and OpenClaw
+- [x] Turo `concepts/workflow_architecture.md`
+- [x] OpenClaw `concepts/workflow_architecture.md` + `index.md`
+- [x] MAS rollup + post-mortem
+- [ ] Reconcile Turo scenario entity status vs overview (follow-up)
+- [ ] Monday board sync sweep for Marc (follow-up)
 
 ## Deferred — Pipeline 2: Upwork Delivery
 
