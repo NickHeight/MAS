@@ -5,3 +5,6 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .mypy_cache/
+
+# Claude Code harness state — local worktrees, settings, agent caches
+.claude/
