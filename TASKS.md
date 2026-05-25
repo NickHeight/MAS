@@ -35,8 +35,8 @@ Run monthly or after onboarding a new client.
 - [x] Turo `concepts/workflow_architecture.md`
 - [x] OpenClaw `concepts/workflow_architecture.md` + `index.md`
 - [x] MAS rollup + post-mortem
-- [ ] Reconcile Turo scenario entity status vs overview (follow-up)
-- [ ] Monday board sync sweep for Marc (follow-up)
+- [~] Reconcile Turo scenario entity status vs overview (follow-up) — deferred 2026-05-25, unrelated to HIRO/Bentley work
+- [~] Monday board sync sweep for Marc (follow-up) — deferred 2026-05-25, HITL gate noted under Active section
 
 ## Deferred — Pipeline 2: Upwork Delivery
 
