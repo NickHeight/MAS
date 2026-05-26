@@ -8,3 +8,4 @@ __pycache__/
 
 # Claude Code harness state — local worktrees, settings, agent caches
 .claude/
+.firecrawl/
