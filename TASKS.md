@@ -19,6 +19,7 @@ Single source of truth for the Tier-1 Orchestrator. Unchecked items block sessio
 - [x] Turo `concepts/workflow_architecture.md` — per-workflow done vs needed
 - [x] `scripts/suggest_monday_from_messages.py` — SMS/MMS → Monday suggestions
 - [~] Monday reconciliation sweep for Marc (board `18408242353` vs wiki) — paused: awaiting Nick APPROVE before any Monday write (HITL gate per `Turo/playbooks/sms_to_monday_review.md`)
+- [~] Marc Monday board redesign — pretty portal + one-hop photo upload — spec at `~/Upwork/llmwiki/Turo/decisions/2026-05-26_marc_monday_board_redesign.md`; implement on APPROVE
 - [x] Commit/push pending `llmwiki` archive changes — 56 files, commit `2d43b0a`, pushed to `NickHeight/llmwiki` master
 
 ## Periodic maintenance
