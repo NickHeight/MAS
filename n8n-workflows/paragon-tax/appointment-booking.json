@@ -1,0 +1,94 @@
+{
+  "name": "paragon-tax--appointment-booking",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger",
+      "name": "When Called",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "notes": "PROOF-OF-PATTERN: Step 0 only. Cadence Day 0,1,3 (3 steps total). State on HubSpot: paragon_appt_step, paragon_appt_last_action_at, paragon_appt_state. Triggered after a positive reply in new-lead-outreach OR via Calendly hint."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "p1", "name": "to", "value": "={{ $json.phone }}", "type": "string" },
+            { "id": "p2", "name": "body", "value": "{{ $json.first_name }} - here is the link to book a time that works for you: {{ $env.CALENDLY_BOOKING_URL_PARAGON }}. 15 minutes, no prep needed. - Hiro", "type": "string" },
+            { "id": "p3", "name": "business_unit", "value": "paragon_tax", "type": "string" },
+            { "id": "p4", "name": "lead_id", "value": "={{ $json.contact_id }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-payload",
+      "name": "Build SMS Payload",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [460, 300]
+    },
+    {
+      "parameters": { "workflowId": "lib-send-sms", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "send-sms",
+      "name": "Call lib--send-sms",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "ce", "name": "contact_email", "value": "={{ $json.contact_email }}", "type": "string" },
+            { "id": "props", "name": "properties", "value": "={{ { paragon_appt_step: 1, paragon_appt_last_action_at: $now.toISO(), paragon_appt_state: \"active\" } }}", "type": "object" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-state-update",
+      "name": "Build State Update",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [900, 300]
+    },
+    {
+      "parameters": { "workflowId": "lib-update-hubspot-contact", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "advance-state",
+      "name": "Advance State in HubSpot",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "seq", "name": "sequence", "value": "paragon-tax--appointment-booking", "type": "string" },
+            { "id": "step", "name": "step_executed", "value": 0, "type": "number" },
+            { "id": "status", "name": "status", "value": "advanced", "type": "string" },
+            { "id": "ts", "name": "executed_at", "value": "={{ $now.toISO() }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "result",
+      "name": "Sequence Step Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1340, 300]
+    }
+  ],
+  "connections": {
+    "When Called": { "main": [[{ "node": "Build SMS Payload", "type": "main", "index": 0 }]] },
+    "Build SMS Payload": { "main": [[{ "node": "Call lib--send-sms", "type": "main", "index": 0 }]] },
+    "Call lib--send-sms": { "main": [[{ "node": "Build State Update", "type": "main", "index": 0 }]] },
+    "Build State Update": { "main": [[{ "node": "Advance State in HubSpot", "type": "main", "index": 0 }]] },
+    "Advance State in HubSpot": { "main": [[{ "node": "Sequence Step Result", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "sequence" }, { "name": "business-paragon-tax" }, { "name": "proof-of-pattern" }],
+  "versionId": "1",
+  "id": "paragon-tax--appointment-booking"
+}

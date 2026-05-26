@@ -1,0 +1,95 @@
+{
+  "name": "paragon-tax--nurture-campaign",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger",
+      "name": "When Called",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "notes": "PROOF-OF-PATTERN: Step 0 only. Cadence Day 0,14,30,45,60,90 (6 steps total). Email-led. State on HubSpot: paragon_nurture_step, paragon_nurture_last_action_at, paragon_nurture_state. Default for cold leads who do not book."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "p1", "name": "to", "value": "={{ $json.contact_email }}", "type": "string" },
+            { "id": "p2", "name": "subject", "value": "Welcome to the Paragon Tax circle", "type": "string" },
+            { "id": "p3", "name": "body_html", "value": "<p>Hi {{ $json.first_name }},</p><p>Thanks for joining the Paragon Tax list. Every two to four weeks I share one practical move that has saved real clients real money - never sales fluff. First one lands in your inbox in about two weeks.</p><p>Reply anytime with questions.</p><p>- Hiro<br>Paragon Tax</p>", "type": "string" },
+            { "id": "p4", "name": "business_unit", "value": "paragon_tax", "type": "string" },
+            { "id": "p5", "name": "lead_id", "value": "={{ $json.contact_id }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-payload",
+      "name": "Build Email Payload",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [460, 300]
+    },
+    {
+      "parameters": { "workflowId": "lib-send-email", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "send-email",
+      "name": "Call lib--send-email",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "ce", "name": "contact_email", "value": "={{ $json.contact_email }}", "type": "string" },
+            { "id": "props", "name": "properties", "value": "={{ { paragon_nurture_step: 1, paragon_nurture_last_action_at: $now.toISO(), paragon_nurture_state: \"active\" } }}", "type": "object" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-state-update",
+      "name": "Build State Update",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [900, 300]
+    },
+    {
+      "parameters": { "workflowId": "lib-update-hubspot-contact", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "advance-state",
+      "name": "Advance State in HubSpot",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "seq", "name": "sequence", "value": "paragon-tax--nurture-campaign", "type": "string" },
+            { "id": "step", "name": "step_executed", "value": 0, "type": "number" },
+            { "id": "status", "name": "status", "value": "advanced", "type": "string" },
+            { "id": "ts", "name": "executed_at", "value": "={{ $now.toISO() }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "result",
+      "name": "Sequence Step Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1340, 300]
+    }
+  ],
+  "connections": {
+    "When Called": { "main": [[{ "node": "Build Email Payload", "type": "main", "index": 0 }]] },
+    "Build Email Payload": { "main": [[{ "node": "Call lib--send-email", "type": "main", "index": 0 }]] },
+    "Call lib--send-email": { "main": [[{ "node": "Build State Update", "type": "main", "index": 0 }]] },
+    "Build State Update": { "main": [[{ "node": "Advance State in HubSpot", "type": "main", "index": 0 }]] },
+    "Advance State in HubSpot": { "main": [[{ "node": "Sequence Step Result", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "sequence" }, { "name": "business-paragon-tax" }, { "name": "proof-of-pattern" }],
+  "versionId": "1",
+  "id": "paragon-tax--nurture-campaign"
+}
