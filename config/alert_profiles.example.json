@@ -1,0 +1,61 @@
+{
+  "version": 1,
+  "profiles": {
+    "mas-default": {
+      "description": "Default MAS blocker alert: Slack + SMS, no repeated phone calls.",
+      "channels": ["slack", "sms"],
+      "call": {
+        "enabled": false,
+        "max_attempts": 0,
+        "interval_seconds": 0,
+        "timeout_seconds": 25
+      },
+      "ack": {
+        "state_file": ".mas/alerts/acks.json",
+        "keywords": ["ACK", "DONE", "STOP"]
+      }
+    },
+    "upwork-p0": {
+      "description": "Urgent Upwork/client blocker: Slack + SMS + measured voice escalation.",
+      "channels": ["slack", "sms", "voice"],
+      "call": {
+        "enabled": true,
+        "max_attempts": 5,
+        "interval_seconds": 120,
+        "timeout_seconds": 25
+      },
+      "ack": {
+        "state_file": ".mas/alerts/acks.json",
+        "keywords": ["ACK", "DONE", "STOP"]
+      }
+    },
+    "client-prod": {
+      "description": "Production client outage: repeated calls until ACK or cap.",
+      "channels": ["slack", "sms", "voice"],
+      "call": {
+        "enabled": true,
+        "max_attempts": 10,
+        "interval_seconds": 90,
+        "timeout_seconds": 30
+      },
+      "ack": {
+        "state_file": ".mas/alerts/acks.json",
+        "keywords": ["ACK", "DONE", "STOP"]
+      }
+    },
+    "personal-critical": {
+      "description": "Wake-me-up mode for non-client critical work.",
+      "channels": ["slack", "sms", "voice"],
+      "call": {
+        "enabled": true,
+        "max_attempts": 15,
+        "interval_seconds": 60,
+        "timeout_seconds": 30
+      },
+      "ack": {
+        "state_file": ".mas/alerts/acks.json",
+        "keywords": ["ACK", "DONE", "STOP"]
+      }
+    }
+  }
+}

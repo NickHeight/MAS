@@ -9,3 +9,6 @@ __pycache__/
 # Claude Code harness state — local worktrees, settings, agent caches
 .claude/
 .firecrawl/
+
+# MAS local runtime state — alert ACKs, loop heartbeats
+.mas/
