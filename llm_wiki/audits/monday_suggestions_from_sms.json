@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-05-22T21:30:36.375006+00:00",
+  "generated_at": "2026-05-26T00:04:25.689111+00:00",
   "backup_root": "C:\\Users\\Nicol\\OneDrive - Height Consulting\\Apps\\SMS Backup and Restore\\UpworkMsgs",
-  "days": 30,
+  "days": 21,
   "by_client": {
     "turo": {
       "contact": "Marc Walden",
-      "messages_total": 12,
-      "messages_with_body": 12,
+      "messages_total": 651,
+      "messages_with_body": 651,
       "recent_with_body": [
         {
           "date_ms": 1778165293377,
@@ -14,117 +14,267 @@
           "direction": "sent",
           "body": "We're going to have to do this for all of the ads with Gemini pictures on them",
           "has_body": true,
-          "source_file": "sms-20260507090045.xml"
+          "kind": "sms",
+          "source_file": "sms.xml"
         },
         {
-          "date_ms": 1777906151866,
-          "date_iso": "2026-05-04T14:49:11.866000+00:00",
+          "date_ms": 1777953840000,
+          "date_iso": "2026-05-05T04:04:00+00:00",
           "direction": "sent",
-          "body": "https://drive.google.com/file/d/1pz87nQFZmlG636xGRG1JZawVxMO9j7i4/view?usp=drive_link",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
           "has_body": true,
-          "source_file": "sms-20260504090012.xml"
+          "kind": "mms",
+          "source_file": "sms.xml"
         },
         {
-          "date_ms": 1777839984023,
-          "date_iso": "2026-05-03T20:26:24.023000+00:00",
-          "direction": "sent",
-          "body": "Granted, having 10 leads doesn't mean you have 10 clients. It could mean 2 clients, it could mean 1 client, or it could mean 5 clients. We all know that after you start talking to them, there could be a litany of things that you may have to disqualify them for, or they just may not accept the offer",
-          "has_body": true,
-          "source_file": "sms-20260503150049.xml"
-        },
-        {
-          "date_ms": 1777840063594,
-          "date_iso": "2026-05-03T20:27:43.594000+00:00",
-          "direction": "sent",
-          "body": "I just wanted to make sure we're managing expectations in that aspect and give you my personal experience as well. I just had an upwork client turn me down because he wanted to pay $10 for something when it should have been $50",
-          "has_body": true,
-          "source_file": "sms-20260503150049.xml"
-        },
-        {
-          "date_ms": 1777843176163,
-          "date_iso": "2026-05-03T21:19:36.163000+00:00",
-          "direction": "sent",
-          "body": "sounds good",
-          "has_body": true,
-          "source_file": "sms-20260503160049.xml"
-        },
-        {
-          "date_ms": 1777843196061,
-          "date_iso": "2026-05-03T21:19:56.061000+00:00",
-          "direction": "sent",
-          "body": "have you got that code by chance?",
-          "has_body": true,
-          "source_file": "sms-20260503160049.xml"
-        },
-        {
-          "date_ms": 1777836983628,
-          "date_iso": "2026-05-03T19:36:23.628000+00:00",
-          "direction": "sent",
-          "body": "https://www.facebook.com/profile.php?id=61589105999277#",
-          "has_body": true,
-          "source_file": "sms-20260503140049.xml"
-        },
-        {
-          "date_ms": 1777837005110,
-          "date_iso": "2026-05-03T19:36:45.110000+00:00",
-          "direction": "sent",
-          "body": "https://www.instagram.com/coastalluxauto/?fbclid=IwY2xjawRkgxJleHRuA2FlbQIxMQBicmlkETFNQ0h5Rnd4WHhIR2RheVpIc3J0YwZhcHBfaWQBMAABHuSPULOmd6eNiy0wXCEvLHEmPndb0v69d6mU-Uv9Hkg9EV02VhQ1YcTJlGWM_aem_nBhz80eFXktFHSw_RI7UkA",
-          "has_body": true,
-          "source_file": "sms-20260503140049.xml"
-        },
-        {
-          "date_ms": 1777659131139,
-          "date_iso": "2026-05-01T18:12:11.139000+00:00",
+          "date_ms": 1777953932000,
+          "date_iso": "2026-05-05T04:05:32+00:00",
           "direction": "received",
-          "body": "There\u2019s a video it shows you everything that I see\u2026. I\u2019m not getting paid. That\u2019s the issue man and I should be and I\u2019m losing money and things are not being done on time.",
+          "body": "Setting up payment now , ran an experiment on the new fb page\u2026you see?",
           "has_body": true,
-          "source_file": "sms-20260501130032.xml"
+          "kind": "mms",
+          "source_file": "sms.xml"
         },
         {
-          "date_ms": 1777659146178,
-          "date_iso": "2026-05-01T18:12:26.178000+00:00",
+          "date_ms": 1777953961000,
+          "date_iso": "2026-05-05T04:06:01+00:00",
           "direction": "received",
-          "body": "And not being routed or connected properly, I mean",
+          "body": "Been a busy day\u2026.",
           "has_body": true,
-          "source_file": "sms-20260501130032.xml"
+          "kind": "mms",
+          "source_file": "sms.xml"
         },
         {
-          "date_ms": 1777659579830,
-          "date_iso": "2026-05-01T18:19:39.830000+00:00",
-          "direction": "received",
-          "body": "I just hope everything that I requested you to do is done in two weeks man that's all I hope and I hope you don't screw me over and deliver everything that you said you would. I know things have changed makes it easier. Blakely is not an issue. \n\nSo please give me an update about my money or I will cancel Stripe and I'm gonna call them and I'll have them find out where I went.\n\nI don't need that shit that bad....\n\nIf it's gonna cost me problems",
+          "date_ms": 1777954085000,
+          "date_iso": "2026-05-05T04:08:05+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
           "has_body": true,
-          "source_file": "sms-20260501130032.xml"
+          "kind": "mms",
+          "source_file": "sms.xml"
         },
         {
-          "date_ms": 1777659624569,
-          "date_iso": "2026-05-01T18:20:24.569000+00:00",
+          "date_ms": 1777954493000,
+          "date_iso": "2026-05-05T04:14:53+00:00",
           "direction": "received",
-          "body": "stripe, I'm referring to I don't need as much.... if it's not resolved and useful",
+          "body": "Yes IG too",
           "has_body": true,
-          "source_file": "sms-20260501130032.xml"
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777954523000,
+          "date_iso": "2026-05-05T04:15:23+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777954535000,
+          "date_iso": "2026-05-05T04:15:35+00:00",
+          "direction": "received",
+          "body": "Payment set up",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777954541000,
+          "date_iso": "2026-05-05T04:15:41+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777954546000,
+          "date_iso": "2026-05-05T04:15:46+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777954553000,
+          "date_iso": "2026-05-05T04:15:53+00:00",
+          "direction": "received",
+          "body": "Yep",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777955385000,
+          "date_iso": "2026-05-05T04:29:45+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777955393000,
+          "date_iso": "2026-05-05T04:29:53+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Image\" fit=\"meet\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"33738ms\"><video src=\"499a06e0-a0df-455a-b3a3-8b2ec7ef8e2e.mp4\" dur=\"33738ms\" region=\"Image\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777986373000,
+          "date_iso": "2026-05-05T13:06:13+00:00",
+          "direction": "received",
+          "body": "Were you able to run it because I put my Navy Federal account connected to it and my daily limit, etc.",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777991675000,
+          "date_iso": "2026-05-05T14:34:35+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777991685000,
+          "date_iso": "2026-05-05T14:34:45+00:00",
+          "direction": "received",
+          "body": "\u200b\u2764\ufe0f\u200b to \u201c\u200aYeah\u200a\u201d",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777991727000,
+          "date_iso": "2026-05-05T14:35:27+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777991737000,
+          "date_iso": "2026-05-05T14:35:37+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777991745000,
+          "date_iso": "2026-05-05T14:35:45+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
+        },
+        {
+          "date_ms": 1777991780000,
+          "date_iso": "2026-05-05T14:36:20+00:00",
+          "direction": "sent",
+          "body": "<smil><head><layout><root-layout/><region id=\"Text\" top=\"0\" left=\"0\" height=\"100%\" width=\"100%\"/></layout></head><body><par dur=\"5000ms\"><text src=\"text000001.txt\" region=\"Text\" /></par></body></smil>",
+          "has_body": true,
+          "kind": "mms",
+          "source_file": "sms.xml"
         }
       ],
       "suggestions": [
-        {
-          "slug": "turo",
-          "suggested_title": "[SMS] S7 / Stripe / QBO \u2014 review Marc message",
-          "category": "Financials",
-          "workflow_area": "S7 / Stripe / QBO",
-          "suggested_status": "Pending Nick",
-          "latest_message_date": "2026-05-01T18:20:24.569000+00:00",
-          "message_preview": "stripe, I'm referring to I don't need as much.... if it's not resolved and useful",
-          "action": "Create new Monday item OR post update on cover item 11805693950",
-          "monday_board_id": "18408242353"
-        },
         {
           "slug": "turo",
           "suggested_title": "[SMS] General client ask \u2014 review Marc message",
           "category": "Question",
           "workflow_area": "General client ask",
           "suggested_status": "Pending Marc",
-          "latest_message_date": "2026-05-01T18:12:26.178000+00:00",
-          "message_preview": "And not being routed or connected properly, I mean",
+          "latest_message_date": "2026-05-24T17:34:04+00:00",
+          "message_preview": "Looks like Turo will be solving the flight tracking and I\u2019ll be able  split trip earnings with business partners directly in the eliminating manual spreadsheet and friction\u2026..",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        },
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] Marc Claude + Monday onboarding \u2014 review Marc message",
+          "category": "Documentation",
+          "workflow_area": "Marc Claude + Monday onboarding",
+          "suggested_status": "Pending Nick",
+          "latest_message_date": "2026-05-24T14:32:40+00:00",
+          "message_preview": "But I don\u2019t know how to get into my email from here\u2026\u2026",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        },
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] QuickBooks \u2014 review Marc message",
+          "category": "Financials",
+          "workflow_area": "QuickBooks",
+          "suggested_status": "Pending Nick",
+          "latest_message_date": "2026-05-24T14:31:19+00:00",
+          "message_preview": "I have to have some way of being notified of flight delays and arrivals\u2026\u2026  And also for some weird reason, I can only access my Coastal LUX Gmail account only through my laptop. I used to switch easil",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        },
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] Twilio compliance \u2014 review Marc message",
+          "category": "Infra",
+          "workflow_area": "Twilio compliance",
+          "suggested_status": "Pending Nick",
+          "latest_message_date": "2026-05-24T13:27:29+00:00",
+          "message_preview": "Why is Twilio so complicated? Just curious why we\u2019re having so much trouble with this.  Anyways, hope all is well",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        },
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] Meta / MEO \u2014 review Marc message",
+          "category": "MEO",
+          "workflow_area": "Meta / MEO",
+          "suggested_status": "Pending Nick",
+          "latest_message_date": "2026-05-21T16:29:53+00:00",
+          "message_preview": "Sounds good I\u2019m gonna take some Meta reels of me in the grocery store, grabbing ingredients, etc. that way you can put them together for the Chef experience\u2026. And grocery procurement.  And we need to ",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        },
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] S7 / Stripe / QBO \u2014 review Marc message",
+          "category": "Financials",
+          "workflow_area": "S7 / Stripe / QBO",
+          "suggested_status": "Pending Nick",
+          "latest_message_date": "2026-05-21T02:44:30+00:00",
+          "message_preview": "As long as the stripe that has Tax bucket set up",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        },
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] Marc walkthrough \u2014 review Marc message",
+          "category": "Question",
+          "workflow_area": "Marc walkthrough",
+          "suggested_status": "Pending Marc",
+          "latest_message_date": "2026-05-15T23:33:31+00:00",
+          "message_preview": "I can call you now and you can walk me through it if need be",
+          "action": "Create new Monday item OR post update on cover item 11805693950",
+          "monday_board_id": "18408242353"
+        },
+        {
+          "slug": "turo",
+          "suggested_title": "[SMS] PM sync \u2014 review Marc message",
+          "category": "Documentation",
+          "workflow_area": "PM sync",
+          "suggested_status": "Pending Nick",
+          "latest_message_date": "2026-05-15T23:27:15+00:00",
+          "message_preview": "Yep, super late last night and was supposed to go to Nashville, but I got too much going on with the possible on boarding of the clients this week. Phillip\u2019s Jeep will definitely be in my possession t",
           "action": "Create new Monday item OR post update on cover item 11805693950",
           "monday_board_id": "18408242353"
         },
@@ -134,8 +284,8 @@
           "category": "Blocker",
           "workflow_area": "Trust / payout loop",
           "suggested_status": "Pending Marc",
-          "latest_message_date": "2026-05-01T18:12:11.139000+00:00",
-          "message_preview": "There\u2019s a video it shows you everything that I see\u2026. I\u2019m not getting paid. That\u2019s the issue man and I should be and I\u2019m losing money and things are not being done on time.",
+          "latest_message_date": "2026-05-05T14:43:01+00:00",
+          "message_preview": "It was but I\u2019m losing money with Blakely and all that kind of stuff so until it starts popping off, I gotta keep things small until I can see results and then we\u2019ll pump more",
           "action": "Create new Monday item OR post update on cover item 11805693950",
           "monday_board_id": "18408242353"
         }

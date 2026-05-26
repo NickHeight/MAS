@@ -1,19 +1,25 @@
 # SMS → Monday Suggestions
 
-**Generated:** 2026-05-22T21:30:36.375006+00:00
+**Generated:** 2026-05-26T00:04:25.689111+00:00
 **Backup root:** `C:\Users\Nicol\OneDrive - Height Consulting\Apps\SMS Backup and Restore\UpworkMsgs`
-**Window:** last 30 days
+**Window:** last 21 days
 
 ## turo
 
-- Messages with body text: 12 / 12
-- Board: `n/a` (``)
+- Messages with body text: 651 / 651
+- Board: `Coastal Lux — Development Portal` (`18408242353`)
 
 | Workflow | Category | Status | Latest | Preview |
 |----------|----------|--------|--------|---------|
-| S7 / Stripe / QBO | Financials | Pending Nick | 2026-05-01 | stripe, I'm referring to I don't need as much.... if it's not resolved and usefu |
-| General client ask | Question | Pending Marc | 2026-05-01 | And not being routed or connected properly, I mean |
-| Trust / payout loop | Blocker | Pending Marc | 2026-05-01 | There’s a video it shows you everything that I see…. I’m not getting paid. That’ |
+| General client ask | Question | Pending Marc | 2026-05-24 | Looks like Turo will be solving the flight tracking and I’ll be able  split trip |
+| Marc Claude + Monday onboarding | Documentation | Pending Nick | 2026-05-24 | But I don’t know how to get into my email from here…… |
+| QuickBooks | Financials | Pending Nick | 2026-05-24 | I have to have some way of being notified of flight delays and arrivals……  And a |
+| Twilio compliance | Infra | Pending Nick | 2026-05-24 | Why is Twilio so complicated? Just curious why we’re having so much trouble with |
+| Meta / MEO | MEO | Pending Nick | 2026-05-21 | Sounds good I’m gonna take some Meta reels of me in the grocery store, grabbing  |
+| S7 / Stripe / QBO | Financials | Pending Nick | 2026-05-21 | As long as the stripe that has Tax bucket set up |
+| Marc walkthrough | Question | Pending Marc | 2026-05-15 | I can call you now and you can walk me through it if need be |
+| PM sync | Documentation | Pending Nick | 2026-05-15 | Yep, super late last night and was supposed to go to Nashville, but I got too mu |
+| Trust / payout loop | Blocker | Pending Marc | 2026-05-05 | It was but I’m losing money with Blakely and all that kind of stuff so until it  |
 
 ## openclaw
 
