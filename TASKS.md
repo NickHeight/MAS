@@ -19,7 +19,7 @@ Single source of truth for the Tier-1 Orchestrator. Unchecked items block sessio
 - [x] Turo `concepts/workflow_architecture.md` — per-workflow done vs needed
 - [x] `scripts/suggest_monday_from_messages.py` — SMS/MMS → Monday suggestions
 - [~] Monday reconciliation sweep for Marc (board `18408242353` vs wiki) — paused: awaiting Nick APPROVE before any Monday write (HITL gate per `Turo/playbooks/sms_to_monday_review.md`)
-- [~] Marc Monday board redesign — Website Assets + Photos for site **live** on `18408242353` (2026-05-26). Wiki: `decisions/2026-05-26_marc_monday_consensus_research.md`. Remaining: Cards/Gallery views, automations, status labels, reconciliation sweep.
+- [x] Marc Monday board redesign — client board `18408242353` polished (views, hygiene sweep, 5-item action queue). Daily: `python scripts/monday_board_hygiene.py`. Manual: add Done→Completed automation in Monday UI (MCP automations 403).
 - [x] HIRO Monday command center — board `18414790992` updated, monday-sync skill shipped, ai-agent template written (2026-05-26). Pending: HIRO guest invite acceptance + Mini git pull.
 - [x] Commit/push pending `llmwiki` archive changes — 56 files, commit `2d43b0a`, pushed to `NickHeight/llmwiki` master
 
