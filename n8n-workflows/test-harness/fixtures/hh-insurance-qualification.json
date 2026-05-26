@@ -1,0 +1,37 @@
+{
+  "sequence": "hh-insurance--qualification-router",
+  "lead": {
+    "first_name": "TestQual",
+    "last_name": "Insurance",
+    "email": "test-hhi-qual-{run_id}@n8n-harness.invalid",
+    "phone": "+15555550103",
+    "lifecycle_stage": "lead",
+    "test_harness": true,
+    "test_run_id": "{run_id}"
+  },
+  "trigger_input": {
+    "contact_id": "{hubspot_contact_id}",
+    "contact_email": "test-hhi-qual-{run_id}@n8n-harness.invalid",
+    "phone": "+15555550103",
+    "first_name": "TestQual",
+    "last_name": "Insurance",
+    "intake_form_payload": {
+      "age": 34,
+      "marital_status": "married",
+      "dependents": 2,
+      "occupation": "software engineer",
+      "coverage_now": "term, $250k",
+      "primary_concern": "kids college + spouse income replacement",
+      "urgency": "researching, no rush",
+      "income_bracket": "150-250k",
+      "free_text": "Considering switching from term to IUL. Wife and I just had our second."
+    }
+  },
+  "expected_state_after_any_of": [
+    {"hh_insurance_track": "young-parent", "hh_insurance_young_parent_state": "active"},
+    {"hh_insurance_track": "term-to-IUL", "hh_insurance_term_to_iul_state": "active"},
+    {"hh_insurance_track": "wealth-building", "hh_insurance_wealth_building_state": "active"},
+    {"hh_insurance_track": "NEEDS_TRIAGE", "hh_insurance_triage_state": "awaiting_nick"}
+  ],
+  "notes": "The classifier may legitimately route this lead to young-parent, term-to-IUL, or wealth-building depending on Bentley judgment - all three are acceptable. Triage is also acceptable if Bentley confidence is low or Bentley is down. The assertion accepts any of the listed shapes."
+}

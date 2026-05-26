@@ -1,0 +1,26 @@
+{
+  "sequence": "paragon-tax--referral-request",
+  "lead": {
+    "first_name": "TestPat",
+    "last_name": "Referral",
+    "email": "test-paragon-ref-{run_id}@n8n-harness.invalid",
+    "phone": "+15555550101",
+    "lifecycle_stage": "customer",
+    "test_harness": true,
+    "test_run_id": "{run_id}",
+    "paragon_referral_step": 0,
+    "paragon_referral_state": "active"
+  },
+  "trigger_input": {
+    "contact_id": "{hubspot_contact_id}",
+    "contact_email": "test-paragon-ref-{run_id}@n8n-harness.invalid",
+    "first_name": "TestPat",
+    "phone": "+15555550101",
+    "current_step": 0
+  },
+  "expected_state_after": {
+    "paragon_referral_step": 1,
+    "paragon_referral_state": "active",
+    "paragon_referral_last_action_at": "{any_iso_within_60s}"
+  }
+}

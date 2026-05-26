@@ -1,0 +1,26 @@
+{
+  "sequence": "paragon-tax--new-lead-outreach",
+  "lead": {
+    "first_name": "TestPat",
+    "last_name": "NewLead",
+    "email": "test-paragon-new-{run_id}@n8n-harness.invalid",
+    "phone": "+15555550102",
+    "lifecycle_stage": "lead",
+    "test_harness": true,
+    "test_run_id": "{run_id}",
+    "paragon_new_lead_step": 0,
+    "paragon_new_lead_state": "active"
+  },
+  "trigger_input": {
+    "contact_id": "{hubspot_contact_id}",
+    "contact_email": "test-paragon-new-{run_id}@n8n-harness.invalid",
+    "first_name": "TestPat",
+    "phone": "+15555550102",
+    "current_step": 0
+  },
+  "expected_state_after": {
+    "paragon_new_lead_step": 1,
+    "paragon_new_lead_state": "active",
+    "paragon_new_lead_last_action_at": "{any_iso_within_60s}"
+  }
+}
