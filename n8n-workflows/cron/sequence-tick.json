@@ -1,0 +1,109 @@
+{
+  "name": "cron--sequence-tick",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 9 * * *" }] }
+      },
+      "id": "trigger",
+      "name": "Daily 09:00 CT",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300],
+      "notes": "PROOF-OF-PATTERN dispatcher. Runs daily at 09:00 America/Chicago (set TZ on n8n host or in workflow settings). Finds contacts ripe for their next sequence step and calls the matching sequence executor. One tick workflow per sequence type, OR one master tick that branches by sequence column - the master pattern below."
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "getAll",
+        "returnAll": true,
+        "filtersUi": {
+          "filterValues": [
+            { "propertyName": "paragon_referral_state", "operator": "EQ", "value": "active" }
+          ]
+        },
+        "additionalFields": {
+          "propertiesToInclude": [
+            "email",
+            "firstname",
+            "lastname",
+            "phone",
+            "paragon_referral_step",
+            "paragon_referral_last_action_at",
+            "paragon_referral_state"
+          ]
+        }
+      },
+      "id": "search-paragon",
+      "name": "HubSpot: Active Paragon Referrals",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [460, 300],
+      "credentials": {
+        "hubspotAppToken": { "id": "REPLACE_WITH_HUBSPOT_CRED_ID", "name": "HubSpot HIRO Private App" }
+      },
+      "notes": "Add one search node per sequence type. Or build a single search with multiple filters joined OR and route via Switch."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            {
+              "id": "ripe",
+              "leftValue": "={{ $now.diff($json.properties.paragon_referral_last_action_at, \"days\").days }}",
+              "rightValue": "={{ parseInt($env.PARAGON_REFERRAL_STEP_INTERVAL_DAYS || 3, 10) }}",
+              "operator": { "type": "number", "operation": "gte" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-ripe",
+      "name": "Ripe for next step?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "cid", "name": "contact_id", "value": "={{ $json.id }}", "type": "string" },
+            { "id": "email", "name": "contact_email", "value": "={{ $json.properties.email }}", "type": "string" },
+            { "id": "fn", "name": "first_name", "value": "={{ $json.properties.firstname }}", "type": "string" },
+            { "id": "ln", "name": "last_name", "value": "={{ $json.properties.lastname }}", "type": "string" },
+            { "id": "ph", "name": "phone", "value": "={{ $json.properties.phone }}", "type": "string" },
+            { "id": "step", "name": "current_step", "value": "={{ parseInt($json.properties.paragon_referral_step || 0, 10) }}", "type": "number" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-payload",
+      "name": "Build Sequence Payload",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [900, 300]
+    },
+    {
+      "parameters": { "workflowId": "paragon-tax--referral-request", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "dispatch",
+      "name": "Dispatch to Sequence Executor",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [1120, 300]
+    }
+  ],
+  "connections": {
+    "Daily 09:00 CT": { "main": [[{ "node": "HubSpot: Active Paragon Referrals", "type": "main", "index": 0 }]] },
+    "HubSpot: Active Paragon Referrals": { "main": [[{ "node": "Ripe for next step?", "type": "main", "index": 0 }]] },
+    "Ripe for next step?": { "main": [[{ "node": "Build Sequence Payload", "type": "main", "index": 0 }]] },
+    "Build Sequence Payload": { "main": [[{ "node": "Dispatch to Sequence Executor", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1", "timezone": "America/Chicago" },
+  "tags": [{ "name": "cron" }, { "name": "dispatcher" }],
+  "versionId": "1",
+  "id": "cron-sequence-tick"
+}

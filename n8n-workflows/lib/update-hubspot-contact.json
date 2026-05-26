@@ -1,0 +1,265 @@
+{
+  "name": "lib--update-hubspot-contact",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-execute",
+      "name": "When Called",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "notes": "Input: { contact_email, properties?, tags_to_add?, tags_to_remove?, lifecycle_stage? }. Upserts on email."
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "getAll",
+        "returnAll": false,
+        "limit": 1,
+        "filtersUi": {
+          "filterValues": [
+            {
+              "propertyName": "email",
+              "operator": "EQ",
+              "value": "={{ $json.contact_email }}"
+            }
+          ]
+        },
+        "additionalFields": {
+          "propertiesToInclude": [
+            "email",
+            "firstname",
+            "lastname",
+            "lifecyclestage"
+          ]
+        }
+      },
+      "id": "hubspot-search",
+      "name": "HubSpot: Find by Email",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        460,
+        300
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "REPLACE_WITH_HUBSPOT_CRED_ID",
+          "name": "HubSpot HIRO Private App"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "found",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-found",
+      "name": "Contact Found?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        680,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "update",
+        "contactId": "={{ $json.id }}",
+        "updateFields": {
+          "customPropertiesUi": {
+            "customPropertiesValues": "={{ Object.entries($('When Called').item.json.properties || {}).map(([k,v]) => ({ property: k, value: v })) }}"
+          }
+        }
+      },
+      "id": "hubspot-update",
+      "name": "HubSpot: Update Properties",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        900,
+        200
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "REPLACE_WITH_HUBSPOT_CRED_ID",
+          "name": "HubSpot HIRO Private App"
+        }
+      },
+      "continueOnFail": true,
+      "notes": "Tag add/remove wired to HubSpot list membership after hubspot-onboarding skill maps the schema."
+    },
+    {
+      "parameters": {
+        "resource": "contact",
+        "operation": "create",
+        "additionalFields": {
+          "email": "={{ $('When Called').item.json.contact_email }}",
+          "customPropertiesUi": {
+            "customPropertiesValues": "={{ Object.entries($('When Called').item.json.properties || {}).map(([k,v]) => ({ property: k, value: v })) }}"
+          },
+          "lifeCycleStage": "={{ $('When Called').item.json.lifecycle_stage || 'lead' }}"
+        }
+      },
+      "id": "hubspot-create",
+      "name": "HubSpot: Create Contact",
+      "type": "n8n-nodes-base.hubspot",
+      "typeVersion": 2.1,
+      "position": [
+        900,
+        400
+      ],
+      "credentials": {
+        "hubspotAppToken": {
+          "id": "REPLACE_WITH_HUBSPOT_CRED_ID",
+          "name": "HubSpot HIRO Private App"
+        }
+      },
+      "continueOnFail": true,
+      "notes": "Upsert behavior: not-found → create. Return shape identical to update path."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "status",
+              "name": "status",
+              "value": "={{ $json.id ? 'ok' : 'failed' }}",
+              "type": "string"
+            },
+            {
+              "id": "contact_id",
+              "name": "contact_id",
+              "value": "={{ $json.id || null }}",
+              "type": "string"
+            },
+            {
+              "id": "contact_email",
+              "name": "contact_email",
+              "value": "={{ $('When Called').item.json.contact_email }}",
+              "type": "string"
+            },
+            {
+              "id": "error",
+              "name": "error",
+              "value": "={{ $json.error ? { message: $json.error.message } : null }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "format-result",
+      "name": "Format Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "When Called": {
+      "main": [
+        [
+          {
+            "node": "HubSpot: Find by Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot: Find by Email": {
+      "main": [
+        [
+          {
+            "node": "Contact Found?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Contact Found?": {
+      "main": [
+        [
+          {
+            "node": "HubSpot: Update Properties",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HubSpot: Create Contact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot: Update Properties": {
+      "main": [
+        [
+          {
+            "node": "Format Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HubSpot: Create Contact": {
+      "main": [
+        [
+          {
+            "node": "Format Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "lib"
+    },
+    {
+      "name": "crm-hubspot"
+    }
+  ],
+  "versionId": "1",
+  "id": "lib-update-hubspot-contact"
+}
