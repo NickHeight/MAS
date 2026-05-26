@@ -62,6 +62,7 @@ These need to be set in the n8n host environment (or in n8n credential records, 
 | Var | Notes |
 |-----|-------|
 | `MONDAY_BOARD_ID` | `18414790992` for HIRO internal board. |
+| `MONDAY_COVER_ITEM_ID` | `12105668007` — HIRO Project Command Center cover item. |
 | `MONDAY_API_TOKEN` | Set as n8n credential, not env var, for security. Lib `log-to-monday-update.json` (not yet built) references it. |
 
 ## Telegram (optional)

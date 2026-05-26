@@ -13,6 +13,9 @@ User request
     +-- mentions Upwork / Monday.com / client delivery / scope?
     |       --> upwork-ops (stub — route to client-lead with Phase 2 note)
     |
+    +-- mentions Hermes / Bentley / AI agent client / Monday PM for agent clients?
+    |       --> monday-clients (monday-hermes-pm-lead)
+    |
     +-- mentions Make.com / n8n / workflow / blueprint?
     |       --> automation (stub — route to backend-lead)
     |

@@ -45,6 +45,22 @@ domains:
       Upwork delivery, scope parsing, Monday.com PM sync, client communications.
       Phase 2 — delegates to existing Upwork skills.
 
+  monday-clients:
+    team_lead: monday-hermes-pm-lead
+    status: active
+    wiki_sync:
+      - ~/Upwork/llmwiki/_shared/references/ai-agent-client-monday-template.md
+      - ~/.claude/kb/_reference/monday-board-template.md
+      - ~/Upwork/llmwiki/OpenClaw/playbooks/monday_workspace_setup.md
+    agents:
+      - orchestrator/agents/monday-hermes-pm-lead.md
+      - orchestrator/agents/monday-board-builder.md
+      - orchestrator/agents/monday-hermes-sync-worker.md
+      - orchestrator/agents/sms-monday-reviewer.md
+    description: >
+      Monday.com project management for Hermes/AI-agent clients. Board provisioning,
+      Bentley skill updates, wiki reconciliation, HIRO-style command-center pattern.
+
   automation:
     team_lead: backend-lead
     status: stub
@@ -92,4 +108,7 @@ team_leads:
     model: sonnet
   content-lead:
     path: ~/.claude/agents/content-lead.md
+    model: sonnet
+  monday-hermes-pm-lead:
+    path: orchestrator/agents/monday-hermes-pm-lead.md
     model: sonnet
