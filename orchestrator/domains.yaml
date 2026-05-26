@@ -101,6 +101,14 @@ domains:
       High-value proposal website demos using the PremiumWebDesign framework.
       Not a client bundle — internal IP for Upwork acquisition.
 
+orchestrator:
+  persona: orchestrator/agents/orchestrator.md
+  intake_template: orchestrator/intake_template.md
+  model: opus
+  tier: 1
+  scope: mas_workspace_only
+  installed: 2026-05-26
+
 team_leads:
   monday-hermes-pm-lead:
     path: orchestrator/agents/monday-hermes-pm-lead.md
