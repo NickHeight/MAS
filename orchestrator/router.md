@@ -11,7 +11,7 @@ User request
     |       --> client-bootstrap
     |
     +-- mentions Upwork / Monday.com / client delivery / scope?
-    |       --> upwork-ops (stub — route to client-lead with Phase 2 note)
+    |       --> upwork-ops (stub — route to monday-hermes-pm-lead + Upwork skills)
     |
     +-- mentions Hermes / Bentley / AI agent client / Monday PM for agent clients?
     |       --> monday-clients (monday-hermes-pm-lead)
@@ -20,7 +20,7 @@ User request
     |       --> automation (stub — route to backend-lead)
     |
     +-- mentions video / clip / caption / social / livestream?
-    |       --> content (stub — route to content-lead)
+    |       --> content (stub — deferred; no content-lead until rebuilt)
     |
     +-- mentions proposal website / premium demo / portfolio site for Upwork?
     |       --> proposal-websites (PremiumWebDesign framework + ~/Upwork/websites)
@@ -70,8 +70,8 @@ Request: *"Set up a new client for n8n workflows and scaffold their repo"*
 
 ```
 Domains: client-bootstrap + automation
-Team Leads: client-lead (scaffold) + backend-lead (n8n module guidance)
-Order: client-lead first (creates repo), then backend-lead (populates automation module)
+Team Leads: monday-hermes-pm-lead (PM/board) + Cursor backend-lead (n8n when Phase 2 active)
+Order: run scaffold scripts first, then monday-hermes-pm-lead for board/wiki sync
 ```
 
 ## Error handling

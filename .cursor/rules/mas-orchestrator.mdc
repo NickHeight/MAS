@@ -11,7 +11,8 @@ You are working inside the MAS (Multi-Agent System) workspace — a domain-routi
 
 ## Architecture
 
-- Extend existing team-of-teams (`~/.claude/agents/`), do not duplicate it
+- MAS-deployed subagents live in `orchestrator/agents/` (Monday/Hermes set); install via `install_agents.ps1`. Do not resurrect removed stubs (`client-lead`, `content-lead`, `sms-monday-reviewer`).
+- Coding/automation may use Cursor built-in `architect-lead` / `backend-lead`; legacy team-of-teams defs remain in `C:/Users/Nicol/agentic/system/agents/` until re-scaffolded.
 - Route tasks by domain per `orchestrator/domains.yaml` and `orchestrator/router.md`
 - Use `TASKS.md` as the single source of truth for backlog state
 

@@ -27,10 +27,11 @@ At the start of EVERY session in this workspace, read in order:
 | Domain | Team Lead | When to use |
 |--------|-----------|---------------|
 | `coding` | `architect-lead` | Code structure, refactors, multi-file edits |
-| `client-bootstrap` | `client-lead` | New client setup, repo analysis, template scaffold |
-| `upwork-ops` | `client-lead` | Upwork delivery, Monday.com PM (Phase 2) |
-| `automation` | `backend-lead` | Make.com/n8n workflows (Phase 2) |
-| `content` | `content-lead` | Social media clipping pipeline (Phase 2) |
+| `client-bootstrap` | `monday-hermes-pm-lead` | Audit/scaffold scripts + Monday/wiki PM |
+| `upwork-ops` | `monday-hermes-pm-lead` | Upwork delivery, Monday.com PM (Phase 2) |
+| `monday-clients` | `monday-hermes-pm-lead` | Hermes/AI-agent Monday command centers |
+| `automation` | `backend-lead` (Cursor builtin) | Make.com/n8n workflows (Phase 2) |
+| `content` | — | Social clipping (Phase 2; content-lead removed until rebuilt) |
 
 Full routing logic: `orchestrator/router.md`
 

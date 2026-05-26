@@ -40,7 +40,8 @@ Extends existing team-of-teams at `C:/Users/Nicol/agentic/`. MAS adds domain rou
 | Domain | Status |
 |--------|--------|
 | client-bootstrap | Active |
-| coding | Active (via architect-lead) |
+| coding | Active (Cursor built-in architect-lead) |
+| monday-clients | Active (monday-hermes-pm-lead + workers) |
 | upwork-ops | Stub |
 | automation | Stub |
 | content | Stub |

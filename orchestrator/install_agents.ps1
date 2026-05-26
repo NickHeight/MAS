@@ -19,6 +19,8 @@ Get-ChildItem -Path $AgentsSrc -Filter "*.md" | ForEach-Object {
 }
 
 Write-Host ""
-Write-Host "MAS agents installed. Available Team Leads:"
-Write-Host "  - client-lead (client-bootstrap, upwork-ops stub)"
-Write-Host "  - content-lead (content stub, Phase 2)"
+Write-Host "MAS agents installed (Monday/Hermes set only):"
+Write-Host "  - monday-hermes-pm-lead"
+Write-Host "  - monday-board-builder"
+Write-Host "  - monday-hermes-sync-worker"
+Write-Host "Legacy stubs (client-lead, content-lead, sms-monday-reviewer) are not deployed."

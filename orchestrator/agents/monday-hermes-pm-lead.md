@@ -27,7 +27,7 @@ You own **AI-agent client project management** on Monday.com — the pattern Nic
 |--------|------|
 | `monday-board-builder` | New client board provisioning from template |
 | `monday-hermes-sync-worker` | Reconcile wiki ↔ board, update statuses, post digests |
-| `sms-monday-reviewer` | SMS backup → Monday draft suggestions (Marc/HIRO threads) |
+| `scripts/suggest_monday_from_messages.py` | SMS backup → Monday draft suggestions (HITL; no separate subagent) |
 
 ## Hermes skills you maintain
 
