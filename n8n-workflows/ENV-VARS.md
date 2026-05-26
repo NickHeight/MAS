@@ -88,3 +88,21 @@ In days. Used by cron-tick workflows to decide when a contact is ripe for the ne
 | Var | Example | Notes |
 |-----|---------|-------|
 | `DEPLOY_TARGET` | `nick-test` or `hiro-prod` | Read by workflows that want to behave differently in test (synthetic leads) vs prod (real). Used by `cron/sequence-tick.json` to skip cron firing on test except when manually triggered. |
+
+## Added 2026-05-26 (sequence-specific URLs)
+
+| Var | Notes |
+|-----|-------|
+| `CALENDLY_BOOKING_URL_PARAGON` | Per-business Calendly link used in `paragon-tax--appointment-booking`. |
+| `CALENDLY_BOOKING_URL_HH_INSURANCE` | Same shape, HH Insurance Calendly URL. |
+| `CALENDLY_BOOKING_URL_HH_CONSULTING` | Same shape, HH Consulting Calendly URL. |
+| `PARAGON_UPLOAD_URL` | Secure document-upload landing page Hiro shares with clients in `paragon-tax--document-chasing`. |
+
+## Added 2026-05-26 (test harness + n8n-monitor)
+
+| Var | Notes |
+|-----|-------|
+| `DEPLOY_TARGET` | Required guard. `nick-test` | `hiro-prod`. Test harness refuses to run unless this is `nick-test`. |
+| `N8N_API_KEY` | Personal Access Token from n8n Settings → API. Used by `test-harness/trigger_workflow.py` and `hermes/skills/n8n-monitor/scripts/*`. Read-only is enough for monitor; manual-execute requires write. |
+| `HUBSPOT_PRIVATE_APP_TOKEN` | Synonym for HubSpot Private App token in test-harness and n8n-monitor scripts. Some workflows still use credential records instead. Keep both populated. |
+| `TELEGRAM_NICK_CHAT_ID` | Nick's Telegram chat ID for triage escalations (only Hiro triage escalations go through GitHub channel; ops failures DM Nick directly). |

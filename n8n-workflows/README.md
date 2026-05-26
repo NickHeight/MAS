@@ -114,3 +114,69 @@ If picking this up cold:
 3. Look at `lib/` first — sub-workflows are the foundation, sequences just compose them.
 4. Look at `paragon-tax/referral-request.json` as the simplest reference sequence end-to-end.
 5. Look at `cron/sequence-tick.json` as the reference for how sequences get advanced.
+
+## Current inventory (as of 2026-05-26)
+
+| Path | Status |
+|---|---|
+| `lib/send-sms.json` | Production-ready (needs Twilio cred) |
+| `lib/send-email.json` | Production-ready (needs Gmail OAuth cred) |
+| `lib/update-hubspot-contact.json` | Production-ready (needs HubSpot Private App token) |
+| `paragon-tax/referral-request.json` | Step-0 proof |
+| `paragon-tax/new-lead-outreach.json` | Step-0 proof |
+| `paragon-tax/appointment-booking.json` | Step-0 proof |
+| `paragon-tax/document-chasing.json` | Step-0 proof |
+| `paragon-tax/nurture-campaign.json` | Step-0 proof |
+| `paragon-tax/post-close-retention.json` | Step-0 proof |
+| `hh-insurance/referral-request.json` | Step-0 proof |
+| `hh-insurance/qualification-router.json` | **Full 12-node implementation** — Bentley HTTP + 6-way switch + triage fallback |
+| `hh-consulting/referral-request.json` | Step-0 proof |
+| `inbound/calendly-webhook.json` | Production-ready (needs Calendly secret + tunnel) |
+| `inbound/twilio-sms-inbound.json` | Production-ready (gated on A2P 10DLC approval) |
+| `cron/sequence-tick.json` | Production-ready dispatcher (paragon-referral path; clone for other sequences) |
+| `cron/morning-briefing.json` | Production-ready (needs Bentley HTTP up + Telegram cred) |
+| `test-harness/` | E2E harness with 4 fixtures; refuses non-test deploy target |
+| `_tools/extend_qual_router.py` | Generator for the qualification-router downstream nodes |
+
+**18 workflows + 1 generator + 5 harness scripts + 4 fixtures.**
+
+## Bentley-side companion
+
+`hermes/skills/n8n-monitor/` (in `openclaw-elijah-paragon` repo) is the
+operational counterpart. Every 30 min Bentley polls the n8n executions API,
+classifies failures, posts to Monday or DMs Hiro per the classification table.
+Triage-flagged contacts (`hh_insurance_triage_state=awaiting_nick`) escalate
+to Nick after 24h. Bentley stops authoring workflows; he watches them.
+
+## Filling in multi-step sequences
+
+The proof-of-pattern shape (`When Called -> Build Payload -> Call lib -> Build
+State Update -> Advance State -> Result`) is the unit. To add steps 1..N:
+
+1. In n8n, open the proof-of-pattern sequence.
+2. Add a `Switch` node right after `When Called` keyed on
+   `{{ $json.current_step }}`. Replace the linear flow with N branches.
+3. Each branch is a copy of `Build Payload -> Call lib(s)` with that step's
+   copy and channel.
+4. Converge all branches into a single `Build State Update` node that increments
+   the step counter and marks state `completed` when step >= N-1.
+
+Faster to drag in the UI than to author 4 × 4-step JSON files by hand on a
+Windows shell that strips backslash escapes.
+
+## Deploy checklist (Nick)
+
+1. Stand up self-hosted n8n on the Mac Mini (or VPS).
+2. Set env vars per `ENV-VARS.md`.
+3. Import all `lib/*.json` files first. Wire credentials. Note the credential
+   IDs — they appear in every other workflow.
+4. Import sequence workflows. In each, replace `REPLACE_WITH_*_CRED_ID`
+   placeholders with the real cred IDs from step 3.
+5. Import `cron/*` and `inbound/*` workflows.
+6. From `test-harness/`: `export DEPLOY_TARGET=nick-test && bash run_e2e.sh
+   paragon-tax--referral-request` to smoke-test the full path before activating
+   any workflow.
+7. Activate workflows one at a time, starting with the simplest
+   (`paragon-tax--referral-request`).
+8. On the Mac Mini side, install the `n8n-monitor` Hermes skill (it ships in
+   the `openclaw-elijah-paragon` repo at `hermes/skills/n8n-monitor/`).
