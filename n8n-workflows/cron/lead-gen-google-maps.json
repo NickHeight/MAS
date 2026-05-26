@@ -1,0 +1,228 @@
+{
+  "name": "cron--lead-gen-google-maps",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 8 * * 1,3,5" }] }
+      },
+      "id": "trigger",
+      "name": "Mon/Wed/Fri 08:00 CT",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 400],
+      "notes": "Cold lead pipeline. Searches Google Maps for businesses without websites, enriches, scores via Katya/Bentley HTTP, upserts qualified into HubSpot tagged cold-prospect."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "z", "name": "target_zips_csv", "value": "={{ $env.LEAD_GEN_TARGET_ZIPS }}", "type": "string" },
+            { "id": "i", "name": "industries_csv", "value": "={{ $env.LEAD_GEN_INDUSTRIES }}", "type": "string" },
+            { "id": "m", "name": "max_per_run", "value": "={{ parseInt($env.LEAD_GEN_MAX_PER_RUN, 10) }}", "type": "number" },
+            { "id": "t", "name": "qualification_threshold", "value": "={{ parseInt($env.LEAD_GEN_QUAL_THRESHOLD, 10) }}", "type": "number" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "config",
+      "name": "Load Search Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [460, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// TODO in n8n UI: parse target_zips_csv + industries_csv to arrays, fan out cartesian product as one item per (zip, industry). Limit total so we stay under max_per_run. Output: { zip, industry, max_results }."
+      },
+      "id": "fanout",
+      "name": "Fan Out: ZIP x Industry",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "engine", "value": "google_maps" },
+            { "name": "q", "value": "={{ $json.industry }} in {{ $json.zip }}" },
+            { "name": "api_key", "value": "={{ $env.SERPAPI_KEY }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "search",
+      "name": "SerpAPI: Google Maps Search",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 400],
+      "notes": "Default scraper: SerpAPI Developer tier. Swap to Apify or direct Places API by changing this node."
+    },
+    {
+      "parameters": {
+        "jsCode": "// TODO in n8n UI: filter local_results to entries with no website field. Emit one item per qualified candidate: business_name, phone, address, rating, reviews, google_place_id."
+      },
+      "id": "filter",
+      "name": "Filter: No Website",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 400]
+    },
+    {
+      "parameters": {
+        "url": "https://api.findowner.io/v1/business",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "place_id", "value": "={{ $json.google_place_id }}" }
+          ]
+        },
+        "options": { "ignoreResponseCode": true }
+      },
+      "id": "enrich-owner",
+      "name": "Enrich: Owner / Public Records",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1340, 300],
+      "notes": "PLACEHOLDER. Real options: People Data Labs, Apollo.io, Clearbit, state SOS scrapers. Returns owner_name, owner_email, employee_count, revenue_band, years_in_business."
+    },
+    {
+      "parameters": {
+        "url": "https://serpapi.com/search.json",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            { "name": "engine", "value": "google" },
+            { "name": "q", "value": "={{ $json.business_name }} {{ $json.address }} linkedin facebook instagram" },
+            { "name": "api_key", "value": "={{ $env.SERPAPI_KEY }}" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "enrich-social",
+      "name": "Enrich: Social Presence",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1340, 500]
+    },
+    {
+      "parameters": {
+        "jsCode": "// TODO in n8n UI: merge owner-enrichment + social-enrichment by index. Output each candidate with all enrichment fields. Extract social_links from organic_results via regex on (linkedin|facebook|instagram|tiktok).com URLs."
+      },
+      "id": "merge",
+      "name": "Merge Enrichment Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1560, 400]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.KATYA_HTTP_URL || $env.BENTLEY_HTTP_URL }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer {{ $env.KATYA_HTTP_TOKEN || $env.BENTLEY_HTTP_TOKEN }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "skill", "value": "qualify-cold-prospect" },
+            { "name": "candidate", "value": "={{ $json }}" },
+            { "name": "instructions", "value": "Score 1-10 on ICP fit for AI automation services. Higher = under-digitized, owner-operated, established but stagnant, in service area. Return JSON: score, reason, recommended_intro_hook." }
+          ]
+        },
+        "options": {}
+      },
+      "id": "ai-score",
+      "name": "Katya/Bentley: Score Qualification",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1780, 400],
+      "notes": "Per-agent API key boundary: KATYA_* env vars for Heights prospects, BENTLEY_* for HIROs. Boundary enforced per deployment, not at runtime."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            {
+              "id": "q",
+              "leftValue": "={{ $json.score }}",
+              "rightValue": "={{ $node[\"Load Search Config\"].json.qualification_threshold }}",
+              "operator": { "type": "number", "operation": "gte" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "gate",
+      "name": "Score >= Threshold?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [2000, 400]
+    },
+    {
+      "parameters": {
+        "jsCode": "// TODO in n8n UI: build HubSpot upsert payload from merged candidate + AI score. contact_email = owner_email. properties = { firstname/lastname split from owner_name, company, phone, address, cold_prospect_score, cold_prospect_reason, cold_prospect_hook, cold_prospect_source: google_maps_no_website, cold_outreach_state: active, cold_outreach_step: 0, cold_outreach_last_action_at: now }."
+      },
+      "id": "build",
+      "name": "Build HubSpot Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [2220, 300]
+    },
+    {
+      "parameters": { "workflowId": "lib-update-hubspot-contact", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "upsert",
+      "name": "Add to HubSpot",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [2440, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "ts", "name": "rejected_at", "value": "={{ $now.toISO() }}", "type": "string" },
+            { "id": "s", "name": "score", "value": "={{ $json.score }}", "type": "number" },
+            { "id": "r", "name": "rejection_reason", "value": "={{ $json.reason }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "log-rejected",
+      "name": "Log Below-Threshold",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [2220, 500]
+    }
+  ],
+  "connections": {
+    "Mon/Wed/Fri 08:00 CT": { "main": [[{ "node": "Load Search Config", "type": "main", "index": 0 }]] },
+    "Load Search Config": { "main": [[{ "node": "Fan Out: ZIP x Industry", "type": "main", "index": 0 }]] },
+    "Fan Out: ZIP x Industry": { "main": [[{ "node": "SerpAPI: Google Maps Search", "type": "main", "index": 0 }]] },
+    "SerpAPI: Google Maps Search": { "main": [[{ "node": "Filter: No Website", "type": "main", "index": 0 }]] },
+    "Filter: No Website": { "main": [[{ "node": "Enrich: Owner / Public Records", "type": "main", "index": 0 }, { "node": "Enrich: Social Presence", "type": "main", "index": 0 }]] },
+    "Enrich: Owner / Public Records": { "main": [[{ "node": "Merge Enrichment Data", "type": "main", "index": 0 }]] },
+    "Enrich: Social Presence": { "main": [[{ "node": "Merge Enrichment Data", "type": "main", "index": 0 }]] },
+    "Merge Enrichment Data": { "main": [[{ "node": "Katya/Bentley: Score Qualification", "type": "main", "index": 0 }]] },
+    "Katya/Bentley: Score Qualification": { "main": [[{ "node": "Score >= Threshold?", "type": "main", "index": 0 }]] },
+    "Score >= Threshold?": {
+      "main": [
+        [{ "node": "Build HubSpot Payload", "type": "main", "index": 0 }],
+        [{ "node": "Log Below-Threshold", "type": "main", "index": 0 }]
+      ]
+    },
+    "Build HubSpot Payload": { "main": [[{ "node": "Add to HubSpot", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1", "timezone": "America/Chicago" },
+  "tags": [{ "name": "cron" }, { "name": "lead-gen" }, { "name": "height-consulting-template" }],
+  "versionId": "1",
+  "id": "cron-lead-gen-google-maps"
+}

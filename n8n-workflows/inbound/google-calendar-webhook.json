@@ -1,0 +1,158 @@
+{
+  "name": "inbound--google-calendar-webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "google-calendar",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Google Calendar Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "google-calendar",
+      "notes": "Google Calendar push notifications. Subscribe via POST /calendars/primary/events/watch with channel id + token + webhookURL. Google sends X-Goog headers; body is empty (you back-fetch by ID). Channel expires every ~1 week - needs renewal cron. Initial subscription = X-Goog-Resource-State: sync (just ack 200, no fetch)."
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            { "conditions": { "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "loose" }, "conditions": [{ "id": "sync", "leftValue": "={{ $json.headers[\"x-goog-resource-state\"] }}", "rightValue": "sync", "operator": { "type": "string", "operation": "equals" } }], "combinator": "and" }, "renameOutput": true, "outputKey": "subscription_sync" },
+            { "conditions": { "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "loose" }, "conditions": [{ "id": "exists", "leftValue": "={{ $json.headers[\"x-goog-resource-state\"] }}", "rightValue": "exists", "operator": { "type": "string", "operation": "equals" } }], "combinator": "and" }, "renameOutput": true, "outputKey": "event_change" }
+          ],
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "other_state"
+        },
+        "options": {}
+      },
+      "id": "route-state",
+      "name": "Route by Resource State",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            {
+              "id": "token-ok",
+              "leftValue": "={{ $json.headers[\"x-goog-channel-token\"] }}",
+              "rightValue": "={{ $env.GOOGLE_CAL_CHANNEL_TOKEN }}",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "verify-token",
+      "name": "Verify Channel Token",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "=https://www.googleapis.com/calendar/v3/calendars/primary/events?updatedMin={{ $now.minus({minutes: 5}).toISO() }}&showDeleted=false&singleEvents=true&orderBy=updated&maxResults=10",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "googleApi",
+        "options": {}
+      },
+      "id": "fetch-recent",
+      "name": "Calendar: Fetch Recent Updates",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 200],
+      "credentials": {
+        "googleApi": { "id": "REPLACE_WITH_GOOGLE_CAL_CRED_ID", "name": "Google Calendar (HIRO)" }
+      },
+      "notes": "Google's webhook doesnt include the eventId - we fetch updates from last 5 min. Adjust window if traffic is bursty. Alternative: keep a sync token via /calendars/primary/events list and use syncToken for incremental updates (cleaner but more state)."
+    },
+    {
+      "parameters": {
+        "jsCode": "const events = $input.first().json.items || [];\nconst leads = [];\nfor (const ev of events) {\n  const attendee = (ev.attendees || []).find(a => !a.organizer);\n  if (!attendee || !attendee.email) continue;\n  leads.push({\n    contact_email: attendee.email,\n    invitee_name: attendee.displayName || attendee.email,\n    event_start: ev.start.dateTime || ev.start.date,\n    event_summary: ev.summary,\n    properties: {\n      gcal_last_booking_at: new Date().toISOString(),\n      gcal_event_summary: ev.summary,\n      gcal_next_meeting_at: ev.start.dateTime || ev.start.date,\n      document_chasing_state: 'active',\n      document_chasing_step: 0,\n      document_chasing_last_action_at: new Date().toISOString()\n    }\n  });\n}\nreturn leads.map(l => ({ json: l }));"
+      },
+      "id": "extract-leads",
+      "name": "Extract Leads from Events",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": { "workflowId": "lib-update-hubspot-contact", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "upsert",
+      "name": "Upsert in HubSpot",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseCode": 200,
+        "responseBody": "={{ { ok: true, processed: $json.length } }}",
+        "options": {}
+      },
+      "id": "respond-ok",
+      "name": "200 OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1560, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseCode": 200,
+        "responseBody": "={{ { ok: true, action: \"sync_acknowledged\" } }}",
+        "options": {}
+      },
+      "id": "respond-sync",
+      "name": "200 Sync Ack",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [680, 100]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseCode": 401,
+        "responseBody": "={{ { ok: false, error: \"invalid_channel_token\" } }}",
+        "options": {}
+      },
+      "id": "respond-bad-token",
+      "name": "401 Bad Token",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [900, 400]
+    }
+  ],
+  "connections": {
+    "Google Calendar Webhook": { "main": [[{ "node": "Route by Resource State", "type": "main", "index": 0 }]] },
+    "Route by Resource State": {
+      "main": [
+        [{ "node": "200 Sync Ack", "type": "main", "index": 0 }],
+        [{ "node": "Verify Channel Token", "type": "main", "index": 0 }],
+        [{ "node": "200 Sync Ack", "type": "main", "index": 0 }]
+      ]
+    },
+    "Verify Channel Token": {
+      "main": [
+        [{ "node": "Calendar: Fetch Recent Updates", "type": "main", "index": 0 }],
+        [{ "node": "401 Bad Token", "type": "main", "index": 0 }]
+      ]
+    },
+    "Calendar: Fetch Recent Updates": { "main": [[{ "node": "Extract Leads from Events", "type": "main", "index": 0 }]] },
+    "Extract Leads from Events": { "main": [[{ "node": "Upsert in HubSpot", "type": "main", "index": 0 }]] },
+    "Upsert in HubSpot": { "main": [[{ "node": "200 OK", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "inbound" }, { "name": "google-calendar" }, { "name": "calendar" }],
+  "versionId": "1",
+  "id": "inbound-google-calendar"
+}

@@ -1,0 +1,169 @@
+{
+  "name": "inbound--outlook-calendar-webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "outlook-calendar",
+        "responseMode": "responseNode",
+        "options": { "rawBody": true }
+      },
+      "id": "webhook",
+      "name": "Outlook Calendar Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "outlook-calendar",
+      "notes": "Microsoft Graph 2-phase webhook. Phase 1: subscription handshake (Graph sends ?validationToken=X, must echo as text/plain within 10s). Phase 2: change notifications (POST body with subscriptionId, changeType, resourceData.id, clientState). Subscribe via POST https://graph.microsoft.com/v1.0/subscriptions with notificationUrl pointing here. Subscriptions expire every 3 days max - needs renewal cron."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "loose" },
+          "conditions": [
+            {
+              "id": "is-handshake",
+              "leftValue": "={{ $json.query.validationToken }}",
+              "rightValue": "",
+              "operator": { "type": "string", "operation": "notEmpty" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-handshake",
+      "name": "Is Validation Handshake?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "={{ $('Outlook Calendar Webhook').item.json.query.validationToken }}",
+        "options": { "responseHeaders": { "entries": [{ "name": "Content-Type", "value": "text/plain" }] } }
+      },
+      "id": "handshake-echo",
+      "name": "Echo Validation Token",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [680, 100],
+      "notes": "Must respond within 10 seconds with text/plain body = validationToken."
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            {
+              "id": "client-state-ok",
+              "leftValue": "={{ $json.body.value[0].clientState }}",
+              "rightValue": "={{ $env.OUTLOOK_GRAPH_CLIENT_STATE }}",
+              "operator": { "type": "string", "operation": "equals" }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "verify-client-state",
+      "name": "Verify clientState",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [680, 500]
+    },
+    {
+      "parameters": {
+        "url": "=https://graph.microsoft.com/v1.0/me/events/{{ $json.body.value[0].resourceData.id }}",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "microsoftOAuth2Api",
+        "options": {}
+      },
+      "id": "fetch-event",
+      "name": "Graph: Fetch Event Details",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 400],
+      "credentials": {
+        "microsoftOAuth2Api": { "id": "REPLACE_WITH_MS_GRAPH_CRED_ID", "name": "Microsoft Graph (Outlook HIRO)" }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "email", "name": "contact_email", "value": "={{ $json.attendees[0].emailAddress.address }}", "type": "string" },
+            { "id": "name", "name": "invitee_name", "value": "={{ $json.attendees[0].emailAddress.name }}", "type": "string" },
+            { "id": "start", "name": "event_start", "value": "={{ $json.start.dateTime }}", "type": "string" },
+            { "id": "subject", "name": "event_subject", "value": "={{ $json.subject }}", "type": "string" },
+            { "id": "props", "name": "properties", "value": "={{ { outlook_last_booking_at: $now.toISO(), outlook_event_subject: $json.subject, outlook_next_meeting_at: $json.start.dateTime, document_chasing_state: \"active\", document_chasing_step: 0, document_chasing_last_action_at: $now.toISO() } }}", "type": "object" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-update",
+      "name": "Build Contact Update",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1120, 400]
+    },
+    {
+      "parameters": { "workflowId": "lib-update-hubspot-contact", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "upsert",
+      "name": "Upsert in HubSpot",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [1340, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseCode": 202,
+        "responseBody": "={{ { ok: true } }}",
+        "options": {}
+      },
+      "id": "respond-accepted",
+      "name": "202 Accepted",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1560, 400]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseCode": 401,
+        "responseBody": "={{ { ok: false, error: \"invalid_client_state\" } }}",
+        "options": {}
+      },
+      "id": "respond-bad-state",
+      "name": "401 Bad clientState",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [900, 600]
+    }
+  ],
+  "connections": {
+    "Outlook Calendar Webhook": { "main": [[{ "node": "Is Validation Handshake?", "type": "main", "index": 0 }]] },
+    "Is Validation Handshake?": {
+      "main": [
+        [{ "node": "Echo Validation Token", "type": "main", "index": 0 }],
+        [{ "node": "Verify clientState", "type": "main", "index": 0 }]
+      ]
+    },
+    "Verify clientState": {
+      "main": [
+        [{ "node": "Graph: Fetch Event Details", "type": "main", "index": 0 }],
+        [{ "node": "401 Bad clientState", "type": "main", "index": 0 }]
+      ]
+    },
+    "Graph: Fetch Event Details": { "main": [[{ "node": "Build Contact Update", "type": "main", "index": 0 }]] },
+    "Build Contact Update": { "main": [[{ "node": "Upsert in HubSpot", "type": "main", "index": 0 }]] },
+    "Upsert in HubSpot": { "main": [[{ "node": "202 Accepted", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "inbound" }, { "name": "outlook" }, { "name": "calendar" }],
+  "versionId": "1",
+  "id": "inbound-outlook-calendar"
+}
