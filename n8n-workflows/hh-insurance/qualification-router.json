@@ -1,0 +1,682 @@
+{
+  "name": "hh-insurance--qualification-router",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger",
+      "name": "When Called",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        200,
+        600
+      ],
+      "notes": "Input: contact_id, contact_email, phone, first_name, last_name, intake_form_payload (age, marital_status, dependents, occupation, coverage_now, primary_concern, urgency, income_bracket, free_text). Output: contact routed into exactly one of 6 HH Insurance tracks OR flagged for Nick triage if confidence < threshold."
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.BENTLEY_HTTP_URL }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{ $env.BENTLEY_HTTP_TOKEN }}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyContentType": "json",
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ skill: \"qualify-insurance-lead\", contact: { id: $json.contact_id, email: $json.contact_email, first_name: $json.first_name, phone: $json.phone }, intake: $json.intake_form_payload, instructions: \"Classify into exactly one of: young-parent | wealth-building | term-to-IUL | urgent-no-coverage | business-owner | re-engage. Use SOUL.md voice for the suggested_first_touch_copy. Return JSON with track, confidence (0..1), reasoning, suggested_first_touch_copy.\" }) }}",
+        "options": {
+          "timeout": 30000
+        }
+      },
+      "id": "bentley-classify",
+      "name": "Bentley: Classify Lead",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        420,
+        600
+      ],
+      "continueOnFail": true,
+      "notes": "Path B hybrid: n8n owns I/O + state, Bentley owns the judgment. continueOnFail catches Bentley HTTP outages so the triage branch fires."
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict"
+                },
+                "conditions": [
+                  {
+                    "id": "low",
+                    "leftValue": "={{ $json.confidence || 0 }}",
+                    "rightValue": 0.6,
+                    "operator": {
+                      "type": "number",
+                      "operation": "lt"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "low_confidence_triage"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "yp",
+                    "leftValue": "={{ $json.track }}",
+                    "rightValue": "young-parent",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "young_parent"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "wb",
+                    "leftValue": "={{ $json.track }}",
+                    "rightValue": "wealth-building",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "wealth_building"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "t2i",
+                    "leftValue": "={{ $json.track }}",
+                    "rightValue": "term-to-IUL",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "term_to_iul"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "urg",
+                    "leftValue": "={{ $json.track }}",
+                    "rightValue": "urgent-no-coverage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "urgent_no_coverage"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "bo",
+                    "leftValue": "={{ $json.track }}",
+                    "rightValue": "business-owner",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "business_owner"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": false,
+                  "leftValue": "",
+                  "typeValidation": "loose"
+                },
+                "conditions": [
+                  {
+                    "id": "re",
+                    "leftValue": "={{ $json.track }}",
+                    "rightValue": "re-engage",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "re_engage"
+            }
+          ],
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "unknown_track"
+        },
+        "options": {}
+      },
+      "id": "route",
+      "name": "Route by Track",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        640,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ce",
+              "name": "contact_email",
+              "value": "={{ $node[\"When Called\"].json.contact_email }}",
+              "type": "string"
+            },
+            {
+              "id": "props",
+              "name": "properties",
+              "value": "={{ { hh_insurance_track: \"young-parent\", hh_insurance_young_parent_step: 0, hh_insurance_young_parent_state: \"active\", hh_insurance_young_parent_enrolled_at: $now.toISO(), hh_insurance_classification_confidence: $json.confidence, hh_insurance_classification_reasoning: $json.reasoning } }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "enroll-yp",
+      "name": "Enroll: Young Parent",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ce",
+              "name": "contact_email",
+              "value": "={{ $node[\"When Called\"].json.contact_email }}",
+              "type": "string"
+            },
+            {
+              "id": "props",
+              "name": "properties",
+              "value": "={{ { hh_insurance_track: \"wealth-building\", hh_insurance_wealth_building_step: 0, hh_insurance_wealth_building_state: \"active\", hh_insurance_wealth_building_enrolled_at: $now.toISO(), hh_insurance_classification_confidence: $json.confidence, hh_insurance_classification_reasoning: $json.reasoning } }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "enroll-wb",
+      "name": "Enroll: Wealth Building",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        320
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ce",
+              "name": "contact_email",
+              "value": "={{ $node[\"When Called\"].json.contact_email }}",
+              "type": "string"
+            },
+            {
+              "id": "props",
+              "name": "properties",
+              "value": "={{ { hh_insurance_track: \"term-to-IUL\", hh_insurance_term_to_iul_step: 0, hh_insurance_term_to_iul_state: \"active\", hh_insurance_term_to_iul_enrolled_at: $now.toISO(), hh_insurance_classification_confidence: $json.confidence, hh_insurance_classification_reasoning: $json.reasoning } }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "enroll-t2i",
+      "name": "Enroll: Term to IUL",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        440
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ce",
+              "name": "contact_email",
+              "value": "={{ $node[\"When Called\"].json.contact_email }}",
+              "type": "string"
+            },
+            {
+              "id": "props",
+              "name": "properties",
+              "value": "={{ { hh_insurance_track: \"urgent-no-coverage\", hh_insurance_urgent_step: 0, hh_insurance_urgent_state: \"active\", hh_insurance_urgent_enrolled_at: $now.toISO(), hh_insurance_classification_confidence: $json.confidence, hh_insurance_classification_reasoning: $json.reasoning } }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "enroll-urg",
+      "name": "Enroll: Urgent No Coverage",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        560
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ce",
+              "name": "contact_email",
+              "value": "={{ $node[\"When Called\"].json.contact_email }}",
+              "type": "string"
+            },
+            {
+              "id": "props",
+              "name": "properties",
+              "value": "={{ { hh_insurance_track: \"business-owner\", hh_insurance_business_owner_step: 0, hh_insurance_business_owner_state: \"active\", hh_insurance_business_owner_enrolled_at: $now.toISO(), hh_insurance_classification_confidence: $json.confidence, hh_insurance_classification_reasoning: $json.reasoning } }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "enroll-bo",
+      "name": "Enroll: Business Owner",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        680
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ce",
+              "name": "contact_email",
+              "value": "={{ $node[\"When Called\"].json.contact_email }}",
+              "type": "string"
+            },
+            {
+              "id": "props",
+              "name": "properties",
+              "value": "={{ { hh_insurance_track: \"re-engage\", hh_insurance_re_engage_step: 0, hh_insurance_re_engage_state: \"active\", hh_insurance_re_engage_enrolled_at: $now.toISO(), hh_insurance_classification_confidence: $json.confidence, hh_insurance_classification_reasoning: $json.reasoning } }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "enroll-re",
+      "name": "Enroll: Re-engage",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        800
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "ce",
+              "name": "contact_email",
+              "value": "={{ $node[\"When Called\"].json.contact_email }}",
+              "type": "string"
+            },
+            {
+              "id": "props",
+              "name": "properties",
+              "value": "={{ { hh_insurance_track: \"NEEDS_TRIAGE\", hh_insurance_triage_state: \"awaiting_nick\", hh_insurance_triage_flagged_at: $now.toISO(), hh_insurance_classification_confidence: $json.confidence || 0, hh_insurance_classification_reasoning: $json.reasoning || \"bentley_unavailable_or_unknown\", hh_insurance_raw_track: $json.track || \"unknown\" } }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "enroll-triage",
+      "name": "Enroll: Low Confidence Triage",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        860,
+        920
+      ],
+      "notes": "Fires when Bentley confidence < 0.6 OR Bentley HTTP failed OR track unrecognized. Contact lands in HubSpot tagged for manual review. n8n-monitor skill surfaces to Nick via Monday."
+    },
+    {
+      "parameters": {
+        "workflowId": "lib-update-hubspot-contact",
+        "workflowInputs": {
+          "value": "={{ $json }}"
+        }
+      },
+      "id": "apply-update",
+      "name": "Apply HubSpot Update",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        1100,
+        600
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "seq",
+              "name": "router",
+              "value": "hh-insurance--qualification-router",
+              "type": "string"
+            },
+            {
+              "id": "track",
+              "name": "track",
+              "value": "={{ $node[\"Bentley: Classify Lead\"].json.track || \"triage\" }}",
+              "type": "string"
+            },
+            {
+              "id": "cid",
+              "name": "contact_id",
+              "value": "={{ $node[\"When Called\"].json.contact_id }}",
+              "type": "string"
+            },
+            {
+              "id": "ts",
+              "name": "routed_at",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "result",
+      "name": "Router Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1340,
+        600
+      ]
+    }
+  ],
+  "connections": {
+    "When Called": {
+      "main": [
+        [
+          {
+            "node": "Bentley: Classify Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bentley: Classify Lead": {
+      "main": [
+        [
+          {
+            "node": "Route by Track",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Route by Track": {
+      "main": [
+        [
+          {
+            "node": "Enroll: Low Confidence Triage",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enroll: Young Parent",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enroll: Wealth Building",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enroll: Term to IUL",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enroll: Urgent No Coverage",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enroll: Business Owner",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enroll: Re-engage",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Enroll: Low Confidence Triage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enroll: Young Parent": {
+      "main": [
+        [
+          {
+            "node": "Apply HubSpot Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enroll: Wealth Building": {
+      "main": [
+        [
+          {
+            "node": "Apply HubSpot Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enroll: Term to IUL": {
+      "main": [
+        [
+          {
+            "node": "Apply HubSpot Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enroll: Urgent No Coverage": {
+      "main": [
+        [
+          {
+            "node": "Apply HubSpot Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enroll: Business Owner": {
+      "main": [
+        [
+          {
+            "node": "Apply HubSpot Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enroll: Re-engage": {
+      "main": [
+        [
+          {
+            "node": "Apply HubSpot Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enroll: Low Confidence Triage": {
+      "main": [
+        [
+          {
+            "node": "Apply HubSpot Update",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Apply HubSpot Update": {
+      "main": [
+        [
+          {
+            "node": "Router Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "router"
+    },
+    {
+      "name": "business-hh-insurance"
+    },
+    {
+      "name": "ai-call"
+    }
+  ],
+  "versionId": "1",
+  "id": "hh-insurance--qualification-router"
+}
