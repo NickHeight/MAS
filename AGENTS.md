@@ -5,6 +5,7 @@
 - Prefers client-facing delivery surfaces to be simple, polished, mobile-friendly, and one-place for clients rather than split across email, Drive, and project boards.
 - Wants background agents to drain `TASKS.md` continuously rather than stopping at turn checkpoints; when blocked, mark the blocker and continue to the next open task.
 - Upwork pre-contract Katya replies must stay in-platform — no external scheduling links, phone numbers, or off-platform contact requests until the contract/workroom is active.
+- Wants client-facing Monday boards cleaned up daily — completed items moved into a Completed group so the board reflects active work, not a wall of finished tasks.
 
 ## Learned Workspace Facts
 
@@ -16,3 +17,4 @@
 - Firecrawl is authenticated for this workspace; `.firecrawl/` is ignored and used as a local cache for public research outputs.
 - `llm_wiki/architecture/mas_subagent_doc_context_map.md` maps cached `.firecrawl/mas-docs/` documentation packs to MAS subagent domains.
 - Frontier model routing research lives in `frontier-model-research/02_plan/complete-plan.md`, with Global KB companions under `_reference/frontier-model-research/`.
+- `C:/Users/Nicol/katya-ai` is Nick's personal Hermes-agent + n8n sandbox cloned from the HIRO/OpenClaw bundle (`Upwork/projects/Elijah B - OpenClaw AI Agent 3 Businesses/openclaw-elijah-paragon/hermes`), used to validate workflows and skills end-to-end before client handoff.
