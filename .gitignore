@@ -12,3 +12,6 @@ __pycache__/
 
 # MAS local runtime state — alert ACKs, loop heartbeats
 .mas/
+
+# Cursor continual-learning hook state (per-session, regenerated)
+.cursor/hooks/state/
