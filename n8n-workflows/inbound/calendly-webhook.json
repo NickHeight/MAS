@@ -1,0 +1,117 @@
+{
+  "name": "inbound--calendly-webhook",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "calendly",
+        "responseMode": "responseNode",
+        "options": { "rawBody": true }
+      },
+      "id": "webhook",
+      "name": "Calendly Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "calendly-hiro",
+      "notes": "Public URL exposed via Cloudflare Tunnel. Register at api.calendly.com/webhook_subscriptions, scope to invitee.created. Signature verification via x-calendly-signature header + CALENDLY_WEBHOOK_SECRET."
+    },
+    {
+      "parameters": {
+        "jsCode": "const crypto = require('crypto');\nconst secret = $env.CALENDLY_WEBHOOK_SECRET;\nconst signatureHeader = $input.first().json.headers['calendly-webhook-signature'];\nif (!secret || !signatureHeader) {\n  return [{ json: { valid: false, reason: 'missing_secret_or_header' } }];\n}\nconst parts = Object.fromEntries(signatureHeader.split(',').map(p => p.split('=')));\nconst body = $input.first().json.rawBody || JSON.stringify($input.first().json.body);\nconst expected = crypto.createHmac('sha256', secret).update(parts.t + '.' + body).digest('hex');\nconst valid = parts.v1 === expected;\nreturn [{ json: { valid, event: $input.first().json.body.event, payload: $input.first().json.body.payload } }];"
+      },
+      "id": "verify-sig",
+      "name": "Verify Signature",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": { "caseSensitive": true, "leftValue": "", "typeValidation": "strict" },
+          "conditions": [
+            { "id": "valid", "leftValue": "={{ $json.valid }}", "rightValue": true, "operator": { "type": "boolean", "operation": "true" } }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "if-valid",
+      "name": "Signature OK?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "email", "name": "contact_email", "value": "={{ $json.payload.invitee.email }}", "type": "string" },
+            { "id": "name", "name": "invitee_name", "value": "={{ $json.payload.invitee.name }}", "type": "string" },
+            { "id": "start", "name": "event_start", "value": "={{ $json.payload.event.start_time }}", "type": "string" },
+            { "id": "event_type", "name": "event_type", "value": "={{ $json.payload.event_type.name }}", "type": "string" },
+            { "id": "props", "name": "properties", "value": "={{ { calendly_last_booking_at: $now.toISO(), calendly_last_event_type: $json.event_type, calendly_next_meeting_at: $json.event_start, document_chasing_state: \"active\", document_chasing_step: 0, document_chasing_last_action_at: $now.toISO() } }}", "type": "object" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-update",
+      "name": "Build Contact Update",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [900, 200],
+      "notes": "Booking sets document_chasing_state=active so the next sequence-tick run picks the contact up. Pre-call brief sequence reads calendly_next_meeting_at for timing."
+    },
+    {
+      "parameters": { "workflowId": "lib-update-hubspot-contact", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "upsert-contact",
+      "name": "Upsert in HubSpot",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [1120, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { ok: true, action: \"contact_upserted_doc_chasing_enrolled\" } }}",
+        "options": {}
+      },
+      "id": "respond-ok",
+      "name": "200 OK",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1340, 200]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseCode": 401,
+        "responseBody": "={{ { ok: false, error: \"invalid_signature\" } }}",
+        "options": {}
+      },
+      "id": "respond-bad-sig",
+      "name": "401 Invalid Signature",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [900, 400]
+    }
+  ],
+  "connections": {
+    "Calendly Webhook": { "main": [[{ "node": "Verify Signature", "type": "main", "index": 0 }]] },
+    "Verify Signature": { "main": [[{ "node": "Signature OK?", "type": "main", "index": 0 }]] },
+    "Signature OK?": {
+      "main": [
+        [{ "node": "Build Contact Update", "type": "main", "index": 0 }],
+        [{ "node": "401 Invalid Signature", "type": "main", "index": 0 }]
+      ]
+    },
+    "Build Contact Update": { "main": [[{ "node": "Upsert in HubSpot", "type": "main", "index": 0 }]] },
+    "Upsert in HubSpot": { "main": [[{ "node": "200 OK", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "inbound" }, { "name": "calendly" }],
+  "versionId": "1",
+  "id": "inbound-calendly-webhook"
+}

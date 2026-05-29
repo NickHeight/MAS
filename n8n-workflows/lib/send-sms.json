@@ -1,0 +1,86 @@
+{
+  "name": "lib--send-sms",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-execute",
+      "name": "When Called",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "notes": "Input schema: { to: E.164 string, body: string, business_unit: 'paragon_tax'|'hh_insurance'|'hh_consulting', lead_id: string, status_callback?: string }"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "from-number",
+              "name": "from_number",
+              "value": "={{ $env['TWILIO_FROM_NUMBER_' + $json.business_unit.toUpperCase()] || $env.TWILIO_FROM_NUMBER }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "resolve-from",
+      "name": "Resolve From Number",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [460, 300],
+      "notes": "Per-business from-number: set TWILIO_FROM_NUMBER_PARAGON_TAX etc. Falls back to TWILIO_FROM_NUMBER."
+    },
+    {
+      "parameters": {
+        "from": "={{ $json.from_number }}",
+        "to": "={{ $('When Called').item.json.to }}",
+        "toWhatsapp": false,
+        "message": "={{ $('When Called').item.json.body }}",
+        "options": {
+          "statusCallback": "={{ $('When Called').item.json.status_callback || $env.TWILIO_STATUS_CALLBACK_URL }}"
+        }
+      },
+      "id": "twilio-send",
+      "name": "Twilio: Send SMS",
+      "type": "n8n-nodes-base.twilio",
+      "typeVersion": 1,
+      "position": [680, 300],
+      "credentials": {
+        "twilioApi": { "id": "REPLACE_WITH_TWILIO_CRED_ID", "name": "Twilio HIRO" }
+      },
+      "continueOnFail": true,
+      "notes": "On A2P-not-approved error, Twilio returns 21610 / 21408. Caller should check error.code and route to queue-for-when-A2P-clears branch."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "status", "name": "status", "value": "={{ $json.sid ? 'sent' : 'failed' }}", "type": "string" },
+            { "id": "twilio_sid", "name": "twilio_sid", "value": "={{ $json.sid || null }}", "type": "string" },
+            { "id": "error", "name": "error", "value": "={{ $json.error ? { code: $json.error.code, message: $json.error.message } : null }}", "type": "object" },
+            { "id": "lead_id", "name": "lead_id", "value": "={{ $('When Called').item.json.lead_id }}", "type": "string" },
+            { "id": "business_unit", "name": "business_unit", "value": "={{ $('When Called').item.json.business_unit }}", "type": "string" },
+            { "id": "sent_at", "name": "sent_at", "value": "={{ $now.toISO() }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "format-result",
+      "name": "Format Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [900, 300]
+    }
+  ],
+  "connections": {
+    "When Called": { "main": [[{ "node": "Resolve From Number", "type": "main", "index": 0 }]] },
+    "Resolve From Number": { "main": [[{ "node": "Twilio: Send SMS", "type": "main", "index": 0 }]] },
+    "Twilio: Send SMS": { "main": [[{ "node": "Format Result", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "lib" }, { "name": "channel-sms" }],
+  "versionId": "1",
+  "id": "lib-send-sms"
+}

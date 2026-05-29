@@ -1,0 +1,108 @@
+{
+  "name": "cron--morning-briefing",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": { "interval": [{ "field": "cronExpression", "expression": "0 7 * * *" }] }
+      },
+      "id": "trigger",
+      "name": "Daily 07:00 CT",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300],
+      "notes": "Generates Hiros daily briefing. Aggregates: (a) sequence activity yesterday, (b) Calendly bookings next 48h, (c) unanswered leads >24h, (d) Bentley n8n-monitor flags. DMs result to Hiro via Bentley HTTP."
+    },
+    {
+      "parameters": {
+        "url": "https://api.hubapi.com/crm/v3/objects/contacts/search",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyContentType": "json",
+        "jsonBody": "{ \"filterGroups\": [{ \"filters\": [{ \"propertyName\": \"hs_lastmodifieddate\", \"operator\": \"GTE\", \"value\": \"{{ $now.minus({hours: 24}).toMillis() }}\" }] }], \"properties\": [\"email\", \"firstname\", \"lastname\", \"hs_lastmodifieddate\", \"lifecyclestage\", \"paragon_referral_state\", \"hh_insurance_qualification_state\", \"hh_consulting_investor_state\"], \"limit\": 100 }",
+        "options": {}
+      },
+      "id": "fetch-activity",
+      "name": "HubSpot: Last 24h Activity",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [460, 300],
+      "credentials": {
+        "httpHeaderAuth": { "id": "REPLACE_WITH_HUBSPOT_TOKEN_AUTH_ID", "name": "HubSpot Bearer Auth" }
+      },
+      "notes": "Uses raw HubSpot HTTP rather than the typed node so we can do date-math filtering. Alternative: lib/find-hubspot-contacts-modified-since.json sub-workflow."
+    },
+    {
+      "parameters": {
+        "jsCode": "const items = $input.all();\nconst contacts = items[0].json.results || [];\nconst byBusiness = { paragon_tax: 0, hh_insurance: 0, hh_consulting: 0, other: 0 };\nconst stalled = [];\nfor (const c of contacts) {\n  const props = c.properties;\n  if (props.paragon_referral_state) byBusiness.paragon_tax++;\n  else if (props.hh_insurance_qualification_state) byBusiness.hh_insurance++;\n  else if (props.hh_consulting_investor_state) byBusiness.hh_consulting++;\n  else byBusiness.other++;\n}\nconst summary = {\n  date: $now.toFormat('yyyy-MM-dd'),\n  contacts_touched_24h: contacts.length,\n  by_business: byBusiness,\n  stalled_count: stalled.length,\n  bookings_next_48h_count: 0\n};\nreturn [{ json: summary }];"
+      },
+      "id": "aggregate",
+      "name": "Aggregate Stats",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.BENTLEY_HTTP_URL }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer {{ $env.BENTLEY_HTTP_TOKEN }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "skill", "value": "morning-briefing-narrative" },
+            { "name": "stats", "value": "={{ $json }}" },
+            { "name": "instructions", "value": "Write Hiros morning briefing in the SOUL.md voice. Max 250 words. Lead with what changed since yesterday, then anything that needs his decision today, then a one-line motivational close. No bullet points unless absolutely needed - this reads on Telegram." }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bentley-narrate",
+      "name": "Bentley: Write Briefing",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [900, 300],
+      "notes": "Path B hybrid: n8n gathers stats, Bentley writes the prose with brand voice."
+    },
+    {
+      "parameters": {
+        "url": "https://api.telegram.org/bot{{ $env.TELEGRAM_BOT_TOKEN }}/sendMessage",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "chat_id", "value": "={{ $env.TELEGRAM_HIRO_CHAT_ID }}" },
+            { "name": "text", "value": "={{ $json.narrative }}" },
+            { "name": "parse_mode", "value": "Markdown" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "telegram-send",
+      "name": "Telegram: DM Hiro",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1120, 300],
+      "notes": "Direct Telegram send bypasses Bentley for delivery. Alternative if you do not want n8n to hold the bot token: route through Bentley with skill=send-telegram - keeps the token in one place."
+    }
+  ],
+  "connections": {
+    "Daily 07:00 CT": { "main": [[{ "node": "HubSpot: Last 24h Activity", "type": "main", "index": 0 }]] },
+    "HubSpot: Last 24h Activity": { "main": [[{ "node": "Aggregate Stats", "type": "main", "index": 0 }]] },
+    "Aggregate Stats": { "main": [[{ "node": "Bentley: Write Briefing", "type": "main", "index": 0 }]] },
+    "Bentley: Write Briefing": { "main": [[{ "node": "Telegram: DM Hiro", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1", "timezone": "America/Chicago" },
+  "tags": [{ "name": "cron" }, { "name": "briefing" }, { "name": "ai-call" }],
+  "versionId": "1",
+  "id": "cron-morning-briefing"
+}

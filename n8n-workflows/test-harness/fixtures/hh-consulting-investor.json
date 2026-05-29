@@ -1,0 +1,26 @@
+{
+  "sequence": "hh-consulting--referral-request",
+  "lead": {
+    "first_name": "TestInv",
+    "last_name": "Consulting",
+    "email": "test-hhc-inv-{run_id}@n8n-harness.invalid",
+    "phone": "+15555550104",
+    "lifecycle_stage": "customer",
+    "test_harness": true,
+    "test_run_id": "{run_id}",
+    "hh_consulting_referral_step": 0,
+    "hh_consulting_referral_state": "active"
+  },
+  "trigger_input": {
+    "contact_id": "{hubspot_contact_id}",
+    "contact_email": "test-hhc-inv-{run_id}@n8n-harness.invalid",
+    "first_name": "TestInv",
+    "phone": "+15555550104",
+    "current_step": 0
+  },
+  "expected_state_after": {
+    "hh_consulting_referral_step": 1,
+    "hh_consulting_referral_state": "active",
+    "hh_consulting_referral_last_action_at": "{any_iso_within_60s}"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "name": "lib--send-email",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger-execute",
+      "name": "When Called",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "notes": "Input: { to, subject, body_html, body_text?, from_alias?, business_unit, lead_id }. If body_text omitted, caller should pre-strip HTML (lib does not currently regex-strip — keeps JSON portable across shells)."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "from-alias",
+              "name": "from_alias",
+              "value": "={{ $json.from_alias || $env['GMAIL_FROM_ALIAS_' + $json.business_unit.toUpperCase()] || $env.GMAIL_FROM_ALIAS }}",
+              "type": "string"
+            },
+            {
+              "id": "body-text-fallback",
+              "name": "body_text",
+              "value": "={{ $json.body_text || $json.body_html }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "resolve-from",
+      "name": "Resolve From + Text Fallback",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('When Called').item.json.to }}",
+        "subject": "={{ $('When Called').item.json.subject }}",
+        "emailType": "html",
+        "message": "={{ $('When Called').item.json.body_html }}",
+        "options": {
+          "senderName": "={{ $json.from_alias }}",
+          "replyTo": "={{ $json.from_alias }}"
+        }
+      },
+      "id": "gmail-send",
+      "name": "Gmail: Send",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        680,
+        300
+      ],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_WITH_GMAIL_CRED_ID",
+          "name": "Gmail HIRO@HHInsurance.info"
+        }
+      },
+      "continueOnFail": true,
+      "notes": "Per-business credentials: insurance + consulting need separate Gmail OAuth creds. Add credential branches if business_unit varies."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "status",
+              "name": "status",
+              "value": "={{ $json.id ? 'sent' : 'failed' }}",
+              "type": "string"
+            },
+            {
+              "id": "message_id",
+              "name": "message_id",
+              "value": "={{ $json.id || null }}",
+              "type": "string"
+            },
+            {
+              "id": "thread_id",
+              "name": "thread_id",
+              "value": "={{ $json.threadId || null }}",
+              "type": "string"
+            },
+            {
+              "id": "error",
+              "name": "error",
+              "value": "={{ $json.error ? { message: $json.error.message } : null }}",
+              "type": "object"
+            },
+            {
+              "id": "lead_id",
+              "name": "lead_id",
+              "value": "={{ $('When Called').item.json.lead_id }}",
+              "type": "string"
+            },
+            {
+              "id": "business_unit",
+              "name": "business_unit",
+              "value": "={{ $('When Called').item.json.business_unit }}",
+              "type": "string"
+            },
+            {
+              "id": "sent_at",
+              "name": "sent_at",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "format-result",
+      "name": "Format Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        900,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "When Called": {
+      "main": [
+        [
+          {
+            "node": "Resolve From + Text Fallback",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resolve From + Text Fallback": {
+      "main": [
+        [
+          {
+            "node": "Gmail: Send",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail: Send": {
+      "main": [
+        [
+          {
+            "node": "Format Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "lib"
+    },
+    {
+      "name": "channel-email"
+    }
+  ],
+  "versionId": "1",
+  "id": "lib-send-email"
+}

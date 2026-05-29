@@ -1,0 +1,94 @@
+{
+  "name": "paragon-tax--referral-request",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "trigger",
+      "name": "When Called",
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "notes": "PROOF-OF-PATTERN: Step 0 only. Full 4-step sequence (SMS at Day 0, Email at Day 3, SMS at Day 7, Email at Day 14) to be filled in via n8n UI - drag-and-drop is faster than JSON authoring. See README -> Sequence pattern."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "p1", "name": "to", "value": "={{ $json.phone }}", "type": "string" },
+            { "id": "p2", "name": "body", "value": "Hey {{ $json.first_name }}, this is Hiro at Paragon Tax. Just wrapped up your filing - thanks for trusting us this season. If you know anyone who could use the same level of care, I would love an intro. - Hiro", "type": "string" },
+            { "id": "p3", "name": "business_unit", "value": "paragon_tax", "type": "string" },
+            { "id": "p4", "name": "lead_id", "value": "={{ $json.contact_id }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-sms-payload",
+      "name": "Build SMS Payload",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [460, 300]
+    },
+    {
+      "parameters": { "workflowId": "lib-send-sms", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "send-sms",
+      "name": "Call lib--send-sms",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "ce", "name": "contact_email", "value": "={{ $json.contact_email }}", "type": "string" },
+            { "id": "props", "name": "properties", "value": "={{ { paragon_referral_step: 1, paragon_referral_last_action_at: $now.toISO(), paragon_referral_state: \"active\" } }}", "type": "object" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-state-update",
+      "name": "Build State Update",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [900, 300]
+    },
+    {
+      "parameters": { "workflowId": "lib-update-hubspot-contact", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "advance-state",
+      "name": "Advance State in HubSpot",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [1120, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "seq", "name": "sequence", "value": "paragon-tax--referral-request", "type": "string" },
+            { "id": "step", "name": "step_executed", "value": 0, "type": "number" },
+            { "id": "status", "name": "status", "value": "advanced", "type": "string" },
+            { "id": "ts", "name": "executed_at", "value": "={{ $now.toISO() }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "result",
+      "name": "Sequence Step Result",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [1340, 300]
+    }
+  ],
+  "connections": {
+    "When Called": { "main": [[{ "node": "Build SMS Payload", "type": "main", "index": 0 }]] },
+    "Build SMS Payload": { "main": [[{ "node": "Call lib--send-sms", "type": "main", "index": 0 }]] },
+    "Call lib--send-sms": { "main": [[{ "node": "Build State Update", "type": "main", "index": 0 }]] },
+    "Build State Update": { "main": [[{ "node": "Advance State in HubSpot", "type": "main", "index": 0 }]] },
+    "Advance State in HubSpot": { "main": [[{ "node": "Sequence Step Result", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "sequence" }, { "name": "business-paragon-tax" }, { "name": "proof-of-pattern" }],
+  "versionId": "1",
+  "id": "paragon-tax--referral-request"
+}

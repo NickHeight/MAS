@@ -1,47 +1,52 @@
 # Client Workflow Architecture — Summary
 
-Rollup of active MAS client bundles. Detail pages live in each client wiki.
+**Generated:** 2026-05-22  
+**MAS orchestrator:** client architecture review (Phase 1–2)
 
-**Updated:** 2026-05-22
+## Active bundles
 
----
+| Client | Slug | Architecture doc | Primary runtime |
+|--------|------|------------------|-----------------|
+| Coastal Lux / Turo | `turo` | [Turo/concepts/workflow_architecture.md](file:///C:/Users/Nicol/Upwork/llmwiki/Turo/concepts/workflow_architecture.md) | Make.com + Airtable + Netlify |
+| Hermes / HIRO | `openclaw` | [OpenClaw/concepts/workflow_architecture.md](file:///C:/Users/Nicol/Upwork/llmwiki/OpenClaw/concepts/workflow_architecture.md) | Hermes Agent (Bentley, Telegram + GHL) |
 
-## Turo (Marc Walden / Coastal Lux)
+## GitHub repos verified (2026-05-22)
 
-**Canonical doc:** [~/Upwork/llmwiki/Turo/concepts/workflow_architecture.md](file:///C:/Users/Nicol/Upwork/llmwiki/Turo/concepts/workflow_architecture.md)
+### Turo
 
-| Layer | Count | Status |
-|-------|-------|--------|
-| Core Make scenarios (S1–S4) | 4 | ✅ Active |
-| Firecrawl helpers | 4 | 3 active, 1 parked |
-| Financial (S6/S7/QBO/Stripe) | 4 | ❌ Built but off — Marc gated |
-| Web (site + 2 dashboards) | 3 | ✅ Live on Netlify |
-| PM sync | Monday + SMS agent | ⚠️ Monday 4wk stale |
+- `NickHeight/turo-fleet-automation-system` — main automation repo
+- `NickHeight/coastal-lux-site` — nested marketing site
+- `NickHeight/llmwiki` — shared wiki (`Turo/` section)
 
-**Top blockers:** TFV/A2P pending, Stripe LIVE + DKIM, QBO prod attestation, Meta BM invite, Bouncie creds, walkthrough call.
+### OpenClaw
 
-**SMS → Monday:** `python scripts/suggest_monday_from_messages.py` + playbook `Turo/playbooks/sms_to_monday_review.md`
+- `NickHeight/openclaw-elijah-workspace` — workspace wrapper
+- `NickHeight/openclaw-hiro-paragon` — agent code (Hermes active)
+- `NickHeight/hirobooker-site` — client website
 
----
+## Cross-client patterns
 
-## OpenClaw (Elijah Booker / HIRO)
+| Pattern | Turo | Hermes / HIRO |
+|---------|------|---------------|
+| Agent-readable PM | Monday (stale) + Asana MCP | None standardized |
+| Wiki as long-form truth | llmwiki/Turo/ rich | llmwiki/OpenClaw/ expanded 2026-05-22 |
+| Blocked comms channel | Twilio A2P | Twilio A2P |
+| Primary automation | Make scenarios | Hermes skills + cron |
+| MAS domain for workflows | `automation` | `coding` + `upwork-ops` |
 
-**Status:** Architecture review pending (paragon repo synced 2026-05-18; wiki stale 2026-04-18).
+## Top drift items to reconcile
 
-**Repos:**
-- `NickHeight/openclaw-elijah-workspace` (wrapper)
-- `NickHeight/openclaw-hiro-paragon` (agent code)
-- `NickHeight/hirobooker-site`
+1. **Turo:** Wiki overview "Active" vs scenario entity "stopped-global-freeze" — pick one source of truth per scenario.
+2. **Turo:** Monday client board 4 weeks behind wiki — run reconciliation sweep.
+3. **Hermes / HIRO:** `cron-setup.sh` references missing `crm-sync/` path (legacy OpenClaw cron).
 
-**Next:** Draft `OpenClaw/concepts/workflow_architecture.md` after Turo PM loop proven.
+## Repo analyzer outputs
 
----
+- `llm_wiki/architecture/turo_scan.json`
+- `llm_wiki/architecture/openclaw_scan.json`
 
-## Git freshness (2026-05-22)
+## Next actions
 
-| Repo | Local vs GitHub |
-|------|-----------------|
-| turo-fleet-automation-system | ✅ synced |
-| coastal-lux-site | ✅ pushed (`replay-addon-session`) |
-| llmwiki | ⚠️ 52 uncommitted local files (archive moves) |
-| openclaw-elijah-paragon | ✅ synced |
+- [ ] Wire Monday MCP + weekly sync job (Turo) OR migrate to Asana-only with Marc guest access
+- [ ] Expand OpenClaw wiki entities/ (mirror Turo pattern)
+- [ ] Phase 2: `upwork-ops` worker reads workflow_architecture.md for routing

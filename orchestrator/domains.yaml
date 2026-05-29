@@ -1,18 +1,23 @@
 # MAS Domain Registry
 # Maps user intent domains to Team Leads, wiki sync paths, and implementation status.
+#
+# Team leads: only agents built in MAS orchestrator/agents/ (2026-05-26 Monday/Hermes set).
+# Legacy stubs (client-lead, content-lead, sms-monday-reviewer) removed 2026-05-26.
+# Coding/automation: use Cursor built-in architect-lead / backend-lead via Task tool until re-scaffolded.
 
 domains:
   coding:
     team_lead: architect-lead
+    team_lead_source: cursor_builtin
     status: active
     wiki_sync:
       - ~/.claude/kb/index.md
     description: >
       Project structure, shared types, config files, multi-file refactors.
-      Delegates to existing architect-lead subagent.
+      Dispatch Cursor architect-lead (not a MAS agent file).
 
   client-bootstrap:
-    team_lead: client-lead
+    team_lead: monday-hermes-pm-lead
     status: active
     inventory: c:/Users/Nicol/MAS/llm_wiki/audits/upwork_inventory.json
     external_paths: c:/Users/Nicol/MAS/orchestrator/upwork_paths.yaml
@@ -29,10 +34,10 @@ domains:
       - scripts/repo_analyzer.py
     description: >
       Upwork root audit and reconciliation, four-pillar provisioning, template scaffold.
-      Run upwork_audit.py before scaffolding or migrating. Uses upwork_inventory.json for routing.
+      Deterministic scripts first; PM/board work via monday-hermes-pm-lead.
 
   upwork-ops:
-    team_lead: client-lead
+    team_lead: monday-hermes-pm-lead
     status: stub
     wiki_sync:
       - ~/Upwork/llmwiki/_shared/playbooks/
@@ -43,10 +48,26 @@ domains:
       - upwork-monitor
     description: >
       Upwork delivery, scope parsing, Monday.com PM sync, client communications.
-      Phase 2 — delegates to existing Upwork skills.
+      Phase 2 — Upwork skills + monday-hermes-pm-lead for board PM.
+
+  monday-clients:
+    team_lead: monday-hermes-pm-lead
+    status: active
+    wiki_sync:
+      - ~/Upwork/llmwiki/_shared/references/ai-agent-client-monday-template.md
+      - ~/.claude/kb/_reference/monday-board-template.md
+      - ~/Upwork/llmwiki/OpenClaw/playbooks/monday_workspace_setup.md
+    agents:
+      - orchestrator/agents/monday-hermes-pm-lead.md
+      - orchestrator/agents/monday-board-builder.md
+      - orchestrator/agents/monday-hermes-sync-worker.md
+    description: >
+      Monday.com project management for Hermes/AI-agent clients. Board provisioning,
+      Bentley skill updates, wiki reconciliation, HIRO-style command-center pattern.
 
   automation:
     team_lead: backend-lead
+    team_lead_source: cursor_builtin
     status: stub
     wiki_sync:
       - ~/Upwork/llmwiki/Turo/entities/scenarios/
@@ -54,19 +75,19 @@ domains:
       - make-scenario-builder
     description: >
       Make.com/n8n workflow engineering and blueprint management.
-      Phase 2 — reuses Turo blueprint patterns.
+      Phase 2 — dispatch Cursor backend-lead when active.
 
   content:
-    team_lead: content-lead
+    team_lead: monday-hermes-pm-lead
     status: stub
     wiki_sync:
       - ~/Upwork/llmwiki/CRM/entities/
     description: >
       Social media clipping, compliance filtering, animated captions, HITL publishing.
-      Phase 2 — net-new build.
+      Phase 2 — net-new build; content-lead agent removed until rebuilt.
 
   proposal-websites:
-    team_lead: client-lead
+    team_lead: monday-hermes-pm-lead
     status: active
     wiki_sync:
       - ~/Upwork/llmwiki/PremiumWebDesign/
@@ -80,16 +101,24 @@ domains:
       High-value proposal website demos using the PremiumWebDesign framework.
       Not a client bundle — internal IP for Upwork acquisition.
 
+orchestrator:
+  persona: orchestrator/agents/orchestrator.md
+  intake_template: orchestrator/intake_template.md
+  model: opus
+  tier: 1
+  scope: mas_workspace_only
+  installed: 2026-05-26
+
 team_leads:
-  architect-lead:
-    path: ~/.claude/agents/architect-lead.md
+  monday-hermes-pm-lead:
+    path: orchestrator/agents/monday-hermes-pm-lead.md
     model: sonnet
-  backend-lead:
-    path: ~/.claude/agents/backend-lead.md
+    installed: 2026-05-26
+  monday-board-builder:
+    path: orchestrator/agents/monday-board-builder.md
     model: sonnet
-  client-lead:
-    path: ~/.claude/agents/client-lead.md
+    installed: 2026-05-26
+  monday-hermes-sync-worker:
+    path: orchestrator/agents/monday-hermes-sync-worker.md
     model: sonnet
-  content-lead:
-    path: ~/.claude/agents/content-lead.md
-    model: sonnet
+    installed: 2026-05-26

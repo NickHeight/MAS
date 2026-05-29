@@ -29,5 +29,6 @@ done
 
 echo ""
 echo "MAS agents installed. Available Team Leads:"
-echo "  - client-lead (client-bootstrap, upwork-ops stub)"
-echo "  - content-lead (content stub, Phase 2)"
+echo "  - monday-hermes-pm-lead"
+echo "  - monday-board-builder"
+echo "  - monday-hermes-sync-worker"

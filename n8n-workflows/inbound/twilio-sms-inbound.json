@@ -1,0 +1,145 @@
+{
+  "name": "inbound--twilio-sms-inbound",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "twilio-inbound",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook",
+      "name": "Twilio Inbound Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "twilio-inbound-hiro",
+      "notes": "Set this URL as the messaging webhook on the Twilio phone number. Replies and STOP/HELP keywords flow here. Blocked on A2P 10DLC approval for production traffic."
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            { "conditions": { "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "loose" }, "conditions": [{ "id": "stop", "leftValue": "={{ $json.body.Body.trim().toUpperCase() }}", "rightValue": "STOP", "operator": { "type": "string", "operation": "equals" } }, { "id": "stop2", "leftValue": "={{ $json.body.Body.trim().toUpperCase() }}", "rightValue": "UNSUBSCRIBE", "operator": { "type": "string", "operation": "equals" } }, { "id": "stop3", "leftValue": "={{ $json.body.Body.trim().toUpperCase() }}", "rightValue": "STOPALL", "operator": { "type": "string", "operation": "equals" } }], "combinator": "or" }, "renameOutput": true, "outputKey": "opt_out" },
+            { "conditions": { "options": { "caseSensitive": false, "leftValue": "", "typeValidation": "loose" }, "conditions": [{ "id": "help", "leftValue": "={{ $json.body.Body.trim().toUpperCase() }}", "rightValue": "HELP", "operator": { "type": "string", "operation": "equals" } }, { "id": "help2", "leftValue": "={{ $json.body.Body.trim().toUpperCase() }}", "rightValue": "INFO", "operator": { "type": "string", "operation": "equals" } }], "combinator": "or" }, "renameOutput": true, "outputKey": "help_request" }
+          ],
+          "fallbackOutput": "extra",
+          "renameFallbackOutput": "free_reply"
+        },
+        "options": {}
+      },
+      "id": "classify",
+      "name": "Classify Reply",
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "email", "name": "contact_email", "value": "TODO_lookup_by_phone", "type": "string" },
+            { "id": "props", "name": "properties", "value": "={{ { sms_opted_out: true, sms_opted_out_at: $now.toISO(), paragon_referral_state: \"opted_out\", hh_insurance_qualification_state: \"opted_out\", hh_consulting_investor_state: \"opted_out\" } }}", "type": "object" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "build-optout-update",
+      "name": "Build Opt-out Update",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [680, 100],
+      "notes": "TODO: replace TODO_lookup_by_phone with a real HubSpot phone-search node. Lib/update-hubspot-contact upserts by email - need a parallel by-phone lookup, or add a sub-workflow lib/find-hubspot-contact-by-phone.json."
+    },
+    {
+      "parameters": { "workflowId": "lib-update-hubspot-contact", "workflowInputs": { "value": "={{ $json }}" } },
+      "id": "apply-optout",
+      "name": "Apply Opt-out to HubSpot",
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [900, 100]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>You have been unsubscribed from Paragon/HH messages. Reply START to resubscribe.</Message></Response>",
+        "options": { "responseHeaders": { "entries": [{ "name": "Content-Type", "value": "text/xml" }] } }
+      },
+      "id": "respond-optout",
+      "name": "Respond Opt-out Ack",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [1120, 100]
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response><Message>Hi, this is Hiro Booker. Reply STOP to opt out. Visit hirobooker.com for more info.</Message></Response>",
+        "options": { "responseHeaders": { "entries": [{ "name": "Content-Type", "value": "text/xml" }] } }
+      },
+      "id": "respond-help",
+      "name": "Respond HELP Ack",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $env.BENTLEY_HTTP_URL }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Authorization", "value": "Bearer {{ $env.BENTLEY_HTTP_TOKEN }}" },
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            { "name": "skill", "value": "classify-inbound-sms-reply" },
+            { "name": "from_phone", "value": "={{ $json.body.From }}" },
+            { "name": "message_body", "value": "={{ $json.body.Body }}" },
+            { "name": "context", "value": "Free-text reply to one of HIRO three-business outreach sequences. Decide: route to Hiro for human reply (urgent / questions) OR pause sequence (not ready / circle back later) OR continue sequence (positive but no specific ask)." }
+          ]
+        },
+        "options": {}
+      },
+      "id": "bentley-classify",
+      "name": "Bentley: Classify Free Reply",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [680, 500],
+      "notes": "AI bit. Bentley returns { action: 'route_to_hiro' | 'pause_sequence' | 'continue', reasoning, suggested_response? }."
+    },
+    {
+      "parameters": {
+        "respondWith": "text",
+        "responseBody": "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Response></Response>",
+        "options": { "responseHeaders": { "entries": [{ "name": "Content-Type", "value": "text/xml" }] } }
+      },
+      "id": "respond-empty",
+      "name": "Respond Empty (Bentley handles followup)",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [900, 500]
+    }
+  ],
+  "connections": {
+    "Twilio Inbound Webhook": { "main": [[{ "node": "Classify Reply", "type": "main", "index": 0 }]] },
+    "Classify Reply": {
+      "main": [
+        [{ "node": "Build Opt-out Update", "type": "main", "index": 0 }],
+        [{ "node": "Respond HELP Ack", "type": "main", "index": 0 }],
+        [{ "node": "Bentley: Classify Free Reply", "type": "main", "index": 0 }]
+      ]
+    },
+    "Build Opt-out Update": { "main": [[{ "node": "Apply Opt-out to HubSpot", "type": "main", "index": 0 }]] },
+    "Apply Opt-out to HubSpot": { "main": [[{ "node": "Respond Opt-out Ack", "type": "main", "index": 0 }]] },
+    "Bentley: Classify Free Reply": { "main": [[{ "node": "Respond Empty (Bentley handles followup)", "type": "main", "index": 0 }]] }
+  },
+  "active": false,
+  "settings": { "executionOrder": "v1" },
+  "tags": [{ "name": "inbound" }, { "name": "twilio" }, { "name": "compliance" }],
+  "versionId": "1",
+  "id": "inbound-twilio-sms"
+}

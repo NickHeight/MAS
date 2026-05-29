@@ -6,31 +6,38 @@ Unified routing shell for domain-specific agent teams. Extends the existing team
 
 At the start of EVERY session in this workspace, read in order:
 
-1. `TASKS.md` — current backlog and blockers
-2. `orchestrator/domains.yaml` — domain → Team Lead mapping
-3. `orchestrator/router.md` — routing decision tree
-4. `~/.claude/kb/index.md` — Global KB catalog (sync relevant pages)
-5. `~/Upwork/llmwiki/index.md` — per-client wiki catalog (if client work)
+1. `orchestrator/agents/orchestrator.md` — Tier-1 persona, intake + dispatch contract
+2. `TASKS.md` — current backlog and blockers
+3. `orchestrator/domains.yaml` — domain → Team Lead mapping
+4. `orchestrator/router.md` — routing decision tree
+5. `orchestrator/intake_template.md` — used on every new project
+6. `~/.claude/kb/index.md` — Global KB catalog (sync relevant pages)
+7. `~/Upwork/llmwiki/index.md` — per-client wiki catalog (if client work)
 
 **Mobile / away from desk:** use Claude Code Remote Control — `docs/CLAUDE_CODE_SETUP.md`. Start with `claude --remote-control "MAS Orchestrator"` from this directory. Requires Max `/login` (full scope), not `setup-token`.
 
 ## Orchestrator duties
 
-1. **Classify intent** — map user request to one or more domains (`coding`, `client-bootstrap`, `upwork-ops`, `automation`, `content`)
-2. **Sync wikis** — pull relevant Global KB and Upwork wiki pages before dispatch
-3. **Update TASKS.md** — tag tasks with domain; never mark done without verification
-4. **Dispatch Team Leads** — use Agent Teams with standing subagents from `~/.claude/agents/`
-5. **Post-mortem** — on completion or failure, write to `llm_wiki/postmortems/YYYY-MM-DD_<topic>.md`
+The full persona lives in [`orchestrator/agents/orchestrator.md`](orchestrator/agents/orchestrator.md). Short form:
+
+1. **Intake** — capture prompt verbatim; fill `orchestrator/intake_template.md` into `llm_wiki/intakes/`
+2. **Goal definition** — one-sentence goal + auxiliary points + definition of done (confirm with Nick)
+3. **Path mapping** — map the full path to done before dispatch (blocked-step ladder)
+4. **Credential inventory** — single batched ask at intake; delta inventory when new components appear
+5. **Dispatch** — Team Leads via `Task` tool using the 9-section handoff contract
+6. **Monitor + self-heal** — try fallback rungs; cap retries at 3 per node; ship partial deliverables over stalls
+7. **Close + learn** — never silently stop; postmortem on surprises; promote patterns after 3 recurrences
 
 ## Domain routing (quick reference)
 
 | Domain | Team Lead | When to use |
 |--------|-----------|---------------|
 | `coding` | `architect-lead` | Code structure, refactors, multi-file edits |
-| `client-bootstrap` | `client-lead` | New client setup, repo analysis, template scaffold |
-| `upwork-ops` | `client-lead` | Upwork delivery, Monday.com PM (Phase 2) |
-| `automation` | `backend-lead` | Make.com/n8n workflows (Phase 2) |
-| `content` | `content-lead` | Social media clipping pipeline (Phase 2) |
+| `client-bootstrap` | `monday-hermes-pm-lead` | Audit/scaffold scripts + Monday/wiki PM |
+| `upwork-ops` | `monday-hermes-pm-lead` | Upwork delivery, Monday.com PM (Phase 2) |
+| `monday-clients` | `monday-hermes-pm-lead` | Hermes/AI-agent Monday command centers |
+| `automation` | `backend-lead` (Cursor builtin) | Make.com/n8n workflows (Phase 2) |
+| `content` | — | Social clipping (Phase 2; content-lead removed until rebuilt) |
 
 Full routing logic: `orchestrator/router.md`
 
