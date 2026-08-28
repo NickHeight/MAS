@@ -5,7 +5,7 @@ Obsidian is your **human dashboard** over the wikis that agents maintain. You do
 ## Primary vault: Upwork LLM Wiki
 
 1. Open Obsidian
-2. **Open folder as vault** → `C:\Users\Nicol\Upwork\llmwiki`
+2. **Open folder as vault** → `~/Upwork/llmwiki`
 3. Enable **Graph view** (core plugin) to see cross-client playbook links
 4. Enable **Search** for quick client lookup
 
@@ -13,7 +13,7 @@ This vault contains per-client folders (Turo, OpenClaw, Hermes, etc.) plus `_sha
 
 ## Optional second vault: Global KB
 
-1. **Open folder as vault** → `C:\Users\Nicol\.claude\kb`
+1. **Open folder as vault** → `~/.claude/kb`
 2. Use for cross-project concepts, entity pages, and reference docs
 
 Or use Obsidian's multi-root vault feature if available in your version.
@@ -49,7 +49,7 @@ Cross-link to Global KB entity at `~/.claude/kb/wiki/entities/{slug}.md` (open v
 
 ## MAS postmortems
 
-MAS-local postmortems live at `c:\Users\Nicol\MAS\llm_wiki\postmortems\`.
+MAS-local postmortems live at `~/MAS/llm_wiki/postmortems/`.
 
 Options:
 - Symlink into Upwork wiki: `_shared/postmortems/` → MAS postmortems folder

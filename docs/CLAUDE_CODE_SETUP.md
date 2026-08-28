@@ -23,13 +23,13 @@ MAS `.env` intentionally has no Anthropic key — OpenAI / Google / xAI are for 
 
 1. **Sign in with full scope** (required for Remote Control):
    ```powershell
-   cd c:\Users\Nicol\MAS
+   cd ~/MAS
    claude
    /login
    ```
    Choose **claude.ai** (Max account). Do **not** use `claude setup-token` for mobile — that token is inference-only.
 
-2. **Trust the workspace** — accept the trust dialog the first time you run `claude` in `c:\Users\Nicol\MAS`.
+2. **Trust the workspace** — accept the trust dialog the first time you run `claude` in `~/MAS`.
 
 3. **Install agents** (if not done):
    ```powershell
@@ -43,7 +43,7 @@ MAS `.env` intentionally has no Anthropic key — OpenAI / Google / xAI are for 
 **Option A — interactive + remote (recommended)**
 
 ```powershell
-cd c:\Users\Nicol\MAS
+cd ~/MAS
 claude --remote-control "MAS Orchestrator"
 ```
 
@@ -61,7 +61,7 @@ powershell -File scripts/start-orchestrator-remote.ps1
 **Option B — server mode (phone-only driving)**
 
 ```powershell
-cd c:\Users\Nicol\MAS
+cd ~/MAS
 claude remote-control --name "MAS Orchestrator"
 ```
 

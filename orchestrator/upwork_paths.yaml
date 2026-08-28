@@ -2,7 +2,7 @@
 # Edit here when backup locations change.
 
 message_backups:
-  local_path: "C:/Users/Nicol/OneDrive - Height Consulting/Apps/SMS Backup and Restore/UpworkMsgs"
+  local_path: "~/OneDrive - Height Consulting/Apps/SMS Backup and Restore/UpworkMsgs"
   format: sms-backup-restore-xml
   sync: onedrive
   description: >

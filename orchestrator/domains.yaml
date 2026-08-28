@@ -19,8 +19,8 @@ domains:
   client-bootstrap:
     team_lead: monday-hermes-pm-lead
     status: active
-    inventory: c:/Users/Nicol/MAS/llm_wiki/audits/upwork_inventory.json
-    external_paths: c:/Users/Nicol/MAS/orchestrator/upwork_paths.yaml
+    inventory: llm_wiki/audits/upwork_inventory.json
+    external_paths: orchestrator/upwork_paths.yaml
     wiki_sync:
       - ~/.claude/kb/_reference/new-client-project-bootstrap.md
       - ~/.claude/kb/_reference/monday-board-template.md

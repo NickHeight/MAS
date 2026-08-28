@@ -118,15 +118,13 @@ ORPHAN_DEST_RULES: list[tuple[str, str]] = [
 
 def load_message_backup_path() -> Path:
     """Read canonical SMS backup path from orchestrator/upwork_paths.yaml."""
-    default = Path(
-        r"C:\Users\Nicol\OneDrive - Height Consulting\Apps\SMS Backup and Restore\UpworkMsgs"
-    )
+    default = Path("~/OneDrive - Height Consulting/Apps/SMS Backup and Restore/UpworkMsgs").expanduser()
     if not UPWORK_PATHS_YAML.exists():
         return default
     text = UPWORK_PATHS_YAML.read_text(encoding="utf-8")
     match = re.search(r'local_path:\s*["\']?([^"\']+)["\']?', text)
     if match:
-        return Path(match.group(1).strip())
+        return Path(match.group(1).strip()).expanduser()
     return default
 
 

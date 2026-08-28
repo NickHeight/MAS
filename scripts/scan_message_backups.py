@@ -12,9 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-DEFAULT_BACKUP_ROOT = Path(
-    r"C:\Users\Nicol\OneDrive - Height Consulting\Apps\SMS Backup and Restore\UpworkMsgs"
-)
+DEFAULT_BACKUP_ROOT = Path("~/OneDrive - Height Consulting/Apps/SMS Backup and Restore/UpworkMsgs").expanduser()
 
 # Map SMS contact_name → client bundle slug
 CONTACT_TO_SLUG: dict[str, str] = {

@@ -15,7 +15,7 @@ Do **not** run Composer 2.5 on your own Anthropic/OpenAI keys inside Cursor unle
 ## Cursor configuration
 
 1. **Install Cursor Pro** — [cursor.com](https://cursor.com)
-2. **Open MAS workspace** — `c:\Users\Nicol\MAS`
+2. **Open MAS workspace** — `~/MAS`
 3. **Enable Composer 2.5** — Settings → Models → enable Composer 2.5 for Agent/Composer
 4. **Indexing** — Settings → Indexing → ensure MAS folder is indexed
 5. **Rules** — `.cursor/rules/mas-orchestrator.mdc` applies automatically
@@ -78,7 +78,7 @@ Until Monday MCP is wired in Cursor, use **Claude Code** for board reads/writes,
 If Nick's Upwork folder already has clients scattered across `clients/`, `projects/`, and `llmwiki/`:
 
 ```powershell
-cd c:\Users\Nicol\MAS
+cd ~/MAS
 
 # 1. Audit entire Upwork root
 python scripts/upwork_audit.py --root ~/Upwork
